@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { VehicleController } from "./vehicle.controller";
 import { MaintenanceController } from "../maintenance/maintenance.controller";
+import { SensorController } from "../sensor/sensor.controller";
 
 export const vehicleRouter = Router();
 
@@ -19,3 +20,8 @@ vehicleRouter.delete("/:id", VehicleController.deleteVehicle);
 
 vehicleRouter.get("/:id/maintenance", MaintenanceController.getVehicleMaintenance);
 vehicleRouter.post("/:id/maintenance", MaintenanceController.createVehicleMaintenance);
+
+// same as maintenance. can be opted to own router
+vehicleRouter.get("/:id/sensor", SensorController.getVehicleSensors);
+vehicleRouter.post("/:id/sensor", SensorController.assignSensorToVehicle);
+vehicleRouter.delete("/:id/sensor/:sensorId", SensorController.removeSensorFromVehicle);
