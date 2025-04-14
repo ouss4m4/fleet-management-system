@@ -26,6 +26,7 @@ model Vehicle {
 
   maintenanceRecords MaintenanceRecord[]
   sensors            Sensor[]
+  analytics          VehicleAnalytics[]
 }
 
 model MaintenanceRecord {
@@ -35,8 +36,11 @@ model MaintenanceRecord {
   date        DateTime
   description String
   cost        Float
+
+  @@index([vehicleId, date])
 }
 
+// Assesment didnt request this but it would be better to have. and also allows a relation vehicle->sensors
 model Sensor {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   vehicleId String   @db.ObjectId
@@ -46,13 +50,24 @@ model Sensor {
   unit      String // e.g., °C, km, km/h
   createdAt DateTime @default(now())
 
-  readings SensorReading[]
+  readings Telemetry[]
 }
 
-model SensorReading {
+model Telemetry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   sensorId  String   @db.ObjectId
   sensor    Sensor   @relation(fields: [sensorId], references: [id])
-  timestamp DateTime @default(now())
   payload   Json
+  timestamp DateTime @default(now())
+
+  @@index([sensorId, timestamp])
+}
+
+model VehicleAnalytics {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  vehicleId     String   @unique @db.ObjectId
+  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id])
+  totalKm       Float
+  hoursOperated Int
+  lastUpdated   DateTime @updatedAt
 }

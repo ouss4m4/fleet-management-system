@@ -50,15 +50,15 @@ model Sensor {
   unit      String // e.g., °C, km, km/h
   createdAt DateTime @default(now())
 
-  readings SensorReading[]
+  readings Telemetry[]
 }
 
-model SensorReading {
+model Telemetry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   sensorId  String   @db.ObjectId
   sensor    Sensor   @relation(fields: [sensorId], references: [id])
-  timestamp DateTime @default(now())
   payload   Json
+  timestamp DateTime @default(now())
 
   @@index([sensorId, timestamp])
 }

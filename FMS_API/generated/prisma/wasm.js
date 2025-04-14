@@ -138,11 +138,19 @@ exports.Prisma.SensorScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.SensorReadingScalarFieldEnum = {
+exports.Prisma.TelemetryScalarFieldEnum = {
   id: 'id',
   sensorId: 'sensorId',
-  timestamp: 'timestamp',
-  payload: 'payload'
+  payload: 'payload',
+  timestamp: 'timestamp'
+};
+
+exports.Prisma.VehicleAnalyticsScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  totalKm: 'totalKm',
+  hoursOperated: 'hoursOperated',
+  lastUpdated: 'lastUpdated'
 };
 
 exports.Prisma.SortOrder = {
@@ -160,7 +168,8 @@ exports.Prisma.ModelName = {
   Vehicle: 'Vehicle',
   MaintenanceRecord: 'MaintenanceRecord',
   Sensor: 'Sensor',
-  SensorReading: 'SensorReading'
+  Telemetry: 'Telemetry',
+  VehicleAnalytics: 'VehicleAnalytics'
 };
 
 /**

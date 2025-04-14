@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { vehicleRouter } from "../modules/vehicle/vehicle.router";
+import { telemetryRouter } from "../modules/telemetry/telemetry.route";
 
 const apiv1router = Router();
 
 apiv1router.use("/vehicles", vehicleRouter);
+apiv1router.use("/telemetry", telemetryRouter);
 
 // Swagger only in development
 if (process.env.NODE_ENV !== "production") {

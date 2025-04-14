@@ -29,10 +29,15 @@ export type MaintenanceRecord = $Result.DefaultSelection<Prisma.$MaintenanceReco
  */
 export type Sensor = $Result.DefaultSelection<Prisma.$SensorPayload>
 /**
- * Model SensorReading
+ * Model Telemetry
  * 
  */
-export type SensorReading = $Result.DefaultSelection<Prisma.$SensorReadingPayload>
+export type Telemetry = $Result.DefaultSelection<Prisma.$TelemetryPayload>
+/**
+ * Model VehicleAnalytics
+ * 
+ */
+export type VehicleAnalytics = $Result.DefaultSelection<Prisma.$VehicleAnalyticsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -157,14 +162,24 @@ export class PrismaClient<
   get sensor(): Prisma.SensorDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.sensorReading`: Exposes CRUD operations for the **SensorReading** model.
+   * `prisma.telemetry`: Exposes CRUD operations for the **Telemetry** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more SensorReadings
-    * const sensorReadings = await prisma.sensorReading.findMany()
+    * // Fetch zero or more Telemetries
+    * const telemetries = await prisma.telemetry.findMany()
     * ```
     */
-  get sensorReading(): Prisma.SensorReadingDelegate<ExtArgs, ClientOptions>;
+  get telemetry(): Prisma.TelemetryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.vehicleAnalytics`: Exposes CRUD operations for the **VehicleAnalytics** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VehicleAnalytics
+    * const vehicleAnalytics = await prisma.vehicleAnalytics.findMany()
+    * ```
+    */
+  get vehicleAnalytics(): Prisma.VehicleAnalyticsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -608,7 +623,8 @@ export namespace Prisma {
     Vehicle: 'Vehicle',
     MaintenanceRecord: 'MaintenanceRecord',
     Sensor: 'Sensor',
-    SensorReading: 'SensorReading'
+    Telemetry: 'Telemetry',
+    VehicleAnalytics: 'VehicleAnalytics'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -627,7 +643,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "vehicle" | "maintenanceRecord" | "sensor" | "sensorReading"
+      modelProps: "vehicle" | "maintenanceRecord" | "sensor" | "telemetry" | "vehicleAnalytics"
       txIsolationLevel: never
     }
     model: {
@@ -853,77 +869,151 @@ export namespace Prisma {
           }
         }
       }
-      SensorReading: {
-        payload: Prisma.$SensorReadingPayload<ExtArgs>
-        fields: Prisma.SensorReadingFieldRefs
+      Telemetry: {
+        payload: Prisma.$TelemetryPayload<ExtArgs>
+        fields: Prisma.TelemetryFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SensorReadingFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload> | null
+            args: Prisma.TelemetryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SensorReadingFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           findFirst: {
-            args: Prisma.SensorReadingFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload> | null
+            args: Prisma.TelemetryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SensorReadingFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           findMany: {
-            args: Prisma.SensorReadingFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>[]
+            args: Prisma.TelemetryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>[]
           }
           create: {
-            args: Prisma.SensorReadingCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           createMany: {
-            args: Prisma.SensorReadingCreateManyArgs<ExtArgs>
+            args: Prisma.TelemetryCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.SensorReadingDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           update: {
-            args: Prisma.SensorReadingUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           deleteMany: {
-            args: Prisma.SensorReadingDeleteManyArgs<ExtArgs>
+            args: Prisma.TelemetryDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.SensorReadingUpdateManyArgs<ExtArgs>
+            args: Prisma.TelemetryUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.SensorReadingUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SensorReadingPayload>
+            args: Prisma.TelemetryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TelemetryPayload>
           }
           aggregate: {
-            args: Prisma.SensorReadingAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSensorReading>
+            args: Prisma.TelemetryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTelemetry>
           }
           groupBy: {
-            args: Prisma.SensorReadingGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SensorReadingGroupByOutputType>[]
+            args: Prisma.TelemetryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TelemetryGroupByOutputType>[]
           }
           findRaw: {
-            args: Prisma.SensorReadingFindRawArgs<ExtArgs>
+            args: Prisma.TelemetryFindRawArgs<ExtArgs>
             result: JsonObject
           }
           aggregateRaw: {
-            args: Prisma.SensorReadingAggregateRawArgs<ExtArgs>
+            args: Prisma.TelemetryAggregateRawArgs<ExtArgs>
             result: JsonObject
           }
           count: {
-            args: Prisma.SensorReadingCountArgs<ExtArgs>
-            result: $Utils.Optional<SensorReadingCountAggregateOutputType> | number
+            args: Prisma.TelemetryCountArgs<ExtArgs>
+            result: $Utils.Optional<TelemetryCountAggregateOutputType> | number
+          }
+        }
+      }
+      VehicleAnalytics: {
+        payload: Prisma.$VehicleAnalyticsPayload<ExtArgs>
+        fields: Prisma.VehicleAnalyticsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VehicleAnalyticsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VehicleAnalyticsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          findFirst: {
+            args: Prisma.VehicleAnalyticsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VehicleAnalyticsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          findMany: {
+            args: Prisma.VehicleAnalyticsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>[]
+          }
+          create: {
+            args: Prisma.VehicleAnalyticsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          createMany: {
+            args: Prisma.VehicleAnalyticsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.VehicleAnalyticsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          update: {
+            args: Prisma.VehicleAnalyticsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          deleteMany: {
+            args: Prisma.VehicleAnalyticsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VehicleAnalyticsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.VehicleAnalyticsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleAnalyticsPayload>
+          }
+          aggregate: {
+            args: Prisma.VehicleAnalyticsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVehicleAnalytics>
+          }
+          groupBy: {
+            args: Prisma.VehicleAnalyticsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VehicleAnalyticsGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.VehicleAnalyticsFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.VehicleAnalyticsAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.VehicleAnalyticsCountArgs<ExtArgs>
+            result: $Utils.Optional<VehicleAnalyticsCountAggregateOutputType> | number
           }
         }
       }
@@ -1001,7 +1091,8 @@ export namespace Prisma {
     vehicle?: VehicleOmit
     maintenanceRecord?: MaintenanceRecordOmit
     sensor?: SensorOmit
-    sensorReading?: SensorReadingOmit
+    telemetry?: TelemetryOmit
+    vehicleAnalytics?: VehicleAnalyticsOmit
   }
 
   /* Types for Logging */
@@ -1098,11 +1189,13 @@ export namespace Prisma {
   export type VehicleCountOutputType = {
     maintenanceRecords: number
     sensors: number
+    analytics: number
   }
 
   export type VehicleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     maintenanceRecords?: boolean | VehicleCountOutputTypeCountMaintenanceRecordsArgs
     sensors?: boolean | VehicleCountOutputTypeCountSensorsArgs
+    analytics?: boolean | VehicleCountOutputTypeCountAnalyticsArgs
   }
 
   // Custom InputTypes
@@ -1128,6 +1221,13 @@ export namespace Prisma {
    */
   export type VehicleCountOutputTypeCountSensorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SensorWhereInput
+  }
+
+  /**
+   * VehicleCountOutputType without action
+   */
+  export type VehicleCountOutputTypeCountAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleAnalyticsWhereInput
   }
 
 
@@ -1158,7 +1258,7 @@ export namespace Prisma {
    * SensorCountOutputType without action
    */
   export type SensorCountOutputTypeCountReadingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
   }
 
 
@@ -1356,6 +1456,7 @@ export namespace Prisma {
     updatedAt?: boolean
     maintenanceRecords?: boolean | Vehicle$maintenanceRecordsArgs<ExtArgs>
     sensors?: boolean | Vehicle$sensorsArgs<ExtArgs>
+    analytics?: boolean | Vehicle$analyticsArgs<ExtArgs>
     _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicle"]>
 
@@ -1376,6 +1477,7 @@ export namespace Prisma {
   export type VehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     maintenanceRecords?: boolean | Vehicle$maintenanceRecordsArgs<ExtArgs>
     sensors?: boolean | Vehicle$sensorsArgs<ExtArgs>
+    analytics?: boolean | Vehicle$analyticsArgs<ExtArgs>
     _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1384,6 +1486,7 @@ export namespace Prisma {
     objects: {
       maintenanceRecords: Prisma.$MaintenanceRecordPayload<ExtArgs>[]
       sensors: Prisma.$SensorPayload<ExtArgs>[]
+      analytics: Prisma.$VehicleAnalyticsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1759,6 +1862,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     maintenanceRecords<T extends Vehicle$maintenanceRecordsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$maintenanceRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenanceRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sensors<T extends Vehicle$sensorsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$sensorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SensorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    analytics<T extends Vehicle$analyticsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$analyticsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2211,6 +2315,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SensorScalarFieldEnum | SensorScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle.analytics
+   */
+  export type Vehicle$analyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    where?: VehicleAnalyticsWhereInput
+    orderBy?: VehicleAnalyticsOrderByWithRelationInput | VehicleAnalyticsOrderByWithRelationInput[]
+    cursor?: VehicleAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleAnalyticsScalarFieldEnum | VehicleAnalyticsScalarFieldEnum[]
   }
 
   /**
@@ -3444,7 +3572,7 @@ export namespace Prisma {
     name: "Sensor"
     objects: {
       vehicle: Prisma.$VehiclePayload<ExtArgs>
-      readings: Prisma.$SensorReadingPayload<ExtArgs>[]
+      readings: Prisma.$TelemetryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3817,7 +3945,7 @@ export namespace Prisma {
   export interface Prisma__SensorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    readings<T extends Sensor$readingsArgs<ExtArgs> = {}>(args?: Subset<T, Sensor$readingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    readings<T extends Sensor$readingsArgs<ExtArgs> = {}>(args?: Subset<T, Sensor$readingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4227,23 +4355,23 @@ export namespace Prisma {
    */
   export type Sensor$readingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
-    where?: SensorReadingWhereInput
-    orderBy?: SensorReadingOrderByWithRelationInput | SensorReadingOrderByWithRelationInput[]
-    cursor?: SensorReadingWhereUniqueInput
+    include?: TelemetryInclude<ExtArgs> | null
+    where?: TelemetryWhereInput
+    orderBy?: TelemetryOrderByWithRelationInput | TelemetryOrderByWithRelationInput[]
+    cursor?: TelemetryWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: SensorReadingScalarFieldEnum | SensorReadingScalarFieldEnum[]
+    distinct?: TelemetryScalarFieldEnum | TelemetryScalarFieldEnum[]
   }
 
   /**
@@ -4266,321 +4394,321 @@ export namespace Prisma {
 
 
   /**
-   * Model SensorReading
+   * Model Telemetry
    */
 
-  export type AggregateSensorReading = {
-    _count: SensorReadingCountAggregateOutputType | null
-    _min: SensorReadingMinAggregateOutputType | null
-    _max: SensorReadingMaxAggregateOutputType | null
+  export type AggregateTelemetry = {
+    _count: TelemetryCountAggregateOutputType | null
+    _min: TelemetryMinAggregateOutputType | null
+    _max: TelemetryMaxAggregateOutputType | null
   }
 
-  export type SensorReadingMinAggregateOutputType = {
+  export type TelemetryMinAggregateOutputType = {
     id: string | null
     sensorId: string | null
     timestamp: Date | null
   }
 
-  export type SensorReadingMaxAggregateOutputType = {
+  export type TelemetryMaxAggregateOutputType = {
     id: string | null
     sensorId: string | null
     timestamp: Date | null
   }
 
-  export type SensorReadingCountAggregateOutputType = {
+  export type TelemetryCountAggregateOutputType = {
     id: number
     sensorId: number
-    timestamp: number
     payload: number
+    timestamp: number
     _all: number
   }
 
 
-  export type SensorReadingMinAggregateInputType = {
+  export type TelemetryMinAggregateInputType = {
     id?: true
     sensorId?: true
     timestamp?: true
   }
 
-  export type SensorReadingMaxAggregateInputType = {
+  export type TelemetryMaxAggregateInputType = {
     id?: true
     sensorId?: true
     timestamp?: true
   }
 
-  export type SensorReadingCountAggregateInputType = {
+  export type TelemetryCountAggregateInputType = {
     id?: true
     sensorId?: true
-    timestamp?: true
     payload?: true
+    timestamp?: true
     _all?: true
   }
 
-  export type SensorReadingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SensorReading to aggregate.
+     * Filter which Telemetry to aggregate.
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SensorReadings to fetch.
+     * Determine the order of Telemetries to fetch.
      */
-    orderBy?: SensorReadingOrderByWithRelationInput | SensorReadingOrderByWithRelationInput[]
+    orderBy?: TelemetryOrderByWithRelationInput | TelemetryOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SensorReadingWhereUniqueInput
+    cursor?: TelemetryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SensorReadings from the position of the cursor.
+     * Take `±n` Telemetries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SensorReadings.
+     * Skip the first `n` Telemetries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned SensorReadings
+     * Count returned Telemetries
     **/
-    _count?: true | SensorReadingCountAggregateInputType
+    _count?: true | TelemetryCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SensorReadingMinAggregateInputType
+    _min?: TelemetryMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SensorReadingMaxAggregateInputType
+    _max?: TelemetryMaxAggregateInputType
   }
 
-  export type GetSensorReadingAggregateType<T extends SensorReadingAggregateArgs> = {
-        [P in keyof T & keyof AggregateSensorReading]: P extends '_count' | 'count'
+  export type GetTelemetryAggregateType<T extends TelemetryAggregateArgs> = {
+        [P in keyof T & keyof AggregateTelemetry]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSensorReading[P]>
-      : GetScalarType<T[P], AggregateSensorReading[P]>
+        : GetScalarType<T[P], AggregateTelemetry[P]>
+      : GetScalarType<T[P], AggregateTelemetry[P]>
   }
 
 
 
 
-  export type SensorReadingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SensorReadingWhereInput
-    orderBy?: SensorReadingOrderByWithAggregationInput | SensorReadingOrderByWithAggregationInput[]
-    by: SensorReadingScalarFieldEnum[] | SensorReadingScalarFieldEnum
-    having?: SensorReadingScalarWhereWithAggregatesInput
+  export type TelemetryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TelemetryWhereInput
+    orderBy?: TelemetryOrderByWithAggregationInput | TelemetryOrderByWithAggregationInput[]
+    by: TelemetryScalarFieldEnum[] | TelemetryScalarFieldEnum
+    having?: TelemetryScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SensorReadingCountAggregateInputType | true
-    _min?: SensorReadingMinAggregateInputType
-    _max?: SensorReadingMaxAggregateInputType
+    _count?: TelemetryCountAggregateInputType | true
+    _min?: TelemetryMinAggregateInputType
+    _max?: TelemetryMaxAggregateInputType
   }
 
-  export type SensorReadingGroupByOutputType = {
+  export type TelemetryGroupByOutputType = {
     id: string
     sensorId: string
-    timestamp: Date
     payload: JsonValue
-    _count: SensorReadingCountAggregateOutputType | null
-    _min: SensorReadingMinAggregateOutputType | null
-    _max: SensorReadingMaxAggregateOutputType | null
+    timestamp: Date
+    _count: TelemetryCountAggregateOutputType | null
+    _min: TelemetryMinAggregateOutputType | null
+    _max: TelemetryMaxAggregateOutputType | null
   }
 
-  type GetSensorReadingGroupByPayload<T extends SensorReadingGroupByArgs> = Prisma.PrismaPromise<
+  type GetTelemetryGroupByPayload<T extends TelemetryGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SensorReadingGroupByOutputType, T['by']> &
+      PickEnumerable<TelemetryGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SensorReadingGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TelemetryGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SensorReadingGroupByOutputType[P]>
-            : GetScalarType<T[P], SensorReadingGroupByOutputType[P]>
+              : GetScalarType<T[P], TelemetryGroupByOutputType[P]>
+            : GetScalarType<T[P], TelemetryGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SensorReadingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TelemetrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     sensorId?: boolean
-    timestamp?: boolean
     payload?: boolean
+    timestamp?: boolean
     sensor?: boolean | SensorDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sensorReading"]>
+  }, ExtArgs["result"]["telemetry"]>
 
 
 
-  export type SensorReadingSelectScalar = {
+  export type TelemetrySelectScalar = {
     id?: boolean
     sensorId?: boolean
-    timestamp?: boolean
     payload?: boolean
+    timestamp?: boolean
   }
 
-  export type SensorReadingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sensorId" | "timestamp" | "payload", ExtArgs["result"]["sensorReading"]>
-  export type SensorReadingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sensorId" | "payload" | "timestamp", ExtArgs["result"]["telemetry"]>
+  export type TelemetryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sensor?: boolean | SensorDefaultArgs<ExtArgs>
   }
 
-  export type $SensorReadingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SensorReading"
+  export type $TelemetryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Telemetry"
     objects: {
       sensor: Prisma.$SensorPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       sensorId: string
-      timestamp: Date
       payload: Prisma.JsonValue
-    }, ExtArgs["result"]["sensorReading"]>
+      timestamp: Date
+    }, ExtArgs["result"]["telemetry"]>
     composites: {}
   }
 
-  type SensorReadingGetPayload<S extends boolean | null | undefined | SensorReadingDefaultArgs> = $Result.GetResult<Prisma.$SensorReadingPayload, S>
+  type TelemetryGetPayload<S extends boolean | null | undefined | TelemetryDefaultArgs> = $Result.GetResult<Prisma.$TelemetryPayload, S>
 
-  type SensorReadingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SensorReadingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SensorReadingCountAggregateInputType | true
+  type TelemetryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TelemetryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TelemetryCountAggregateInputType | true
     }
 
-  export interface SensorReadingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SensorReading'], meta: { name: 'SensorReading' } }
+  export interface TelemetryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Telemetry'], meta: { name: 'Telemetry' } }
     /**
-     * Find zero or one SensorReading that matches the filter.
-     * @param {SensorReadingFindUniqueArgs} args - Arguments to find a SensorReading
+     * Find zero or one Telemetry that matches the filter.
+     * @param {TelemetryFindUniqueArgs} args - Arguments to find a Telemetry
      * @example
-     * // Get one SensorReading
-     * const sensorReading = await prisma.sensorReading.findUnique({
+     * // Get one Telemetry
+     * const telemetry = await prisma.telemetry.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SensorReadingFindUniqueArgs>(args: SelectSubset<T, SensorReadingFindUniqueArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TelemetryFindUniqueArgs>(args: SelectSubset<T, TelemetryFindUniqueArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one SensorReading that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Telemetry that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SensorReadingFindUniqueOrThrowArgs} args - Arguments to find a SensorReading
+     * @param {TelemetryFindUniqueOrThrowArgs} args - Arguments to find a Telemetry
      * @example
-     * // Get one SensorReading
-     * const sensorReading = await prisma.sensorReading.findUniqueOrThrow({
+     * // Get one Telemetry
+     * const telemetry = await prisma.telemetry.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SensorReadingFindUniqueOrThrowArgs>(args: SelectSubset<T, SensorReadingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TelemetryFindUniqueOrThrowArgs>(args: SelectSubset<T, TelemetryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SensorReading that matches the filter.
+     * Find the first Telemetry that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingFindFirstArgs} args - Arguments to find a SensorReading
+     * @param {TelemetryFindFirstArgs} args - Arguments to find a Telemetry
      * @example
-     * // Get one SensorReading
-     * const sensorReading = await prisma.sensorReading.findFirst({
+     * // Get one Telemetry
+     * const telemetry = await prisma.telemetry.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SensorReadingFindFirstArgs>(args?: SelectSubset<T, SensorReadingFindFirstArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TelemetryFindFirstArgs>(args?: SelectSubset<T, TelemetryFindFirstArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SensorReading that matches the filter or
+     * Find the first Telemetry that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingFindFirstOrThrowArgs} args - Arguments to find a SensorReading
+     * @param {TelemetryFindFirstOrThrowArgs} args - Arguments to find a Telemetry
      * @example
-     * // Get one SensorReading
-     * const sensorReading = await prisma.sensorReading.findFirstOrThrow({
+     * // Get one Telemetry
+     * const telemetry = await prisma.telemetry.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SensorReadingFindFirstOrThrowArgs>(args?: SelectSubset<T, SensorReadingFindFirstOrThrowArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TelemetryFindFirstOrThrowArgs>(args?: SelectSubset<T, TelemetryFindFirstOrThrowArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more SensorReadings that matches the filter.
+     * Find zero or more Telemetries that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TelemetryFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all SensorReadings
-     * const sensorReadings = await prisma.sensorReading.findMany()
+     * // Get all Telemetries
+     * const telemetries = await prisma.telemetry.findMany()
      * 
-     * // Get first 10 SensorReadings
-     * const sensorReadings = await prisma.sensorReading.findMany({ take: 10 })
+     * // Get first 10 Telemetries
+     * const telemetries = await prisma.telemetry.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sensorReadingWithIdOnly = await prisma.sensorReading.findMany({ select: { id: true } })
+     * const telemetryWithIdOnly = await prisma.telemetry.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SensorReadingFindManyArgs>(args?: SelectSubset<T, SensorReadingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TelemetryFindManyArgs>(args?: SelectSubset<T, TelemetryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a SensorReading.
-     * @param {SensorReadingCreateArgs} args - Arguments to create a SensorReading.
+     * Create a Telemetry.
+     * @param {TelemetryCreateArgs} args - Arguments to create a Telemetry.
      * @example
-     * // Create one SensorReading
-     * const SensorReading = await prisma.sensorReading.create({
+     * // Create one Telemetry
+     * const Telemetry = await prisma.telemetry.create({
      *   data: {
-     *     // ... data to create a SensorReading
+     *     // ... data to create a Telemetry
      *   }
      * })
      * 
      */
-    create<T extends SensorReadingCreateArgs>(args: SelectSubset<T, SensorReadingCreateArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TelemetryCreateArgs>(args: SelectSubset<T, TelemetryCreateArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many SensorReadings.
-     * @param {SensorReadingCreateManyArgs} args - Arguments to create many SensorReadings.
+     * Create many Telemetries.
+     * @param {TelemetryCreateManyArgs} args - Arguments to create many Telemetries.
      * @example
-     * // Create many SensorReadings
-     * const sensorReading = await prisma.sensorReading.createMany({
+     * // Create many Telemetries
+     * const telemetry = await prisma.telemetry.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends SensorReadingCreateManyArgs>(args?: SelectSubset<T, SensorReadingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TelemetryCreateManyArgs>(args?: SelectSubset<T, TelemetryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a SensorReading.
-     * @param {SensorReadingDeleteArgs} args - Arguments to delete one SensorReading.
+     * Delete a Telemetry.
+     * @param {TelemetryDeleteArgs} args - Arguments to delete one Telemetry.
      * @example
-     * // Delete one SensorReading
-     * const SensorReading = await prisma.sensorReading.delete({
+     * // Delete one Telemetry
+     * const Telemetry = await prisma.telemetry.delete({
      *   where: {
-     *     // ... filter to delete one SensorReading
+     *     // ... filter to delete one Telemetry
      *   }
      * })
      * 
      */
-    delete<T extends SensorReadingDeleteArgs>(args: SelectSubset<T, SensorReadingDeleteArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TelemetryDeleteArgs>(args: SelectSubset<T, TelemetryDeleteArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one SensorReading.
-     * @param {SensorReadingUpdateArgs} args - Arguments to update one SensorReading.
+     * Update one Telemetry.
+     * @param {TelemetryUpdateArgs} args - Arguments to update one Telemetry.
      * @example
-     * // Update one SensorReading
-     * const sensorReading = await prisma.sensorReading.update({
+     * // Update one Telemetry
+     * const telemetry = await prisma.telemetry.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4590,30 +4718,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SensorReadingUpdateArgs>(args: SelectSubset<T, SensorReadingUpdateArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TelemetryUpdateArgs>(args: SelectSubset<T, TelemetryUpdateArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more SensorReadings.
-     * @param {SensorReadingDeleteManyArgs} args - Arguments to filter SensorReadings to delete.
+     * Delete zero or more Telemetries.
+     * @param {TelemetryDeleteManyArgs} args - Arguments to filter Telemetries to delete.
      * @example
-     * // Delete a few SensorReadings
-     * const { count } = await prisma.sensorReading.deleteMany({
+     * // Delete a few Telemetries
+     * const { count } = await prisma.telemetry.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends SensorReadingDeleteManyArgs>(args?: SelectSubset<T, SensorReadingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TelemetryDeleteManyArgs>(args?: SelectSubset<T, TelemetryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SensorReadings.
+     * Update zero or more Telemetries.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TelemetryUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many SensorReadings
-     * const sensorReading = await prisma.sensorReading.updateMany({
+     * // Update many Telemetries
+     * const telemetry = await prisma.telemetry.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4623,79 +4751,79 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends SensorReadingUpdateManyArgs>(args: SelectSubset<T, SensorReadingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TelemetryUpdateManyArgs>(args: SelectSubset<T, TelemetryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one SensorReading.
-     * @param {SensorReadingUpsertArgs} args - Arguments to update or create a SensorReading.
+     * Create or update one Telemetry.
+     * @param {TelemetryUpsertArgs} args - Arguments to update or create a Telemetry.
      * @example
-     * // Update or create a SensorReading
-     * const sensorReading = await prisma.sensorReading.upsert({
+     * // Update or create a Telemetry
+     * const telemetry = await prisma.telemetry.upsert({
      *   create: {
-     *     // ... data to create a SensorReading
+     *     // ... data to create a Telemetry
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the SensorReading we want to update
+     *     // ... the filter for the Telemetry we want to update
      *   }
      * })
      */
-    upsert<T extends SensorReadingUpsertArgs>(args: SelectSubset<T, SensorReadingUpsertArgs<ExtArgs>>): Prisma__SensorReadingClient<$Result.GetResult<Prisma.$SensorReadingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TelemetryUpsertArgs>(args: SelectSubset<T, TelemetryUpsertArgs<ExtArgs>>): Prisma__TelemetryClient<$Result.GetResult<Prisma.$TelemetryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more SensorReadings that matches the filter.
-     * @param {SensorReadingFindRawArgs} args - Select which filters you would like to apply.
+     * Find zero or more Telemetries that matches the filter.
+     * @param {TelemetryFindRawArgs} args - Select which filters you would like to apply.
      * @example
-     * const sensorReading = await prisma.sensorReading.findRaw({
+     * const telemetry = await prisma.telemetry.findRaw({
      *   filter: { age: { $gt: 25 } }
      * })
      */
-    findRaw(args?: SensorReadingFindRawArgs): Prisma.PrismaPromise<JsonObject>
+    findRaw(args?: TelemetryFindRawArgs): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Perform aggregation operations on a SensorReading.
-     * @param {SensorReadingAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * Perform aggregation operations on a Telemetry.
+     * @param {TelemetryAggregateRawArgs} args - Select which aggregations you would like to apply.
      * @example
-     * const sensorReading = await prisma.sensorReading.aggregateRaw({
+     * const telemetry = await prisma.telemetry.aggregateRaw({
      *   pipeline: [
      *     { $match: { status: "registered" } },
      *     { $group: { _id: "$country", total: { $sum: 1 } } }
      *   ]
      * })
      */
-    aggregateRaw(args?: SensorReadingAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+    aggregateRaw(args?: TelemetryAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
-     * Count the number of SensorReadings.
+     * Count the number of Telemetries.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingCountArgs} args - Arguments to filter SensorReadings to count.
+     * @param {TelemetryCountArgs} args - Arguments to filter Telemetries to count.
      * @example
-     * // Count the number of SensorReadings
-     * const count = await prisma.sensorReading.count({
+     * // Count the number of Telemetries
+     * const count = await prisma.telemetry.count({
      *   where: {
-     *     // ... the filter for the SensorReadings we want to count
+     *     // ... the filter for the Telemetries we want to count
      *   }
      * })
     **/
-    count<T extends SensorReadingCountArgs>(
-      args?: Subset<T, SensorReadingCountArgs>,
+    count<T extends TelemetryCountArgs>(
+      args?: Subset<T, TelemetryCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SensorReadingCountAggregateOutputType>
+          : GetScalarType<T['select'], TelemetryCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a SensorReading.
+     * Allows you to perform aggregations operations on a Telemetry.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TelemetryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4715,13 +4843,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SensorReadingAggregateArgs>(args: Subset<T, SensorReadingAggregateArgs>): Prisma.PrismaPromise<GetSensorReadingAggregateType<T>>
+    aggregate<T extends TelemetryAggregateArgs>(args: Subset<T, TelemetryAggregateArgs>): Prisma.PrismaPromise<GetTelemetryAggregateType<T>>
 
     /**
-     * Group by SensorReading.
+     * Group by Telemetry.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SensorReadingGroupByArgs} args - Group by arguments.
+     * @param {TelemetryGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4736,14 +4864,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SensorReadingGroupByArgs,
+      T extends TelemetryGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SensorReadingGroupByArgs['orderBy'] }
-        : { orderBy?: SensorReadingGroupByArgs['orderBy'] },
+        ? { orderBy: TelemetryGroupByArgs['orderBy'] }
+        : { orderBy?: TelemetryGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4792,20 +4920,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SensorReadingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSensorReadingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TelemetryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTelemetryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the SensorReading model
+   * Fields of the Telemetry model
    */
-  readonly fields: SensorReadingFieldRefs;
+  readonly fields: TelemetryFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for SensorReading.
+   * The delegate class that acts as a "Promise-like" for Telemetry.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SensorReadingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TelemetryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sensor<T extends SensorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SensorDefaultArgs<ExtArgs>>): Prisma__SensorClient<$Result.GetResult<Prisma.$SensorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -4834,358 +4962,358 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the SensorReading model
+   * Fields of the Telemetry model
    */
-  interface SensorReadingFieldRefs {
-    readonly id: FieldRef<"SensorReading", 'String'>
-    readonly sensorId: FieldRef<"SensorReading", 'String'>
-    readonly timestamp: FieldRef<"SensorReading", 'DateTime'>
-    readonly payload: FieldRef<"SensorReading", 'Json'>
+  interface TelemetryFieldRefs {
+    readonly id: FieldRef<"Telemetry", 'String'>
+    readonly sensorId: FieldRef<"Telemetry", 'String'>
+    readonly payload: FieldRef<"Telemetry", 'Json'>
+    readonly timestamp: FieldRef<"Telemetry", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * SensorReading findUnique
+   * Telemetry findUnique
    */
-  export type SensorReadingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter, which SensorReading to fetch.
+     * Filter, which Telemetry to fetch.
      */
-    where: SensorReadingWhereUniqueInput
+    where: TelemetryWhereUniqueInput
   }
 
   /**
-   * SensorReading findUniqueOrThrow
+   * Telemetry findUniqueOrThrow
    */
-  export type SensorReadingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter, which SensorReading to fetch.
+     * Filter, which Telemetry to fetch.
      */
-    where: SensorReadingWhereUniqueInput
+    where: TelemetryWhereUniqueInput
   }
 
   /**
-   * SensorReading findFirst
+   * Telemetry findFirst
    */
-  export type SensorReadingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter, which SensorReading to fetch.
+     * Filter, which Telemetry to fetch.
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SensorReadings to fetch.
+     * Determine the order of Telemetries to fetch.
      */
-    orderBy?: SensorReadingOrderByWithRelationInput | SensorReadingOrderByWithRelationInput[]
+    orderBy?: TelemetryOrderByWithRelationInput | TelemetryOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SensorReadings.
+     * Sets the position for searching for Telemetries.
      */
-    cursor?: SensorReadingWhereUniqueInput
+    cursor?: TelemetryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SensorReadings from the position of the cursor.
+     * Take `±n` Telemetries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SensorReadings.
+     * Skip the first `n` Telemetries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SensorReadings.
+     * Filter by unique combinations of Telemetries.
      */
-    distinct?: SensorReadingScalarFieldEnum | SensorReadingScalarFieldEnum[]
+    distinct?: TelemetryScalarFieldEnum | TelemetryScalarFieldEnum[]
   }
 
   /**
-   * SensorReading findFirstOrThrow
+   * Telemetry findFirstOrThrow
    */
-  export type SensorReadingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter, which SensorReading to fetch.
+     * Filter, which Telemetry to fetch.
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SensorReadings to fetch.
+     * Determine the order of Telemetries to fetch.
      */
-    orderBy?: SensorReadingOrderByWithRelationInput | SensorReadingOrderByWithRelationInput[]
+    orderBy?: TelemetryOrderByWithRelationInput | TelemetryOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SensorReadings.
+     * Sets the position for searching for Telemetries.
      */
-    cursor?: SensorReadingWhereUniqueInput
+    cursor?: TelemetryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SensorReadings from the position of the cursor.
+     * Take `±n` Telemetries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SensorReadings.
+     * Skip the first `n` Telemetries.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SensorReadings.
+     * Filter by unique combinations of Telemetries.
      */
-    distinct?: SensorReadingScalarFieldEnum | SensorReadingScalarFieldEnum[]
+    distinct?: TelemetryScalarFieldEnum | TelemetryScalarFieldEnum[]
   }
 
   /**
-   * SensorReading findMany
+   * Telemetry findMany
    */
-  export type SensorReadingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter, which SensorReadings to fetch.
+     * Filter, which Telemetries to fetch.
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SensorReadings to fetch.
+     * Determine the order of Telemetries to fetch.
      */
-    orderBy?: SensorReadingOrderByWithRelationInput | SensorReadingOrderByWithRelationInput[]
+    orderBy?: TelemetryOrderByWithRelationInput | TelemetryOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing SensorReadings.
+     * Sets the position for listing Telemetries.
      */
-    cursor?: SensorReadingWhereUniqueInput
+    cursor?: TelemetryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SensorReadings from the position of the cursor.
+     * Take `±n` Telemetries from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SensorReadings.
+     * Skip the first `n` Telemetries.
      */
     skip?: number
-    distinct?: SensorReadingScalarFieldEnum | SensorReadingScalarFieldEnum[]
+    distinct?: TelemetryScalarFieldEnum | TelemetryScalarFieldEnum[]
   }
 
   /**
-   * SensorReading create
+   * Telemetry create
    */
-  export type SensorReadingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * The data needed to create a SensorReading.
+     * The data needed to create a Telemetry.
      */
-    data: XOR<SensorReadingCreateInput, SensorReadingUncheckedCreateInput>
+    data: XOR<TelemetryCreateInput, TelemetryUncheckedCreateInput>
   }
 
   /**
-   * SensorReading createMany
+   * Telemetry createMany
    */
-  export type SensorReadingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many SensorReadings.
+     * The data used to create many Telemetries.
      */
-    data: SensorReadingCreateManyInput | SensorReadingCreateManyInput[]
+    data: TelemetryCreateManyInput | TelemetryCreateManyInput[]
   }
 
   /**
-   * SensorReading update
+   * Telemetry update
    */
-  export type SensorReadingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * The data needed to update a SensorReading.
+     * The data needed to update a Telemetry.
      */
-    data: XOR<SensorReadingUpdateInput, SensorReadingUncheckedUpdateInput>
+    data: XOR<TelemetryUpdateInput, TelemetryUncheckedUpdateInput>
     /**
-     * Choose, which SensorReading to update.
+     * Choose, which Telemetry to update.
      */
-    where: SensorReadingWhereUniqueInput
+    where: TelemetryWhereUniqueInput
   }
 
   /**
-   * SensorReading updateMany
+   * Telemetry updateMany
    */
-  export type SensorReadingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update SensorReadings.
+     * The data used to update Telemetries.
      */
-    data: XOR<SensorReadingUpdateManyMutationInput, SensorReadingUncheckedUpdateManyInput>
+    data: XOR<TelemetryUpdateManyMutationInput, TelemetryUncheckedUpdateManyInput>
     /**
-     * Filter which SensorReadings to update
+     * Filter which Telemetries to update
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
-     * Limit how many SensorReadings to update.
+     * Limit how many Telemetries to update.
      */
     limit?: number
   }
 
   /**
-   * SensorReading upsert
+   * Telemetry upsert
    */
-  export type SensorReadingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * The filter to search for the SensorReading to update in case it exists.
+     * The filter to search for the Telemetry to update in case it exists.
      */
-    where: SensorReadingWhereUniqueInput
+    where: TelemetryWhereUniqueInput
     /**
-     * In case the SensorReading found by the `where` argument doesn't exist, create a new SensorReading with this data.
+     * In case the Telemetry found by the `where` argument doesn't exist, create a new Telemetry with this data.
      */
-    create: XOR<SensorReadingCreateInput, SensorReadingUncheckedCreateInput>
+    create: XOR<TelemetryCreateInput, TelemetryUncheckedCreateInput>
     /**
-     * In case the SensorReading was found with the provided `where` argument, update it with this data.
+     * In case the Telemetry was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<SensorReadingUpdateInput, SensorReadingUncheckedUpdateInput>
+    update: XOR<TelemetryUpdateInput, TelemetryUncheckedUpdateInput>
   }
 
   /**
-   * SensorReading delete
+   * Telemetry delete
    */
-  export type SensorReadingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
     /**
-     * Filter which SensorReading to delete.
+     * Filter which Telemetry to delete.
      */
-    where: SensorReadingWhereUniqueInput
+    where: TelemetryWhereUniqueInput
   }
 
   /**
-   * SensorReading deleteMany
+   * Telemetry deleteMany
    */
-  export type SensorReadingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SensorReadings to delete
+     * Filter which Telemetries to delete
      */
-    where?: SensorReadingWhereInput
+    where?: TelemetryWhereInput
     /**
-     * Limit how many SensorReadings to delete.
+     * Limit how many Telemetries to delete.
      */
     limit?: number
   }
 
   /**
-   * SensorReading findRaw
+   * Telemetry findRaw
    */
-  export type SensorReadingFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
      */
@@ -5197,9 +5325,9 @@ export namespace Prisma {
   }
 
   /**
-   * SensorReading aggregateRaw
+   * Telemetry aggregateRaw
    */
-  export type SensorReadingAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
      */
@@ -5211,21 +5339,1038 @@ export namespace Prisma {
   }
 
   /**
-   * SensorReading without action
+   * Telemetry without action
    */
-  export type SensorReadingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TelemetryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SensorReading
+     * Select specific fields to fetch from the Telemetry
      */
-    select?: SensorReadingSelect<ExtArgs> | null
+    select?: TelemetrySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SensorReading
+     * Omit specific fields from the Telemetry
      */
-    omit?: SensorReadingOmit<ExtArgs> | null
+    omit?: TelemetryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SensorReadingInclude<ExtArgs> | null
+    include?: TelemetryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model VehicleAnalytics
+   */
+
+  export type AggregateVehicleAnalytics = {
+    _count: VehicleAnalyticsCountAggregateOutputType | null
+    _avg: VehicleAnalyticsAvgAggregateOutputType | null
+    _sum: VehicleAnalyticsSumAggregateOutputType | null
+    _min: VehicleAnalyticsMinAggregateOutputType | null
+    _max: VehicleAnalyticsMaxAggregateOutputType | null
+  }
+
+  export type VehicleAnalyticsAvgAggregateOutputType = {
+    totalKm: number | null
+    hoursOperated: number | null
+  }
+
+  export type VehicleAnalyticsSumAggregateOutputType = {
+    totalKm: number | null
+    hoursOperated: number | null
+  }
+
+  export type VehicleAnalyticsMinAggregateOutputType = {
+    id: string | null
+    vehicleId: string | null
+    totalKm: number | null
+    hoursOperated: number | null
+    lastUpdated: Date | null
+  }
+
+  export type VehicleAnalyticsMaxAggregateOutputType = {
+    id: string | null
+    vehicleId: string | null
+    totalKm: number | null
+    hoursOperated: number | null
+    lastUpdated: Date | null
+  }
+
+  export type VehicleAnalyticsCountAggregateOutputType = {
+    id: number
+    vehicleId: number
+    totalKm: number
+    hoursOperated: number
+    lastUpdated: number
+    _all: number
+  }
+
+
+  export type VehicleAnalyticsAvgAggregateInputType = {
+    totalKm?: true
+    hoursOperated?: true
+  }
+
+  export type VehicleAnalyticsSumAggregateInputType = {
+    totalKm?: true
+    hoursOperated?: true
+  }
+
+  export type VehicleAnalyticsMinAggregateInputType = {
+    id?: true
+    vehicleId?: true
+    totalKm?: true
+    hoursOperated?: true
+    lastUpdated?: true
+  }
+
+  export type VehicleAnalyticsMaxAggregateInputType = {
+    id?: true
+    vehicleId?: true
+    totalKm?: true
+    hoursOperated?: true
+    lastUpdated?: true
+  }
+
+  export type VehicleAnalyticsCountAggregateInputType = {
+    id?: true
+    vehicleId?: true
+    totalKm?: true
+    hoursOperated?: true
+    lastUpdated?: true
+    _all?: true
+  }
+
+  export type VehicleAnalyticsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleAnalytics to aggregate.
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleAnalytics to fetch.
+     */
+    orderBy?: VehicleAnalyticsOrderByWithRelationInput | VehicleAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VehicleAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VehicleAnalytics
+    **/
+    _count?: true | VehicleAnalyticsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VehicleAnalyticsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VehicleAnalyticsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VehicleAnalyticsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VehicleAnalyticsMaxAggregateInputType
+  }
+
+  export type GetVehicleAnalyticsAggregateType<T extends VehicleAnalyticsAggregateArgs> = {
+        [P in keyof T & keyof AggregateVehicleAnalytics]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVehicleAnalytics[P]>
+      : GetScalarType<T[P], AggregateVehicleAnalytics[P]>
+  }
+
+
+
+
+  export type VehicleAnalyticsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleAnalyticsWhereInput
+    orderBy?: VehicleAnalyticsOrderByWithAggregationInput | VehicleAnalyticsOrderByWithAggregationInput[]
+    by: VehicleAnalyticsScalarFieldEnum[] | VehicleAnalyticsScalarFieldEnum
+    having?: VehicleAnalyticsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VehicleAnalyticsCountAggregateInputType | true
+    _avg?: VehicleAnalyticsAvgAggregateInputType
+    _sum?: VehicleAnalyticsSumAggregateInputType
+    _min?: VehicleAnalyticsMinAggregateInputType
+    _max?: VehicleAnalyticsMaxAggregateInputType
+  }
+
+  export type VehicleAnalyticsGroupByOutputType = {
+    id: string
+    vehicleId: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated: Date
+    _count: VehicleAnalyticsCountAggregateOutputType | null
+    _avg: VehicleAnalyticsAvgAggregateOutputType | null
+    _sum: VehicleAnalyticsSumAggregateOutputType | null
+    _min: VehicleAnalyticsMinAggregateOutputType | null
+    _max: VehicleAnalyticsMaxAggregateOutputType | null
+  }
+
+  type GetVehicleAnalyticsGroupByPayload<T extends VehicleAnalyticsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VehicleAnalyticsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VehicleAnalyticsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VehicleAnalyticsGroupByOutputType[P]>
+            : GetScalarType<T[P], VehicleAnalyticsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VehicleAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    vehicleId?: boolean
+    totalKm?: boolean
+    hoursOperated?: boolean
+    lastUpdated?: boolean
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleAnalytics"]>
+
+
+
+  export type VehicleAnalyticsSelectScalar = {
+    id?: boolean
+    vehicleId?: boolean
+    totalKm?: boolean
+    hoursOperated?: boolean
+    lastUpdated?: boolean
+  }
+
+  export type VehicleAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vehicleId" | "totalKm" | "hoursOperated" | "lastUpdated", ExtArgs["result"]["vehicleAnalytics"]>
+  export type VehicleAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
+  }
+
+  export type $VehicleAnalyticsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VehicleAnalytics"
+    objects: {
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      vehicleId: string
+      totalKm: number
+      hoursOperated: number
+      lastUpdated: Date
+    }, ExtArgs["result"]["vehicleAnalytics"]>
+    composites: {}
+  }
+
+  type VehicleAnalyticsGetPayload<S extends boolean | null | undefined | VehicleAnalyticsDefaultArgs> = $Result.GetResult<Prisma.$VehicleAnalyticsPayload, S>
+
+  type VehicleAnalyticsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VehicleAnalyticsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VehicleAnalyticsCountAggregateInputType | true
+    }
+
+  export interface VehicleAnalyticsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VehicleAnalytics'], meta: { name: 'VehicleAnalytics' } }
+    /**
+     * Find zero or one VehicleAnalytics that matches the filter.
+     * @param {VehicleAnalyticsFindUniqueArgs} args - Arguments to find a VehicleAnalytics
+     * @example
+     * // Get one VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VehicleAnalyticsFindUniqueArgs>(args: SelectSubset<T, VehicleAnalyticsFindUniqueArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VehicleAnalytics that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VehicleAnalyticsFindUniqueOrThrowArgs} args - Arguments to find a VehicleAnalytics
+     * @example
+     * // Get one VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VehicleAnalyticsFindUniqueOrThrowArgs>(args: SelectSubset<T, VehicleAnalyticsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsFindFirstArgs} args - Arguments to find a VehicleAnalytics
+     * @example
+     * // Get one VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VehicleAnalyticsFindFirstArgs>(args?: SelectSubset<T, VehicleAnalyticsFindFirstArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleAnalytics that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsFindFirstOrThrowArgs} args - Arguments to find a VehicleAnalytics
+     * @example
+     * // Get one VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VehicleAnalyticsFindFirstOrThrowArgs>(args?: SelectSubset<T, VehicleAnalyticsFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VehicleAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findMany()
+     * 
+     * // Get first 10 VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const vehicleAnalyticsWithIdOnly = await prisma.vehicleAnalytics.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VehicleAnalyticsFindManyArgs>(args?: SelectSubset<T, VehicleAnalyticsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VehicleAnalytics.
+     * @param {VehicleAnalyticsCreateArgs} args - Arguments to create a VehicleAnalytics.
+     * @example
+     * // Create one VehicleAnalytics
+     * const VehicleAnalytics = await prisma.vehicleAnalytics.create({
+     *   data: {
+     *     // ... data to create a VehicleAnalytics
+     *   }
+     * })
+     * 
+     */
+    create<T extends VehicleAnalyticsCreateArgs>(args: SelectSubset<T, VehicleAnalyticsCreateArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VehicleAnalytics.
+     * @param {VehicleAnalyticsCreateManyArgs} args - Arguments to create many VehicleAnalytics.
+     * @example
+     * // Create many VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VehicleAnalyticsCreateManyArgs>(args?: SelectSubset<T, VehicleAnalyticsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a VehicleAnalytics.
+     * @param {VehicleAnalyticsDeleteArgs} args - Arguments to delete one VehicleAnalytics.
+     * @example
+     * // Delete one VehicleAnalytics
+     * const VehicleAnalytics = await prisma.vehicleAnalytics.delete({
+     *   where: {
+     *     // ... filter to delete one VehicleAnalytics
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VehicleAnalyticsDeleteArgs>(args: SelectSubset<T, VehicleAnalyticsDeleteArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VehicleAnalytics.
+     * @param {VehicleAnalyticsUpdateArgs} args - Arguments to update one VehicleAnalytics.
+     * @example
+     * // Update one VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VehicleAnalyticsUpdateArgs>(args: SelectSubset<T, VehicleAnalyticsUpdateArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VehicleAnalytics.
+     * @param {VehicleAnalyticsDeleteManyArgs} args - Arguments to filter VehicleAnalytics to delete.
+     * @example
+     * // Delete a few VehicleAnalytics
+     * const { count } = await prisma.vehicleAnalytics.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VehicleAnalyticsDeleteManyArgs>(args?: SelectSubset<T, VehicleAnalyticsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VehicleAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VehicleAnalyticsUpdateManyArgs>(args: SelectSubset<T, VehicleAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one VehicleAnalytics.
+     * @param {VehicleAnalyticsUpsertArgs} args - Arguments to update or create a VehicleAnalytics.
+     * @example
+     * // Update or create a VehicleAnalytics
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.upsert({
+     *   create: {
+     *     // ... data to create a VehicleAnalytics
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VehicleAnalytics we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VehicleAnalyticsUpsertArgs>(args: SelectSubset<T, VehicleAnalyticsUpsertArgs<ExtArgs>>): Prisma__VehicleAnalyticsClient<$Result.GetResult<Prisma.$VehicleAnalyticsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VehicleAnalytics that matches the filter.
+     * @param {VehicleAnalyticsFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: VehicleAnalyticsFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a VehicleAnalytics.
+     * @param {VehicleAnalyticsAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const vehicleAnalytics = await prisma.vehicleAnalytics.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: VehicleAnalyticsAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of VehicleAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsCountArgs} args - Arguments to filter VehicleAnalytics to count.
+     * @example
+     * // Count the number of VehicleAnalytics
+     * const count = await prisma.vehicleAnalytics.count({
+     *   where: {
+     *     // ... the filter for the VehicleAnalytics we want to count
+     *   }
+     * })
+    **/
+    count<T extends VehicleAnalyticsCountArgs>(
+      args?: Subset<T, VehicleAnalyticsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VehicleAnalyticsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VehicleAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VehicleAnalyticsAggregateArgs>(args: Subset<T, VehicleAnalyticsAggregateArgs>): Prisma.PrismaPromise<GetVehicleAnalyticsAggregateType<T>>
+
+    /**
+     * Group by VehicleAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAnalyticsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VehicleAnalyticsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VehicleAnalyticsGroupByArgs['orderBy'] }
+        : { orderBy?: VehicleAnalyticsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VehicleAnalyticsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehicleAnalyticsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VehicleAnalytics model
+   */
+  readonly fields: VehicleAnalyticsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VehicleAnalytics.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VehicleAnalyticsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VehicleAnalytics model
+   */
+  interface VehicleAnalyticsFieldRefs {
+    readonly id: FieldRef<"VehicleAnalytics", 'String'>
+    readonly vehicleId: FieldRef<"VehicleAnalytics", 'String'>
+    readonly totalKm: FieldRef<"VehicleAnalytics", 'Float'>
+    readonly hoursOperated: FieldRef<"VehicleAnalytics", 'Int'>
+    readonly lastUpdated: FieldRef<"VehicleAnalytics", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VehicleAnalytics findUnique
+   */
+  export type VehicleAnalyticsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleAnalytics to fetch.
+     */
+    where: VehicleAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * VehicleAnalytics findUniqueOrThrow
+   */
+  export type VehicleAnalyticsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleAnalytics to fetch.
+     */
+    where: VehicleAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * VehicleAnalytics findFirst
+   */
+  export type VehicleAnalyticsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleAnalytics to fetch.
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleAnalytics to fetch.
+     */
+    orderBy?: VehicleAnalyticsOrderByWithRelationInput | VehicleAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleAnalytics.
+     */
+    cursor?: VehicleAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleAnalytics.
+     */
+    distinct?: VehicleAnalyticsScalarFieldEnum | VehicleAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleAnalytics findFirstOrThrow
+   */
+  export type VehicleAnalyticsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleAnalytics to fetch.
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleAnalytics to fetch.
+     */
+    orderBy?: VehicleAnalyticsOrderByWithRelationInput | VehicleAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleAnalytics.
+     */
+    cursor?: VehicleAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleAnalytics.
+     */
+    distinct?: VehicleAnalyticsScalarFieldEnum | VehicleAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleAnalytics findMany
+   */
+  export type VehicleAnalyticsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleAnalytics to fetch.
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleAnalytics to fetch.
+     */
+    orderBy?: VehicleAnalyticsOrderByWithRelationInput | VehicleAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VehicleAnalytics.
+     */
+    cursor?: VehicleAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleAnalytics.
+     */
+    skip?: number
+    distinct?: VehicleAnalyticsScalarFieldEnum | VehicleAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleAnalytics create
+   */
+  export type VehicleAnalyticsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VehicleAnalytics.
+     */
+    data: XOR<VehicleAnalyticsCreateInput, VehicleAnalyticsUncheckedCreateInput>
+  }
+
+  /**
+   * VehicleAnalytics createMany
+   */
+  export type VehicleAnalyticsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VehicleAnalytics.
+     */
+    data: VehicleAnalyticsCreateManyInput | VehicleAnalyticsCreateManyInput[]
+  }
+
+  /**
+   * VehicleAnalytics update
+   */
+  export type VehicleAnalyticsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VehicleAnalytics.
+     */
+    data: XOR<VehicleAnalyticsUpdateInput, VehicleAnalyticsUncheckedUpdateInput>
+    /**
+     * Choose, which VehicleAnalytics to update.
+     */
+    where: VehicleAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * VehicleAnalytics updateMany
+   */
+  export type VehicleAnalyticsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VehicleAnalytics.
+     */
+    data: XOR<VehicleAnalyticsUpdateManyMutationInput, VehicleAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which VehicleAnalytics to update
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * Limit how many VehicleAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleAnalytics upsert
+   */
+  export type VehicleAnalyticsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VehicleAnalytics to update in case it exists.
+     */
+    where: VehicleAnalyticsWhereUniqueInput
+    /**
+     * In case the VehicleAnalytics found by the `where` argument doesn't exist, create a new VehicleAnalytics with this data.
+     */
+    create: XOR<VehicleAnalyticsCreateInput, VehicleAnalyticsUncheckedCreateInput>
+    /**
+     * In case the VehicleAnalytics was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VehicleAnalyticsUpdateInput, VehicleAnalyticsUncheckedUpdateInput>
+  }
+
+  /**
+   * VehicleAnalytics delete
+   */
+  export type VehicleAnalyticsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter which VehicleAnalytics to delete.
+     */
+    where: VehicleAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * VehicleAnalytics deleteMany
+   */
+  export type VehicleAnalyticsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleAnalytics to delete
+     */
+    where?: VehicleAnalyticsWhereInput
+    /**
+     * Limit how many VehicleAnalytics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleAnalytics findRaw
+   */
+  export type VehicleAnalyticsFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * VehicleAnalytics aggregateRaw
+   */
+  export type VehicleAnalyticsAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * VehicleAnalytics without action
+   */
+  export type VehicleAnalyticsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAnalytics
+     */
+    select?: VehicleAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAnalytics
+     */
+    omit?: VehicleAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAnalyticsInclude<ExtArgs> | null
   }
 
 
@@ -5270,14 +6415,25 @@ export namespace Prisma {
   export type SensorScalarFieldEnum = (typeof SensorScalarFieldEnum)[keyof typeof SensorScalarFieldEnum]
 
 
-  export const SensorReadingScalarFieldEnum: {
+  export const TelemetryScalarFieldEnum: {
     id: 'id',
     sensorId: 'sensorId',
-    timestamp: 'timestamp',
-    payload: 'payload'
+    payload: 'payload',
+    timestamp: 'timestamp'
   };
 
-  export type SensorReadingScalarFieldEnum = (typeof SensorReadingScalarFieldEnum)[keyof typeof SensorReadingScalarFieldEnum]
+  export type TelemetryScalarFieldEnum = (typeof TelemetryScalarFieldEnum)[keyof typeof TelemetryScalarFieldEnum]
+
+
+  export const VehicleAnalyticsScalarFieldEnum: {
+    id: 'id',
+    vehicleId: 'vehicleId',
+    totalKm: 'totalKm',
+    hoursOperated: 'hoursOperated',
+    lastUpdated: 'lastUpdated'
+  };
+
+  export type VehicleAnalyticsScalarFieldEnum = (typeof VehicleAnalyticsScalarFieldEnum)[keyof typeof VehicleAnalyticsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5381,6 +6537,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Vehicle"> | Date | string
     maintenanceRecords?: MaintenanceRecordListRelationFilter
     sensors?: SensorListRelationFilter
+    analytics?: VehicleAnalyticsListRelationFilter
   }
 
   export type VehicleOrderByWithRelationInput = {
@@ -5394,6 +6551,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     maintenanceRecords?: MaintenanceRecordOrderByRelationAggregateInput
     sensors?: SensorOrderByRelationAggregateInput
+    analytics?: VehicleAnalyticsOrderByRelationAggregateInput
   }
 
   export type VehicleWhereUniqueInput = Prisma.AtLeast<{
@@ -5410,6 +6568,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Vehicle"> | Date | string
     maintenanceRecords?: MaintenanceRecordListRelationFilter
     sensors?: SensorListRelationFilter
+    analytics?: VehicleAnalyticsListRelationFilter
   }, "id">
 
   export type VehicleOrderByWithAggregationInput = {
@@ -5508,7 +6667,7 @@ export namespace Prisma {
     unit?: StringFilter<"Sensor"> | string
     createdAt?: DateTimeFilter<"Sensor"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
-    readings?: SensorReadingListRelationFilter
+    readings?: TelemetryListRelationFilter
   }
 
   export type SensorOrderByWithRelationInput = {
@@ -5519,7 +6678,7 @@ export namespace Prisma {
     unit?: SortOrder
     createdAt?: SortOrder
     vehicle?: VehicleOrderByWithRelationInput
-    readings?: SensorReadingOrderByRelationAggregateInput
+    readings?: TelemetryOrderByRelationAggregateInput
   }
 
   export type SensorWhereUniqueInput = Prisma.AtLeast<{
@@ -5533,7 +6692,7 @@ export namespace Prisma {
     unit?: StringFilter<"Sensor"> | string
     createdAt?: DateTimeFilter<"Sensor"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
-    readings?: SensorReadingListRelationFilter
+    readings?: TelemetryListRelationFilter
   }, "id">
 
   export type SensorOrderByWithAggregationInput = {
@@ -5560,54 +6719,111 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Sensor"> | Date | string
   }
 
-  export type SensorReadingWhereInput = {
-    AND?: SensorReadingWhereInput | SensorReadingWhereInput[]
-    OR?: SensorReadingWhereInput[]
-    NOT?: SensorReadingWhereInput | SensorReadingWhereInput[]
-    id?: StringFilter<"SensorReading"> | string
-    sensorId?: StringFilter<"SensorReading"> | string
-    timestamp?: DateTimeFilter<"SensorReading"> | Date | string
-    payload?: JsonFilter<"SensorReading">
+  export type TelemetryWhereInput = {
+    AND?: TelemetryWhereInput | TelemetryWhereInput[]
+    OR?: TelemetryWhereInput[]
+    NOT?: TelemetryWhereInput | TelemetryWhereInput[]
+    id?: StringFilter<"Telemetry"> | string
+    sensorId?: StringFilter<"Telemetry"> | string
+    payload?: JsonFilter<"Telemetry">
+    timestamp?: DateTimeFilter<"Telemetry"> | Date | string
     sensor?: XOR<SensorScalarRelationFilter, SensorWhereInput>
   }
 
-  export type SensorReadingOrderByWithRelationInput = {
+  export type TelemetryOrderByWithRelationInput = {
     id?: SortOrder
     sensorId?: SortOrder
-    timestamp?: SortOrder
     payload?: SortOrder
+    timestamp?: SortOrder
     sensor?: SensorOrderByWithRelationInput
   }
 
-  export type SensorReadingWhereUniqueInput = Prisma.AtLeast<{
+  export type TelemetryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: SensorReadingWhereInput | SensorReadingWhereInput[]
-    OR?: SensorReadingWhereInput[]
-    NOT?: SensorReadingWhereInput | SensorReadingWhereInput[]
-    sensorId?: StringFilter<"SensorReading"> | string
-    timestamp?: DateTimeFilter<"SensorReading"> | Date | string
-    payload?: JsonFilter<"SensorReading">
+    AND?: TelemetryWhereInput | TelemetryWhereInput[]
+    OR?: TelemetryWhereInput[]
+    NOT?: TelemetryWhereInput | TelemetryWhereInput[]
+    sensorId?: StringFilter<"Telemetry"> | string
+    payload?: JsonFilter<"Telemetry">
+    timestamp?: DateTimeFilter<"Telemetry"> | Date | string
     sensor?: XOR<SensorScalarRelationFilter, SensorWhereInput>
   }, "id">
 
-  export type SensorReadingOrderByWithAggregationInput = {
+  export type TelemetryOrderByWithAggregationInput = {
     id?: SortOrder
     sensorId?: SortOrder
-    timestamp?: SortOrder
     payload?: SortOrder
-    _count?: SensorReadingCountOrderByAggregateInput
-    _max?: SensorReadingMaxOrderByAggregateInput
-    _min?: SensorReadingMinOrderByAggregateInput
+    timestamp?: SortOrder
+    _count?: TelemetryCountOrderByAggregateInput
+    _max?: TelemetryMaxOrderByAggregateInput
+    _min?: TelemetryMinOrderByAggregateInput
   }
 
-  export type SensorReadingScalarWhereWithAggregatesInput = {
-    AND?: SensorReadingScalarWhereWithAggregatesInput | SensorReadingScalarWhereWithAggregatesInput[]
-    OR?: SensorReadingScalarWhereWithAggregatesInput[]
-    NOT?: SensorReadingScalarWhereWithAggregatesInput | SensorReadingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"SensorReading"> | string
-    sensorId?: StringWithAggregatesFilter<"SensorReading"> | string
-    timestamp?: DateTimeWithAggregatesFilter<"SensorReading"> | Date | string
-    payload?: JsonWithAggregatesFilter<"SensorReading">
+  export type TelemetryScalarWhereWithAggregatesInput = {
+    AND?: TelemetryScalarWhereWithAggregatesInput | TelemetryScalarWhereWithAggregatesInput[]
+    OR?: TelemetryScalarWhereWithAggregatesInput[]
+    NOT?: TelemetryScalarWhereWithAggregatesInput | TelemetryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Telemetry"> | string
+    sensorId?: StringWithAggregatesFilter<"Telemetry"> | string
+    payload?: JsonWithAggregatesFilter<"Telemetry">
+    timestamp?: DateTimeWithAggregatesFilter<"Telemetry"> | Date | string
+  }
+
+  export type VehicleAnalyticsWhereInput = {
+    AND?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
+    OR?: VehicleAnalyticsWhereInput[]
+    NOT?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
+    id?: StringFilter<"VehicleAnalytics"> | string
+    vehicleId?: StringFilter<"VehicleAnalytics"> | string
+    totalKm?: FloatFilter<"VehicleAnalytics"> | number
+    hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+  }
+
+  export type VehicleAnalyticsOrderByWithRelationInput = {
+    id?: SortOrder
+    vehicleId?: SortOrder
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+    lastUpdated?: SortOrder
+    vehicle?: VehicleOrderByWithRelationInput
+  }
+
+  export type VehicleAnalyticsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    vehicleId?: string
+    AND?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
+    OR?: VehicleAnalyticsWhereInput[]
+    NOT?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
+    totalKm?: FloatFilter<"VehicleAnalytics"> | number
+    hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+  }, "id" | "vehicleId">
+
+  export type VehicleAnalyticsOrderByWithAggregationInput = {
+    id?: SortOrder
+    vehicleId?: SortOrder
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+    lastUpdated?: SortOrder
+    _count?: VehicleAnalyticsCountOrderByAggregateInput
+    _avg?: VehicleAnalyticsAvgOrderByAggregateInput
+    _max?: VehicleAnalyticsMaxOrderByAggregateInput
+    _min?: VehicleAnalyticsMinOrderByAggregateInput
+    _sum?: VehicleAnalyticsSumOrderByAggregateInput
+  }
+
+  export type VehicleAnalyticsScalarWhereWithAggregatesInput = {
+    AND?: VehicleAnalyticsScalarWhereWithAggregatesInput | VehicleAnalyticsScalarWhereWithAggregatesInput[]
+    OR?: VehicleAnalyticsScalarWhereWithAggregatesInput[]
+    NOT?: VehicleAnalyticsScalarWhereWithAggregatesInput | VehicleAnalyticsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"VehicleAnalytics"> | string
+    vehicleId?: StringWithAggregatesFilter<"VehicleAnalytics"> | string
+    totalKm?: FloatWithAggregatesFilter<"VehicleAnalytics"> | number
+    hoursOperated?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
+    lastUpdated?: DateTimeWithAggregatesFilter<"VehicleAnalytics"> | Date | string
   }
 
   export type VehicleCreateInput = {
@@ -5621,6 +6837,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     maintenanceRecords?: MaintenanceRecordCreateNestedManyWithoutVehicleInput
     sensors?: SensorCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateInput = {
@@ -5634,6 +6851,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     maintenanceRecords?: MaintenanceRecordUncheckedCreateNestedManyWithoutVehicleInput
     sensors?: SensorUncheckedCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUpdateInput = {
@@ -5646,6 +6864,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     maintenanceRecords?: MaintenanceRecordUpdateManyWithoutVehicleNestedInput
     sensors?: SensorUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateInput = {
@@ -5658,6 +6877,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     maintenanceRecords?: MaintenanceRecordUncheckedUpdateManyWithoutVehicleNestedInput
     sensors?: SensorUncheckedUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleCreateManyInput = {
@@ -5749,7 +6969,7 @@ export namespace Prisma {
     unit: string
     createdAt?: Date | string
     vehicle: VehicleCreateNestedOneWithoutSensorsInput
-    readings?: SensorReadingCreateNestedManyWithoutSensorInput
+    readings?: TelemetryCreateNestedManyWithoutSensorInput
   }
 
   export type SensorUncheckedCreateInput = {
@@ -5759,7 +6979,7 @@ export namespace Prisma {
     type: string
     unit: string
     createdAt?: Date | string
-    readings?: SensorReadingUncheckedCreateNestedManyWithoutSensorInput
+    readings?: TelemetryUncheckedCreateNestedManyWithoutSensorInput
   }
 
   export type SensorUpdateInput = {
@@ -5768,7 +6988,7 @@ export namespace Prisma {
     unit?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vehicle?: VehicleUpdateOneRequiredWithoutSensorsNestedInput
-    readings?: SensorReadingUpdateManyWithoutSensorNestedInput
+    readings?: TelemetryUpdateManyWithoutSensorNestedInput
   }
 
   export type SensorUncheckedUpdateInput = {
@@ -5777,7 +6997,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     unit?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    readings?: SensorReadingUncheckedUpdateManyWithoutSensorNestedInput
+    readings?: TelemetryUncheckedUpdateManyWithoutSensorNestedInput
   }
 
   export type SensorCreateManyInput = {
@@ -5804,48 +7024,99 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingCreateInput = {
+  export type TelemetryCreateInput = {
     id?: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
     sensor: SensorCreateNestedOneWithoutReadingsInput
   }
 
-  export type SensorReadingUncheckedCreateInput = {
+  export type TelemetryUncheckedCreateInput = {
     id?: string
     sensorId: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
   }
 
-  export type SensorReadingUpdateInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TelemetryUpdateInput = {
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     sensor?: SensorUpdateOneRequiredWithoutReadingsNestedInput
   }
 
-  export type SensorReadingUncheckedUpdateInput = {
+  export type TelemetryUncheckedUpdateInput = {
     sensorId?: StringFieldUpdateOperationsInput | string
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingCreateManyInput = {
+  export type TelemetryCreateManyInput = {
     id?: string
     sensorId: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
   }
 
-  export type SensorReadingUpdateManyMutationInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TelemetryUpdateManyMutationInput = {
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingUncheckedUpdateManyInput = {
+  export type TelemetryUncheckedUpdateManyInput = {
     sensorId?: StringFieldUpdateOperationsInput | string
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleAnalyticsCreateInput = {
+    id?: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
+    vehicle: VehicleCreateNestedOneWithoutAnalyticsInput
+  }
+
+  export type VehicleAnalyticsUncheckedCreateInput = {
+    id?: string
+    vehicleId: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
+  }
+
+  export type VehicleAnalyticsUpdateInput = {
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicle?: VehicleUpdateOneRequiredWithoutAnalyticsNestedInput
+  }
+
+  export type VehicleAnalyticsUncheckedUpdateInput = {
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleAnalyticsCreateManyInput = {
+    id?: string
+    vehicleId: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
+  }
+
+  export type VehicleAnalyticsUpdateManyMutationInput = {
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleAnalyticsUncheckedUpdateManyInput = {
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -5886,11 +7157,21 @@ export namespace Prisma {
     none?: SensorWhereInput
   }
 
+  export type VehicleAnalyticsListRelationFilter = {
+    every?: VehicleAnalyticsWhereInput
+    some?: VehicleAnalyticsWhereInput
+    none?: VehicleAnalyticsWhereInput
+  }
+
   export type MaintenanceRecordOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type SensorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VehicleAnalyticsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6023,13 +7304,13 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type SensorReadingListRelationFilter = {
-    every?: SensorReadingWhereInput
-    some?: SensorReadingWhereInput
-    none?: SensorReadingWhereInput
+  export type TelemetryListRelationFilter = {
+    every?: TelemetryWhereInput
+    some?: TelemetryWhereInput
+    none?: TelemetryWhereInput
   }
 
-  export type SensorReadingOrderByRelationAggregateInput = {
+  export type TelemetryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6076,20 +7357,20 @@ export namespace Prisma {
     isNot?: SensorWhereInput
   }
 
-  export type SensorReadingCountOrderByAggregateInput = {
+  export type TelemetryCountOrderByAggregateInput = {
     id?: SortOrder
     sensorId?: SortOrder
-    timestamp?: SortOrder
     payload?: SortOrder
+    timestamp?: SortOrder
   }
 
-  export type SensorReadingMaxOrderByAggregateInput = {
+  export type TelemetryMaxOrderByAggregateInput = {
     id?: SortOrder
     sensorId?: SortOrder
     timestamp?: SortOrder
   }
 
-  export type SensorReadingMinOrderByAggregateInput = {
+  export type TelemetryMinOrderByAggregateInput = {
     id?: SortOrder
     sensorId?: SortOrder
     timestamp?: SortOrder
@@ -6109,6 +7390,67 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type VehicleAnalyticsCountOrderByAggregateInput = {
+    id?: SortOrder
+    vehicleId?: SortOrder
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type VehicleAnalyticsAvgOrderByAggregateInput = {
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+  }
+
+  export type VehicleAnalyticsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    vehicleId?: SortOrder
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type VehicleAnalyticsMinOrderByAggregateInput = {
+    id?: SortOrder
+    vehicleId?: SortOrder
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type VehicleAnalyticsSumOrderByAggregateInput = {
+    totalKm?: SortOrder
+    hoursOperated?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type MaintenanceRecordCreateNestedManyWithoutVehicleInput = {
     create?: XOR<MaintenanceRecordCreateWithoutVehicleInput, MaintenanceRecordUncheckedCreateWithoutVehicleInput> | MaintenanceRecordCreateWithoutVehicleInput[] | MaintenanceRecordUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: MaintenanceRecordCreateOrConnectWithoutVehicleInput | MaintenanceRecordCreateOrConnectWithoutVehicleInput[]
@@ -6123,6 +7465,13 @@ export namespace Prisma {
     connect?: SensorWhereUniqueInput | SensorWhereUniqueInput[]
   }
 
+  export type VehicleAnalyticsCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput> | VehicleAnalyticsCreateWithoutVehicleInput[] | VehicleAnalyticsUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAnalyticsCreateOrConnectWithoutVehicleInput | VehicleAnalyticsCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleAnalyticsCreateManyVehicleInputEnvelope
+    connect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+  }
+
   export type MaintenanceRecordUncheckedCreateNestedManyWithoutVehicleInput = {
     create?: XOR<MaintenanceRecordCreateWithoutVehicleInput, MaintenanceRecordUncheckedCreateWithoutVehicleInput> | MaintenanceRecordCreateWithoutVehicleInput[] | MaintenanceRecordUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: MaintenanceRecordCreateOrConnectWithoutVehicleInput | MaintenanceRecordCreateOrConnectWithoutVehicleInput[]
@@ -6135,6 +7484,13 @@ export namespace Prisma {
     connectOrCreate?: SensorCreateOrConnectWithoutVehicleInput | SensorCreateOrConnectWithoutVehicleInput[]
     createMany?: SensorCreateManyVehicleInputEnvelope
     connect?: SensorWhereUniqueInput | SensorWhereUniqueInput[]
+  }
+
+  export type VehicleAnalyticsUncheckedCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput> | VehicleAnalyticsCreateWithoutVehicleInput[] | VehicleAnalyticsUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAnalyticsCreateOrConnectWithoutVehicleInput | VehicleAnalyticsCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleAnalyticsCreateManyVehicleInputEnvelope
+    connect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6173,6 +7529,20 @@ export namespace Prisma {
     deleteMany?: SensorScalarWhereInput | SensorScalarWhereInput[]
   }
 
+  export type VehicleAnalyticsUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput> | VehicleAnalyticsCreateWithoutVehicleInput[] | VehicleAnalyticsUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAnalyticsCreateOrConnectWithoutVehicleInput | VehicleAnalyticsCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleAnalyticsUpsertWithWhereUniqueWithoutVehicleInput | VehicleAnalyticsUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleAnalyticsCreateManyVehicleInputEnvelope
+    set?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    disconnect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    delete?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    connect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    update?: VehicleAnalyticsUpdateWithWhereUniqueWithoutVehicleInput | VehicleAnalyticsUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleAnalyticsUpdateManyWithWhereWithoutVehicleInput | VehicleAnalyticsUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleAnalyticsScalarWhereInput | VehicleAnalyticsScalarWhereInput[]
+  }
+
   export type MaintenanceRecordUncheckedUpdateManyWithoutVehicleNestedInput = {
     create?: XOR<MaintenanceRecordCreateWithoutVehicleInput, MaintenanceRecordUncheckedCreateWithoutVehicleInput> | MaintenanceRecordCreateWithoutVehicleInput[] | MaintenanceRecordUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: MaintenanceRecordCreateOrConnectWithoutVehicleInput | MaintenanceRecordCreateOrConnectWithoutVehicleInput[]
@@ -6199,6 +7569,20 @@ export namespace Prisma {
     update?: SensorUpdateWithWhereUniqueWithoutVehicleInput | SensorUpdateWithWhereUniqueWithoutVehicleInput[]
     updateMany?: SensorUpdateManyWithWhereWithoutVehicleInput | SensorUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: SensorScalarWhereInput | SensorScalarWhereInput[]
+  }
+
+  export type VehicleAnalyticsUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput> | VehicleAnalyticsCreateWithoutVehicleInput[] | VehicleAnalyticsUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAnalyticsCreateOrConnectWithoutVehicleInput | VehicleAnalyticsCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleAnalyticsUpsertWithWhereUniqueWithoutVehicleInput | VehicleAnalyticsUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleAnalyticsCreateManyVehicleInputEnvelope
+    set?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    disconnect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    delete?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    connect?: VehicleAnalyticsWhereUniqueInput | VehicleAnalyticsWhereUniqueInput[]
+    update?: VehicleAnalyticsUpdateWithWhereUniqueWithoutVehicleInput | VehicleAnalyticsUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleAnalyticsUpdateManyWithWhereWithoutVehicleInput | VehicleAnalyticsUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleAnalyticsScalarWhereInput | VehicleAnalyticsScalarWhereInput[]
   }
 
   export type VehicleCreateNestedOneWithoutMaintenanceRecordsInput = {
@@ -6229,18 +7613,18 @@ export namespace Prisma {
     connect?: VehicleWhereUniqueInput
   }
 
-  export type SensorReadingCreateNestedManyWithoutSensorInput = {
-    create?: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput> | SensorReadingCreateWithoutSensorInput[] | SensorReadingUncheckedCreateWithoutSensorInput[]
-    connectOrCreate?: SensorReadingCreateOrConnectWithoutSensorInput | SensorReadingCreateOrConnectWithoutSensorInput[]
-    createMany?: SensorReadingCreateManySensorInputEnvelope
-    connect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
+  export type TelemetryCreateNestedManyWithoutSensorInput = {
+    create?: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput> | TelemetryCreateWithoutSensorInput[] | TelemetryUncheckedCreateWithoutSensorInput[]
+    connectOrCreate?: TelemetryCreateOrConnectWithoutSensorInput | TelemetryCreateOrConnectWithoutSensorInput[]
+    createMany?: TelemetryCreateManySensorInputEnvelope
+    connect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
   }
 
-  export type SensorReadingUncheckedCreateNestedManyWithoutSensorInput = {
-    create?: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput> | SensorReadingCreateWithoutSensorInput[] | SensorReadingUncheckedCreateWithoutSensorInput[]
-    connectOrCreate?: SensorReadingCreateOrConnectWithoutSensorInput | SensorReadingCreateOrConnectWithoutSensorInput[]
-    createMany?: SensorReadingCreateManySensorInputEnvelope
-    connect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
+  export type TelemetryUncheckedCreateNestedManyWithoutSensorInput = {
+    create?: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput> | TelemetryCreateWithoutSensorInput[] | TelemetryUncheckedCreateWithoutSensorInput[]
+    connectOrCreate?: TelemetryCreateOrConnectWithoutSensorInput | TelemetryCreateOrConnectWithoutSensorInput[]
+    createMany?: TelemetryCreateManySensorInputEnvelope
+    connect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
   }
 
   export type VehicleUpdateOneRequiredWithoutSensorsNestedInput = {
@@ -6251,32 +7635,32 @@ export namespace Prisma {
     update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutSensorsInput, VehicleUpdateWithoutSensorsInput>, VehicleUncheckedUpdateWithoutSensorsInput>
   }
 
-  export type SensorReadingUpdateManyWithoutSensorNestedInput = {
-    create?: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput> | SensorReadingCreateWithoutSensorInput[] | SensorReadingUncheckedCreateWithoutSensorInput[]
-    connectOrCreate?: SensorReadingCreateOrConnectWithoutSensorInput | SensorReadingCreateOrConnectWithoutSensorInput[]
-    upsert?: SensorReadingUpsertWithWhereUniqueWithoutSensorInput | SensorReadingUpsertWithWhereUniqueWithoutSensorInput[]
-    createMany?: SensorReadingCreateManySensorInputEnvelope
-    set?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    disconnect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    delete?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    connect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    update?: SensorReadingUpdateWithWhereUniqueWithoutSensorInput | SensorReadingUpdateWithWhereUniqueWithoutSensorInput[]
-    updateMany?: SensorReadingUpdateManyWithWhereWithoutSensorInput | SensorReadingUpdateManyWithWhereWithoutSensorInput[]
-    deleteMany?: SensorReadingScalarWhereInput | SensorReadingScalarWhereInput[]
+  export type TelemetryUpdateManyWithoutSensorNestedInput = {
+    create?: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput> | TelemetryCreateWithoutSensorInput[] | TelemetryUncheckedCreateWithoutSensorInput[]
+    connectOrCreate?: TelemetryCreateOrConnectWithoutSensorInput | TelemetryCreateOrConnectWithoutSensorInput[]
+    upsert?: TelemetryUpsertWithWhereUniqueWithoutSensorInput | TelemetryUpsertWithWhereUniqueWithoutSensorInput[]
+    createMany?: TelemetryCreateManySensorInputEnvelope
+    set?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    disconnect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    delete?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    connect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    update?: TelemetryUpdateWithWhereUniqueWithoutSensorInput | TelemetryUpdateWithWhereUniqueWithoutSensorInput[]
+    updateMany?: TelemetryUpdateManyWithWhereWithoutSensorInput | TelemetryUpdateManyWithWhereWithoutSensorInput[]
+    deleteMany?: TelemetryScalarWhereInput | TelemetryScalarWhereInput[]
   }
 
-  export type SensorReadingUncheckedUpdateManyWithoutSensorNestedInput = {
-    create?: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput> | SensorReadingCreateWithoutSensorInput[] | SensorReadingUncheckedCreateWithoutSensorInput[]
-    connectOrCreate?: SensorReadingCreateOrConnectWithoutSensorInput | SensorReadingCreateOrConnectWithoutSensorInput[]
-    upsert?: SensorReadingUpsertWithWhereUniqueWithoutSensorInput | SensorReadingUpsertWithWhereUniqueWithoutSensorInput[]
-    createMany?: SensorReadingCreateManySensorInputEnvelope
-    set?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    disconnect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    delete?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    connect?: SensorReadingWhereUniqueInput | SensorReadingWhereUniqueInput[]
-    update?: SensorReadingUpdateWithWhereUniqueWithoutSensorInput | SensorReadingUpdateWithWhereUniqueWithoutSensorInput[]
-    updateMany?: SensorReadingUpdateManyWithWhereWithoutSensorInput | SensorReadingUpdateManyWithWhereWithoutSensorInput[]
-    deleteMany?: SensorReadingScalarWhereInput | SensorReadingScalarWhereInput[]
+  export type TelemetryUncheckedUpdateManyWithoutSensorNestedInput = {
+    create?: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput> | TelemetryCreateWithoutSensorInput[] | TelemetryUncheckedCreateWithoutSensorInput[]
+    connectOrCreate?: TelemetryCreateOrConnectWithoutSensorInput | TelemetryCreateOrConnectWithoutSensorInput[]
+    upsert?: TelemetryUpsertWithWhereUniqueWithoutSensorInput | TelemetryUpsertWithWhereUniqueWithoutSensorInput[]
+    createMany?: TelemetryCreateManySensorInputEnvelope
+    set?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    disconnect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    delete?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    connect?: TelemetryWhereUniqueInput | TelemetryWhereUniqueInput[]
+    update?: TelemetryUpdateWithWhereUniqueWithoutSensorInput | TelemetryUpdateWithWhereUniqueWithoutSensorInput[]
+    updateMany?: TelemetryUpdateManyWithWhereWithoutSensorInput | TelemetryUpdateManyWithWhereWithoutSensorInput[]
+    deleteMany?: TelemetryScalarWhereInput | TelemetryScalarWhereInput[]
   }
 
   export type SensorCreateNestedOneWithoutReadingsInput = {
@@ -6291,6 +7675,28 @@ export namespace Prisma {
     upsert?: SensorUpsertWithoutReadingsInput
     connect?: SensorWhereUniqueInput
     update?: XOR<XOR<SensorUpdateToOneWithWhereWithoutReadingsInput, SensorUpdateWithoutReadingsInput>, SensorUncheckedUpdateWithoutReadingsInput>
+  }
+
+  export type VehicleCreateNestedOneWithoutAnalyticsInput = {
+    create?: XOR<VehicleCreateWithoutAnalyticsInput, VehicleUncheckedCreateWithoutAnalyticsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutAnalyticsInput
+    connect?: VehicleWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type VehicleUpdateOneRequiredWithoutAnalyticsNestedInput = {
+    create?: XOR<VehicleCreateWithoutAnalyticsInput, VehicleUncheckedCreateWithoutAnalyticsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutAnalyticsInput
+    upsert?: VehicleUpsertWithoutAnalyticsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutAnalyticsInput, VehicleUpdateWithoutAnalyticsInput>, VehicleUncheckedUpdateWithoutAnalyticsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6398,6 +7804,22 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type MaintenanceRecordCreateWithoutVehicleInput = {
     id?: string
     date: Date | string
@@ -6427,7 +7849,7 @@ export namespace Prisma {
     type: string
     unit: string
     createdAt?: Date | string
-    readings?: SensorReadingCreateNestedManyWithoutSensorInput
+    readings?: TelemetryCreateNestedManyWithoutSensorInput
   }
 
   export type SensorUncheckedCreateWithoutVehicleInput = {
@@ -6436,7 +7858,7 @@ export namespace Prisma {
     type: string
     unit: string
     createdAt?: Date | string
-    readings?: SensorReadingUncheckedCreateNestedManyWithoutSensorInput
+    readings?: TelemetryUncheckedCreateNestedManyWithoutSensorInput
   }
 
   export type SensorCreateOrConnectWithoutVehicleInput = {
@@ -6446,6 +7868,29 @@ export namespace Prisma {
 
   export type SensorCreateManyVehicleInputEnvelope = {
     data: SensorCreateManyVehicleInput | SensorCreateManyVehicleInput[]
+  }
+
+  export type VehicleAnalyticsCreateWithoutVehicleInput = {
+    id?: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
+  }
+
+  export type VehicleAnalyticsUncheckedCreateWithoutVehicleInput = {
+    id?: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
+  }
+
+  export type VehicleAnalyticsCreateOrConnectWithoutVehicleInput = {
+    where: VehicleAnalyticsWhereUniqueInput
+    create: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleAnalyticsCreateManyVehicleInputEnvelope = {
+    data: VehicleAnalyticsCreateManyVehicleInput | VehicleAnalyticsCreateManyVehicleInput[]
   }
 
   export type MaintenanceRecordUpsertWithWhereUniqueWithoutVehicleInput = {
@@ -6503,6 +7948,33 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Sensor"> | Date | string
   }
 
+  export type VehicleAnalyticsUpsertWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleAnalyticsWhereUniqueInput
+    update: XOR<VehicleAnalyticsUpdateWithoutVehicleInput, VehicleAnalyticsUncheckedUpdateWithoutVehicleInput>
+    create: XOR<VehicleAnalyticsCreateWithoutVehicleInput, VehicleAnalyticsUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleAnalyticsUpdateWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleAnalyticsWhereUniqueInput
+    data: XOR<VehicleAnalyticsUpdateWithoutVehicleInput, VehicleAnalyticsUncheckedUpdateWithoutVehicleInput>
+  }
+
+  export type VehicleAnalyticsUpdateManyWithWhereWithoutVehicleInput = {
+    where: VehicleAnalyticsScalarWhereInput
+    data: XOR<VehicleAnalyticsUpdateManyMutationInput, VehicleAnalyticsUncheckedUpdateManyWithoutVehicleInput>
+  }
+
+  export type VehicleAnalyticsScalarWhereInput = {
+    AND?: VehicleAnalyticsScalarWhereInput | VehicleAnalyticsScalarWhereInput[]
+    OR?: VehicleAnalyticsScalarWhereInput[]
+    NOT?: VehicleAnalyticsScalarWhereInput | VehicleAnalyticsScalarWhereInput[]
+    id?: StringFilter<"VehicleAnalytics"> | string
+    vehicleId?: StringFilter<"VehicleAnalytics"> | string
+    totalKm?: FloatFilter<"VehicleAnalytics"> | number
+    hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
+  }
+
   export type VehicleCreateWithoutMaintenanceRecordsInput = {
     id?: string
     name: string
@@ -6513,6 +7985,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sensors?: SensorCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateWithoutMaintenanceRecordsInput = {
@@ -6525,6 +7998,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sensors?: SensorUncheckedCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleCreateOrConnectWithoutMaintenanceRecordsInput = {
@@ -6552,6 +8026,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sensors?: SensorUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutMaintenanceRecordsInput = {
@@ -6563,6 +8038,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sensors?: SensorUncheckedUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleCreateWithoutSensorsInput = {
@@ -6575,6 +8051,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     maintenanceRecords?: MaintenanceRecordCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateWithoutSensorsInput = {
@@ -6587,6 +8064,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     maintenanceRecords?: MaintenanceRecordUncheckedCreateNestedManyWithoutVehicleInput
+    analytics?: VehicleAnalyticsUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleCreateOrConnectWithoutSensorsInput = {
@@ -6594,25 +8072,25 @@ export namespace Prisma {
     create: XOR<VehicleCreateWithoutSensorsInput, VehicleUncheckedCreateWithoutSensorsInput>
   }
 
-  export type SensorReadingCreateWithoutSensorInput = {
+  export type TelemetryCreateWithoutSensorInput = {
     id?: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
   }
 
-  export type SensorReadingUncheckedCreateWithoutSensorInput = {
+  export type TelemetryUncheckedCreateWithoutSensorInput = {
     id?: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
   }
 
-  export type SensorReadingCreateOrConnectWithoutSensorInput = {
-    where: SensorReadingWhereUniqueInput
-    create: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput>
+  export type TelemetryCreateOrConnectWithoutSensorInput = {
+    where: TelemetryWhereUniqueInput
+    create: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput>
   }
 
-  export type SensorReadingCreateManySensorInputEnvelope = {
-    data: SensorReadingCreateManySensorInput | SensorReadingCreateManySensorInput[]
+  export type TelemetryCreateManySensorInputEnvelope = {
+    data: TelemetryCreateManySensorInput | TelemetryCreateManySensorInput[]
   }
 
   export type VehicleUpsertWithoutSensorsInput = {
@@ -6635,6 +8113,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     maintenanceRecords?: MaintenanceRecordUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutSensorsInput = {
@@ -6646,32 +8125,33 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     maintenanceRecords?: MaintenanceRecordUncheckedUpdateManyWithoutVehicleNestedInput
+    analytics?: VehicleAnalyticsUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
-  export type SensorReadingUpsertWithWhereUniqueWithoutSensorInput = {
-    where: SensorReadingWhereUniqueInput
-    update: XOR<SensorReadingUpdateWithoutSensorInput, SensorReadingUncheckedUpdateWithoutSensorInput>
-    create: XOR<SensorReadingCreateWithoutSensorInput, SensorReadingUncheckedCreateWithoutSensorInput>
+  export type TelemetryUpsertWithWhereUniqueWithoutSensorInput = {
+    where: TelemetryWhereUniqueInput
+    update: XOR<TelemetryUpdateWithoutSensorInput, TelemetryUncheckedUpdateWithoutSensorInput>
+    create: XOR<TelemetryCreateWithoutSensorInput, TelemetryUncheckedCreateWithoutSensorInput>
   }
 
-  export type SensorReadingUpdateWithWhereUniqueWithoutSensorInput = {
-    where: SensorReadingWhereUniqueInput
-    data: XOR<SensorReadingUpdateWithoutSensorInput, SensorReadingUncheckedUpdateWithoutSensorInput>
+  export type TelemetryUpdateWithWhereUniqueWithoutSensorInput = {
+    where: TelemetryWhereUniqueInput
+    data: XOR<TelemetryUpdateWithoutSensorInput, TelemetryUncheckedUpdateWithoutSensorInput>
   }
 
-  export type SensorReadingUpdateManyWithWhereWithoutSensorInput = {
-    where: SensorReadingScalarWhereInput
-    data: XOR<SensorReadingUpdateManyMutationInput, SensorReadingUncheckedUpdateManyWithoutSensorInput>
+  export type TelemetryUpdateManyWithWhereWithoutSensorInput = {
+    where: TelemetryScalarWhereInput
+    data: XOR<TelemetryUpdateManyMutationInput, TelemetryUncheckedUpdateManyWithoutSensorInput>
   }
 
-  export type SensorReadingScalarWhereInput = {
-    AND?: SensorReadingScalarWhereInput | SensorReadingScalarWhereInput[]
-    OR?: SensorReadingScalarWhereInput[]
-    NOT?: SensorReadingScalarWhereInput | SensorReadingScalarWhereInput[]
-    id?: StringFilter<"SensorReading"> | string
-    sensorId?: StringFilter<"SensorReading"> | string
-    timestamp?: DateTimeFilter<"SensorReading"> | Date | string
-    payload?: JsonFilter<"SensorReading">
+  export type TelemetryScalarWhereInput = {
+    AND?: TelemetryScalarWhereInput | TelemetryScalarWhereInput[]
+    OR?: TelemetryScalarWhereInput[]
+    NOT?: TelemetryScalarWhereInput | TelemetryScalarWhereInput[]
+    id?: StringFilter<"Telemetry"> | string
+    sensorId?: StringFilter<"Telemetry"> | string
+    payload?: JsonFilter<"Telemetry">
+    timestamp?: DateTimeFilter<"Telemetry"> | Date | string
   }
 
   export type SensorCreateWithoutReadingsInput = {
@@ -6724,6 +8204,72 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type VehicleCreateWithoutAnalyticsInput = {
+    id?: string
+    name: string
+    model: string
+    type: string
+    region: string
+    status: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    maintenanceRecords?: MaintenanceRecordCreateNestedManyWithoutVehicleInput
+    sensors?: SensorCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleUncheckedCreateWithoutAnalyticsInput = {
+    id?: string
+    name: string
+    model: string
+    type: string
+    region: string
+    status: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    maintenanceRecords?: MaintenanceRecordUncheckedCreateNestedManyWithoutVehicleInput
+    sensors?: SensorUncheckedCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleCreateOrConnectWithoutAnalyticsInput = {
+    where: VehicleWhereUniqueInput
+    create: XOR<VehicleCreateWithoutAnalyticsInput, VehicleUncheckedCreateWithoutAnalyticsInput>
+  }
+
+  export type VehicleUpsertWithoutAnalyticsInput = {
+    update: XOR<VehicleUpdateWithoutAnalyticsInput, VehicleUncheckedUpdateWithoutAnalyticsInput>
+    create: XOR<VehicleCreateWithoutAnalyticsInput, VehicleUncheckedCreateWithoutAnalyticsInput>
+    where?: VehicleWhereInput
+  }
+
+  export type VehicleUpdateToOneWithWhereWithoutAnalyticsInput = {
+    where?: VehicleWhereInput
+    data: XOR<VehicleUpdateWithoutAnalyticsInput, VehicleUncheckedUpdateWithoutAnalyticsInput>
+  }
+
+  export type VehicleUpdateWithoutAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    maintenanceRecords?: MaintenanceRecordUpdateManyWithoutVehicleNestedInput
+    sensors?: SensorUpdateManyWithoutVehicleNestedInput
+  }
+
+  export type VehicleUncheckedUpdateWithoutAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    maintenanceRecords?: MaintenanceRecordUncheckedUpdateManyWithoutVehicleNestedInput
+    sensors?: SensorUncheckedUpdateManyWithoutVehicleNestedInput
+  }
+
   export type MaintenanceRecordCreateManyVehicleInput = {
     id?: string
     date: Date | string
@@ -6737,6 +8283,13 @@ export namespace Prisma {
     type: string
     unit: string
     createdAt?: Date | string
+  }
+
+  export type VehicleAnalyticsCreateManyVehicleInput = {
+    id?: string
+    totalKm: number
+    hoursOperated: number
+    lastUpdated?: Date | string
   }
 
   export type MaintenanceRecordUpdateWithoutVehicleInput = {
@@ -6762,7 +8315,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     unit?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    readings?: SensorReadingUpdateManyWithoutSensorNestedInput
+    readings?: TelemetryUpdateManyWithoutSensorNestedInput
   }
 
   export type SensorUncheckedUpdateWithoutVehicleInput = {
@@ -6770,7 +8323,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     unit?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    readings?: SensorReadingUncheckedUpdateManyWithoutSensorNestedInput
+    readings?: TelemetryUncheckedUpdateManyWithoutSensorNestedInput
   }
 
   export type SensorUncheckedUpdateManyWithoutVehicleInput = {
@@ -6780,25 +8333,43 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingCreateManySensorInput = {
+  export type VehicleAnalyticsUpdateWithoutVehicleInput = {
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleAnalyticsUncheckedUpdateWithoutVehicleInput = {
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleAnalyticsUncheckedUpdateManyWithoutVehicleInput = {
+    totalKm?: FloatFieldUpdateOperationsInput | number
+    hoursOperated?: IntFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TelemetryCreateManySensorInput = {
     id?: string
-    timestamp?: Date | string
     payload: InputJsonValue
+    timestamp?: Date | string
   }
 
-  export type SensorReadingUpdateWithoutSensorInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TelemetryUpdateWithoutSensorInput = {
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingUncheckedUpdateWithoutSensorInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TelemetryUncheckedUpdateWithoutSensorInput = {
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SensorReadingUncheckedUpdateManyWithoutSensorInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TelemetryUncheckedUpdateManyWithoutSensorInput = {
     payload?: InputJsonValue | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
