@@ -9,7 +9,9 @@ export class TelemetryController {
       if (!checkDto.success) {
         throw checkDto.error;
       }
-      telemetryService.createTelemetry(req.body);
+      const data = await telemetryService.createTelemetry(req.body);
+
+      res.json({ success: true, data });
     } catch (error) {
       TelemetryController.handleError(res, error, "Error, try again");
     }
