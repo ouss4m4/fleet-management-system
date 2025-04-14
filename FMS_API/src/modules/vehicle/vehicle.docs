@@ -1,0 +1,215 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Vehicles
+ *   description: API for managing vehicles
+ */
+
+/**
+ * @swagger
+ * /vehicles:
+ *   get:
+ *     summary: Retrieve a list of vehicles
+ *     tags: [Vehicles]
+ *     responses:
+ *       200:
+ *         description: A list of vehicles
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Vehicle'
+ *       500:
+ *         description: Failed to fetch vehicles
+ */
+
+/**
+ * @swagger
+ * /vehicles/{id}:
+ *   get:
+ *     summary: Retrieve a vehicle by ID
+ *     tags: [Vehicles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     responses:
+ *       200:
+ *         description: A single vehicle
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Vehicle'
+ *       404:
+ *         description: Vehicle not found
+ *       500:
+ *         description: Failed to fetch vehicle
+ */
+
+/**
+ * @swagger
+ * /vehicles:
+ *   post:
+ *     summary: Create a new vehicle
+ *     tags: [Vehicles]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateVehiclePayload'
+ *     responses:
+ *       201:
+ *         description: Vehicle created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Vehicle'
+ *       400:
+ *         description: Invalid input
+ *       500:
+ *         description: Failed to create vehicle
+ */
+
+/**
+ * @swagger
+ * /vehicles/{id}:
+ *   put:
+ *     summary: Update an existing vehicle
+ *     tags: [Vehicles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateVehiclePayload'
+ *     responses:
+ *       200:
+ *         description: Vehicle updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Vehicle'
+ *       400:
+ *         description: Invalid input
+ *       500:
+ *         description: Failed to update vehicle
+ */
+
+/**
+ * @swagger
+ * /vehicles/{id}:
+ *   delete:
+ *     summary: Delete a vehicle
+ *     tags: [Vehicles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     responses:
+ *       204:
+ *         description: Vehicle deleted successfully
+ *       500:
+ *         description: Failed to delete vehicle
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Vehicle:
+ *       type: object
+ *       required:
+ *         - id
+ *         - name
+ *         - model
+ *         - type
+ *         - region
+ *         - status
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: Unique vehicle ID
+ *         name:
+ *           type: string
+ *           description: The vehicle name
+ *         model:
+ *           type: string
+ *           description: Vehicle model
+ *         type:
+ *           type: string
+ *           description: Type of vehicle
+ *         region:
+ *           type: string
+ *           description: Operating region
+ *         status:
+ *           type: string
+ *           enum: [active, maintenance, offline]
+ *           description: Current status
+ *       example:
+ *         id: "abc123"
+ *         name: "Delivery Truck 1"
+ *         model: "Ford Transit"
+ *         type: "truck"
+ *         region: "west"
+ *         status: "active"
+
+ *     CreateVehiclePayload:
+ *       type: object
+ *       required:
+ *         - name
+ *         - model
+ *         - type
+ *         - region
+ *         - status
+ *       properties:
+ *         name:
+ *           type: string
+ *         model:
+ *           type: string
+ *         type:
+ *           type: string
+ *         region:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [active, maintenance, offline]
+ *       example:
+ *         name: "New Truck"
+ *         model: "Volvo X1"
+ *         type: "truck"
+ *         region: "north"
+ *         status: "maintenance"
+
+ *     UpdateVehiclePayload:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         model:
+ *           type: string
+ *         type:
+ *           type: string
+ *         region:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [active, maintenance, offline]
+ *       example:
+ *         name: "Updated Truck"
+ *         status: "active"
+ */
