@@ -18,6 +18,5 @@ export type CreateVehicleDTO = z.infer<typeof createVehicleSchema>;
 export type UpdateVehicleDTO = z.infer<typeof updateVehicleSchema>;
 
 // VALIDATIONS
-export const validateCreateVehiclePayload = (data: unknown) => createVehicleSchema.parse(data);
-
-export const validateUpdateVehiclePayload = (data: unknown) => updateVehicleSchema.parse(data);
+export const validateCreateVehiclePayload = (data: unknown) => createVehicleSchema.safeParse(data);
+export const validateUpdateVehiclePayload = (data: unknown) => updateVehicleSchema.safeParse(data);

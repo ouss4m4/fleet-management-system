@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { validateCreateVehiclePayload, validateUpdateVehiclePayload, CreateVehicleDTO, UpdateVehicleDTO } from "./vehicle.types";
+import { validateCreateVehiclePayload, validateUpdateVehiclePayload } from "./vehicle.types";
 import { vehicleService } from "./vehicle.service";
 
 export class VehicleController {
@@ -28,21 +28,27 @@ export class VehicleController {
     }
   }
 
-  public static async createVehicle(req: Request, res: Response) {
+  public static async createVehicle(req: Request, res: Response): Promise<void> {
     try {
-      const data: CreateVehicleDTO = validateCreateVehiclePayload(req.body);
-      const vehicle = await vehicleService.create(data);
+      const result = validateCreateVehiclePayload(req.body);
+      if (!result.success) {
+        throw result.error;
+      }
+      const vehicle = await vehicleService.create(result.data);
       res.status(201).json(vehicle);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+    } catch (error) {
+      VehicleController.handleError(res, error, "Failed to create vehicle");
     }
   }
 
   public static async updateVehicle(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const data: UpdateVehicleDTO = validateUpdateVehiclePayload(req.body);
-      const vehicle = await vehicleService.update(id, data);
+      const result = validateUpdateVehiclePayload(req.body);
+      if (!result.success) {
+        throw result.error;
+      }
+      const vehicle = await vehicleService.update(id, result.data);
       res.json(vehicle);
     } catch (error: any) {
       res.status(400).json({ error: error.message });
@@ -57,5 +63,23 @@ export class VehicleController {
     } catch (error) {
       res.status(500).json({ error: "Failed to delete vehicle" });
     }
+  }
+
+  private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    if (error && typeof error === "object" && "errors" in error) {
+      const formatted: Record<string, string> = {};
+      (error as any).errors?.forEach((err: any) => {
+        formatted[err.path?.join(".") || "unknown"] = err.message;
+      });
+      return res.status(400).json({ success: false, message: "missing fields", errors: formatted });
+    }
+
+    if (error instanceof Error) {
+      console.error(error.message);
+      return res.status(400).json({ error: error.message });
+    }
+
+    console.error(error);
+    return res.status(400).json({ error: fallbackMessage });
   }
 }

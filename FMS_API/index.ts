@@ -1,6 +1,5 @@
 import { app } from "./src/app";
 import { config } from "dotenv";
-import { prisma } from "./src/modules/lib/prisma/prisma";
 
 config();
 
