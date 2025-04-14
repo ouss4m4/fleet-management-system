@@ -3,11 +3,11 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Install deps with npm only
-COPY package.json package-lock.json ./
+COPY FMS_API/package.json FMS_API/package-lock.json ./
 RUN npm install
 
 # Copy app source
-COPY . .
+COPY FMS_API ./
 
 # Build TypeScript
 RUN npm run build
