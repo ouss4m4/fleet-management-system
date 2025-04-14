@@ -36,6 +36,8 @@ model MaintenanceRecord {
   date        DateTime
   description String
   cost        Float
+
+  @@index([vehicleId, date])
 }
 
 // Assesment didnt request this but it would be better to have. and also allows a relation vehicle->sensors
@@ -57,6 +59,8 @@ model SensorReading {
   sensor    Sensor   @relation(fields: [sensorId], references: [id])
   timestamp DateTime @default(now())
   payload   Json
+
+  @@index([sensorId, timestamp])
 }
 
 model VehicleAnalytics {
