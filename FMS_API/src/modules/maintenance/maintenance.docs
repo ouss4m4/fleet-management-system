@@ -1,0 +1,112 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Maintenance
+ *   description: API for managing vehicle maintenance records
+ */
+
+/**
+ * @swagger
+ * /vehicles/{id}/maintenance:
+ *   get:
+ *     summary: Get all maintenance records for a vehicle
+ *     tags: [Maintenance]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     responses:
+ *       200:
+ *         description: A list of maintenance records
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/MaintenanceRecord'
+ *       500:
+ *         description: Failed to fetch maintenance records
+ *
+ *   post:
+ *     summary: Create a maintenance record for a vehicle
+ *     tags: [Maintenance]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateMaintenancePayload'
+ *     responses:
+ *       201:
+ *         description: Maintenance record created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/MaintenanceRecord'
+ *       400:
+ *         description: Invalid input
+ *       500:
+ *         description: Failed to create maintenance record
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     MaintenanceRecord:
+ *       type: object
+ *       required:
+ *         - id
+ *         - vehicleId
+ *         - date
+ *         - description
+ *         - cost
+ *       properties:
+ *         id:
+ *           type: string
+ *         vehicleId:
+ *           type: string
+ *         date:
+ *           type: string
+ *           format: date-time
+ *         description:
+ *           type: string
+ *         cost:
+ *           type: number
+ *           format: float
+ *       example:
+ *         id: "abc123"
+ *         vehicleId: "v123"
+ *         date: "2024-04-12T10:00:00.000Z"
+ *         description: "Engine oil change"
+ *         cost: 150.0
+
+ *     CreateMaintenancePayload:
+ *       type: object
+ *       required:
+ *         - date
+ *         - description
+ *         - cost
+ *       properties:
+ *         date:
+ *           type: string
+ *           format: date-time
+ *         description:
+ *           type: string
+ *         cost:
+ *           type: number
+ *       example:
+ *         date: "2024-04-12T10:00:00.000Z"
+ *         description: "Brake pad replacement"
+ *         cost: 75.5
+ */

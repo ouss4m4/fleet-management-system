@@ -1,3 +1,4 @@
+// src/config/swagger.ts
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
@@ -16,7 +17,7 @@ const options: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: [path.resolve(__dirname, "../modules/vehicle/vehicle.docs")],
+  apis: [path.resolve(__dirname, "../modules/**/*.docs")],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

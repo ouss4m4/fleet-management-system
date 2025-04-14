@@ -1,5 +1,5 @@
 import { Sensor, Vehicle } from "../../../generated/prisma";
-import { prisma } from "../lib/prisma/prisma";
+import { prisma } from "../lib/prismaClient";
 import { vehicleService } from "../vehicle/vehicle.service";
 import { CreateSensorDTO } from "./sensor.types";
 
