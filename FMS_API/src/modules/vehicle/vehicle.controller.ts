@@ -9,7 +9,7 @@ export class VehicleController {
 
       res.json(vehicles);
     } catch (error) {
-      res.status(500).json({ error: "Failed to fetch vehicles" });
+      VehicleController.handleError(res, error, "Failed to create vehicle");
     }
   }
 
@@ -23,8 +23,7 @@ export class VehicleController {
       }
       res.json(vehicle);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Failed to fetch vehicle" });
+      VehicleController.handleError(res, error, "Failed to create vehicle");
     }
   }
 
@@ -51,7 +50,7 @@ export class VehicleController {
       const vehicle = await vehicleService.update(id, result.data);
       res.json(vehicle);
     } catch (error: any) {
-      res.status(400).json({ error: error.message });
+      VehicleController.handleError(res, error, "Failed to create vehicle");
     }
   }
 
@@ -61,7 +60,7 @@ export class VehicleController {
       await vehicleService.delete(id);
       res.status(204).send();
     } catch (error) {
-      res.status(500).json({ error: "Failed to delete vehicle" });
+      VehicleController.handleError(res, error, "Failed to create vehicle");
     }
   }
 

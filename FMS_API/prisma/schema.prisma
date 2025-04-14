@@ -37,6 +37,7 @@ model MaintenanceRecord {
   cost        Float
 }
 
+// Assesment didnt request this but it would be better to have. and also allows a relation vehicle->sensors
 model Sensor {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   vehicleId String   @db.ObjectId
