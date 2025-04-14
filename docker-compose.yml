@@ -1,0 +1,33 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile.api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      - DATABASE_URL=mongodb://mongodb:27017/fms?authSource=admin
+
+  # This config is for MongoDB v5+
+  # It's a Replica Set (required for Prisma Client) //https://github.com/prisma/prisma/blob/main/docker/docker-compose.yml
+  mongodb:
+    build:
+      context: ./Docker
+      dockerfile: Dockerfile.mongo
+      args:
+        MONGO_VERSION: 6
+    environment:
+      MONGO_REPLICA_HOST: 127.0.0.1
+      MONGO_REPLICA_PORT: 27017
+      MONGO_COMMAND: "mongosh"
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

@@ -1,5 +1,6 @@
 import { app } from "./src/app";
 import { config } from "dotenv";
+import { prisma } from "./src/modules/lib/prisma/prisma";
 
 config();
 
@@ -9,7 +10,7 @@ console.log(PORT);
 
 // start server
 app
-  .listen(PORT, () => {
+  .listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
   })
   .on("error", (err) => {
