@@ -148,8 +148,10 @@ exports.Prisma.TelemetryScalarFieldEnum = {
 exports.Prisma.VehicleAnalyticsScalarFieldEnum = {
   id: 'id',
   vehicleId: 'vehicleId',
-  totalKm: 'totalKm',
   hoursOperated: 'hoursOperated',
+  distanceTraveled: 'distanceTraveled',
+  location: 'location',
+  speed: 'speed',
   lastUpdated: 'lastUpdated'
 };
 

@@ -64,10 +64,12 @@ model Telemetry {
 }
 
 model VehicleAnalytics {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  vehicleId     String   @unique @db.ObjectId
-  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id])
-  totalKm       Float
-  hoursOperated Int
-  lastUpdated   DateTime @updatedAt
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  vehicleId        String   @unique @db.ObjectId
+  vehicle          Vehicle  @relation(fields: [vehicleId], references: [id])
+  hoursOperated    Int
+  distanceTraveled Int
+  location         Json
+  speed            Int
+  lastUpdated      DateTime @updatedAt
 }

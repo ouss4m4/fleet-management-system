@@ -12,6 +12,7 @@ class VehicleService {
       include: {
         sensors: true,
         maintenanceRecords: true,
+        analytics: true,
       },
     });
   }

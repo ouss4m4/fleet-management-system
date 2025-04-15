@@ -5370,72 +5370,84 @@ export namespace Prisma {
   }
 
   export type VehicleAnalyticsAvgAggregateOutputType = {
-    totalKm: number | null
     hoursOperated: number | null
+    distanceTraveled: number | null
+    speed: number | null
   }
 
   export type VehicleAnalyticsSumAggregateOutputType = {
-    totalKm: number | null
     hoursOperated: number | null
+    distanceTraveled: number | null
+    speed: number | null
   }
 
   export type VehicleAnalyticsMinAggregateOutputType = {
     id: string | null
     vehicleId: string | null
-    totalKm: number | null
     hoursOperated: number | null
+    distanceTraveled: number | null
+    speed: number | null
     lastUpdated: Date | null
   }
 
   export type VehicleAnalyticsMaxAggregateOutputType = {
     id: string | null
     vehicleId: string | null
-    totalKm: number | null
     hoursOperated: number | null
+    distanceTraveled: number | null
+    speed: number | null
     lastUpdated: Date | null
   }
 
   export type VehicleAnalyticsCountAggregateOutputType = {
     id: number
     vehicleId: number
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: number
+    speed: number
     lastUpdated: number
     _all: number
   }
 
 
   export type VehicleAnalyticsAvgAggregateInputType = {
-    totalKm?: true
     hoursOperated?: true
+    distanceTraveled?: true
+    speed?: true
   }
 
   export type VehicleAnalyticsSumAggregateInputType = {
-    totalKm?: true
     hoursOperated?: true
+    distanceTraveled?: true
+    speed?: true
   }
 
   export type VehicleAnalyticsMinAggregateInputType = {
     id?: true
     vehicleId?: true
-    totalKm?: true
     hoursOperated?: true
+    distanceTraveled?: true
+    speed?: true
     lastUpdated?: true
   }
 
   export type VehicleAnalyticsMaxAggregateInputType = {
     id?: true
     vehicleId?: true
-    totalKm?: true
     hoursOperated?: true
+    distanceTraveled?: true
+    speed?: true
     lastUpdated?: true
   }
 
   export type VehicleAnalyticsCountAggregateInputType = {
     id?: true
     vehicleId?: true
-    totalKm?: true
     hoursOperated?: true
+    distanceTraveled?: true
+    location?: true
+    speed?: true
     lastUpdated?: true
     _all?: true
   }
@@ -5529,8 +5541,10 @@ export namespace Prisma {
   export type VehicleAnalyticsGroupByOutputType = {
     id: string
     vehicleId: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: JsonValue
+    speed: number
     lastUpdated: Date
     _count: VehicleAnalyticsCountAggregateOutputType | null
     _avg: VehicleAnalyticsAvgAggregateOutputType | null
@@ -5556,8 +5570,10 @@ export namespace Prisma {
   export type VehicleAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     vehicleId?: boolean
-    totalKm?: boolean
     hoursOperated?: boolean
+    distanceTraveled?: boolean
+    location?: boolean
+    speed?: boolean
     lastUpdated?: boolean
     vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicleAnalytics"]>
@@ -5567,12 +5583,14 @@ export namespace Prisma {
   export type VehicleAnalyticsSelectScalar = {
     id?: boolean
     vehicleId?: boolean
-    totalKm?: boolean
     hoursOperated?: boolean
+    distanceTraveled?: boolean
+    location?: boolean
+    speed?: boolean
     lastUpdated?: boolean
   }
 
-  export type VehicleAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vehicleId" | "totalKm" | "hoursOperated" | "lastUpdated", ExtArgs["result"]["vehicleAnalytics"]>
+  export type VehicleAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vehicleId" | "hoursOperated" | "distanceTraveled" | "location" | "speed" | "lastUpdated", ExtArgs["result"]["vehicleAnalytics"]>
   export type VehicleAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
@@ -5585,8 +5603,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       vehicleId: string
-      totalKm: number
       hoursOperated: number
+      distanceTraveled: number
+      location: Prisma.JsonValue
+      speed: number
       lastUpdated: Date
     }, ExtArgs["result"]["vehicleAnalytics"]>
     composites: {}
@@ -5983,8 +6003,10 @@ export namespace Prisma {
   interface VehicleAnalyticsFieldRefs {
     readonly id: FieldRef<"VehicleAnalytics", 'String'>
     readonly vehicleId: FieldRef<"VehicleAnalytics", 'String'>
-    readonly totalKm: FieldRef<"VehicleAnalytics", 'Float'>
     readonly hoursOperated: FieldRef<"VehicleAnalytics", 'Int'>
+    readonly distanceTraveled: FieldRef<"VehicleAnalytics", 'Int'>
+    readonly location: FieldRef<"VehicleAnalytics", 'Json'>
+    readonly speed: FieldRef<"VehicleAnalytics", 'Int'>
     readonly lastUpdated: FieldRef<"VehicleAnalytics", 'DateTime'>
   }
     
@@ -6428,8 +6450,10 @@ export namespace Prisma {
   export const VehicleAnalyticsScalarFieldEnum: {
     id: 'id',
     vehicleId: 'vehicleId',
-    totalKm: 'totalKm',
     hoursOperated: 'hoursOperated',
+    distanceTraveled: 'distanceTraveled',
+    location: 'location',
+    speed: 'speed',
     lastUpdated: 'lastUpdated'
   };
 
@@ -6775,8 +6799,10 @@ export namespace Prisma {
     NOT?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
     id?: StringFilter<"VehicleAnalytics"> | string
     vehicleId?: StringFilter<"VehicleAnalytics"> | string
-    totalKm?: FloatFilter<"VehicleAnalytics"> | number
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
+    location?: JsonFilter<"VehicleAnalytics">
+    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
@@ -6784,8 +6810,10 @@ export namespace Prisma {
   export type VehicleAnalyticsOrderByWithRelationInput = {
     id?: SortOrder
     vehicleId?: SortOrder
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    location?: SortOrder
+    speed?: SortOrder
     lastUpdated?: SortOrder
     vehicle?: VehicleOrderByWithRelationInput
   }
@@ -6796,8 +6824,10 @@ export namespace Prisma {
     AND?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
     OR?: VehicleAnalyticsWhereInput[]
     NOT?: VehicleAnalyticsWhereInput | VehicleAnalyticsWhereInput[]
-    totalKm?: FloatFilter<"VehicleAnalytics"> | number
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
+    location?: JsonFilter<"VehicleAnalytics">
+    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "id" | "vehicleId">
@@ -6805,8 +6835,10 @@ export namespace Prisma {
   export type VehicleAnalyticsOrderByWithAggregationInput = {
     id?: SortOrder
     vehicleId?: SortOrder
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    location?: SortOrder
+    speed?: SortOrder
     lastUpdated?: SortOrder
     _count?: VehicleAnalyticsCountOrderByAggregateInput
     _avg?: VehicleAnalyticsAvgOrderByAggregateInput
@@ -6821,8 +6853,10 @@ export namespace Prisma {
     NOT?: VehicleAnalyticsScalarWhereWithAggregatesInput | VehicleAnalyticsScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"VehicleAnalytics"> | string
     vehicleId?: StringWithAggregatesFilter<"VehicleAnalytics"> | string
-    totalKm?: FloatWithAggregatesFilter<"VehicleAnalytics"> | number
     hoursOperated?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
+    distanceTraveled?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
+    location?: JsonWithAggregatesFilter<"VehicleAnalytics">
+    speed?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeWithAggregatesFilter<"VehicleAnalytics"> | Date | string
   }
 
@@ -7070,8 +7104,10 @@ export namespace Prisma {
 
   export type VehicleAnalyticsCreateInput = {
     id?: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
     vehicle: VehicleCreateNestedOneWithoutAnalyticsInput
   }
@@ -7079,43 +7115,55 @@ export namespace Prisma {
   export type VehicleAnalyticsUncheckedCreateInput = {
     id?: string
     vehicleId: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
   }
 
   export type VehicleAnalyticsUpdateInput = {
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
     vehicle?: VehicleUpdateOneRequiredWithoutAnalyticsNestedInput
   }
 
   export type VehicleAnalyticsUncheckedUpdateInput = {
     vehicleId?: StringFieldUpdateOperationsInput | string
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAnalyticsCreateManyInput = {
     id?: string
     vehicleId: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
   }
 
   export type VehicleAnalyticsUpdateManyMutationInput = {
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAnalyticsUncheckedUpdateManyInput = {
     vehicleId?: StringFieldUpdateOperationsInput | string
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7404,35 +7452,41 @@ export namespace Prisma {
   export type VehicleAnalyticsCountOrderByAggregateInput = {
     id?: SortOrder
     vehicleId?: SortOrder
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    location?: SortOrder
+    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
   export type VehicleAnalyticsAvgOrderByAggregateInput = {
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    speed?: SortOrder
   }
 
   export type VehicleAnalyticsMaxOrderByAggregateInput = {
     id?: SortOrder
     vehicleId?: SortOrder
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
   export type VehicleAnalyticsMinOrderByAggregateInput = {
     id?: SortOrder
     vehicleId?: SortOrder
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
   export type VehicleAnalyticsSumOrderByAggregateInput = {
-    totalKm?: SortOrder
     hoursOperated?: SortOrder
+    distanceTraveled?: SortOrder
+    speed?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7872,15 +7926,19 @@ export namespace Prisma {
 
   export type VehicleAnalyticsCreateWithoutVehicleInput = {
     id?: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
   }
 
   export type VehicleAnalyticsUncheckedCreateWithoutVehicleInput = {
     id?: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
   }
 
@@ -7970,8 +8028,10 @@ export namespace Prisma {
     NOT?: VehicleAnalyticsScalarWhereInput | VehicleAnalyticsScalarWhereInput[]
     id?: StringFilter<"VehicleAnalytics"> | string
     vehicleId?: StringFilter<"VehicleAnalytics"> | string
-    totalKm?: FloatFilter<"VehicleAnalytics"> | number
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
+    distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
+    location?: JsonFilter<"VehicleAnalytics">
+    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
   }
 
@@ -8287,8 +8347,10 @@ export namespace Prisma {
 
   export type VehicleAnalyticsCreateManyVehicleInput = {
     id?: string
-    totalKm: number
     hoursOperated: number
+    distanceTraveled: number
+    location: InputJsonValue
+    speed: number
     lastUpdated?: Date | string
   }
 
@@ -8334,20 +8396,26 @@ export namespace Prisma {
   }
 
   export type VehicleAnalyticsUpdateWithoutVehicleInput = {
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAnalyticsUncheckedUpdateWithoutVehicleInput = {
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAnalyticsUncheckedUpdateManyWithoutVehicleInput = {
-    totalKm?: FloatFieldUpdateOperationsInput | number
     hoursOperated?: IntFieldUpdateOperationsInput | number
+    distanceTraveled?: IntFieldUpdateOperationsInput | number
+    location?: InputJsonValue | InputJsonValue
+    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

@@ -7,7 +7,7 @@ const apiv1router = Router();
 apiv1router.use("/vehicles", vehicleRouter);
 apiv1router.use("/telemetry", telemetryRouter);
 
-// Swagger only in development
+// Swagger only in development (also servers at catch all for /api/v1)
 if (process.env.NODE_ENV !== "production") {
   import("../config/swagger").then(({ swaggerUi, swaggerSpec }) => {
     apiv1router.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

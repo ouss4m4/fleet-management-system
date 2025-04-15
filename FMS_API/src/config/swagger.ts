@@ -7,9 +7,9 @@ const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Vehicle API",
+      title: "Fleet Management System",
       version: "1.0.0",
-      description: "API for managing vehicles",
+      description: "API for fleet management and monitoring",
     },
     servers: [
       {

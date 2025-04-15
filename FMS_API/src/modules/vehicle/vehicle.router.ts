@@ -2,6 +2,7 @@ import { Router } from "express";
 import { VehicleController } from "./vehicle.controller";
 import { MaintenanceController } from "../maintenance/maintenance.controller";
 import { SensorController } from "../sensor/sensor.controller";
+import { AnalyticsController } from "../analytics/analytics.controller";
 
 export const vehicleRouter = Router();
 
@@ -25,3 +26,6 @@ vehicleRouter.post("/:id/maintenance", MaintenanceController.createVehicleMainte
 vehicleRouter.get("/:id/sensor", SensorController.getVehicleSensors);
 vehicleRouter.post("/:id/sensor", SensorController.assignSensorToVehicle);
 vehicleRouter.delete("/:id/sensor/:sensorId", SensorController.removeSensorFromVehicle);
+
+vehicleRouter.get("/:id/analytics", AnalyticsController.getVehicleAnalytics);
+vehicleRouter.post("/:id/analytics", AnalyticsController.createVehicleAnalytics);
