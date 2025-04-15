@@ -13,16 +13,16 @@ export class TelemetryController {
 
       res.json({ success: true, data });
     } catch (error) {
-      TelemetryController.handleError(res, error, "Error, try again");
+      TelemetryController.handleError(res, error, "Error creating entry, try again");
     }
   }
 
   public static async getTelemetry(_: Request, res: Response): Promise<void> {
     try {
-      const result = await telemetryService.getTelemetery();
-      res.json(result);
+      const data = await telemetryService.getTelemetery();
+      res.json({ success: true, data });
     } catch (error) {
-      TelemetryController.handleError(res, error, "Error, try again");
+      TelemetryController.handleError(res, error, "Error loading telemetry");
     }
   }
 
@@ -37,10 +37,10 @@ export class TelemetryController {
 
     if (error instanceof Error) {
       console.error(error.message);
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ success: false, message: error.message });
     }
 
     console.error(error);
-    return res.status(400).json({ error: fallbackMessage });
+    return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }

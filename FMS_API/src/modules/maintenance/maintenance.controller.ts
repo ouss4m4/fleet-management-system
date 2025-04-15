@@ -8,7 +8,7 @@ export class MaintenanceController {
 
     try {
       const data = await maintenanceService.getVehicleMaintenance(vehicleId);
-      res.json(data);
+      res.json({ success: true, data });
     } catch (error) {
       MaintenanceController.handleError(res, error, "Failed to get vehicle maintenance records");
     }
@@ -24,9 +24,9 @@ export class MaintenanceController {
       }
 
       const data = await maintenanceService.createVehicleMaintenanceRecord(dtoCheck.data);
-      res.json(data);
+      res.json({ success: true, data });
     } catch (error) {
-      MaintenanceController.handleError(res, error, "Failed to create vehicle");
+      MaintenanceController.handleError(res, error, "Failed to create vehicle maintenance");
     }
   }
 
@@ -41,10 +41,10 @@ export class MaintenanceController {
 
     if (error instanceof Error) {
       console.error(error.message);
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ success: false, message: error.message });
     }
 
     console.error(error);
-    return res.status(400).json({ error: fallbackMessage });
+    return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }

@@ -6,8 +6,8 @@ export class AnalyticsController {
   public static async getVehicleAnalytics(req: Request, res: Response): Promise<void> {
     try {
       const { id: vehicleId } = req.params;
-      const result = await analyticsService.getAnalyticsForVehicle(vehicleId);
-      res.json(result);
+      const data = await analyticsService.getAnalyticsForVehicle(vehicleId);
+      res.json({ success: true, data });
     } catch (error) {
       AnalyticsController.handleError(res, error, "Failed to get vehicle analytics records");
     }
@@ -21,8 +21,8 @@ export class AnalyticsController {
       if (!checkDto.success) {
         throw checkDto.error;
       }
-      const result = await analyticsService.createVehicleAnalytics(checkDto.data);
-      res.json(result);
+      const data = await analyticsService.createVehicleAnalytics(checkDto.data);
+      res.json({ success: true, data });
     } catch (error) {
       AnalyticsController.handleError(res, error, "Failed to get vehicle analytics records");
     }
@@ -39,10 +39,10 @@ export class AnalyticsController {
 
     if (error instanceof Error) {
       console.error(error.message);
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ success: false, message: error.message });
     }
 
     console.error(error);
-    return res.status(400).json({ error: fallbackMessage });
+    return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }

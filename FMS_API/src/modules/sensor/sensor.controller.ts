@@ -5,8 +5,8 @@ import { validateCreateSensorPayload } from "./sensor.types";
 export class SensorController {
   public static async getSensors(_: Request, res: Response): Promise<void> {
     try {
-      const result = await sensorService.getSensors();
-      res.json(result);
+      const data = await sensorService.getSensors();
+      res.json({ success: true, data });
     } catch (error) {
       SensorController.handleError(res, error, "Error loading sensors");
     }
@@ -15,10 +15,10 @@ export class SensorController {
   public static async getVehicleSensors(req: Request, res: Response): Promise<void> {
     try {
       const { id: vehicleId } = req.params;
-      const result = await sensorService.getVehicleSensors(vehicleId);
-      res.json(result);
+      const data = await sensorService.getVehicleSensors(vehicleId);
+      res.json({ success: true, data });
     } catch (error) {
-      SensorController.handleError(res, error, "Error loading sensors");
+      SensorController.handleError(res, error, "Error loading vehicle sensors");
     }
   }
 
@@ -29,20 +29,20 @@ export class SensorController {
       if (!checkDto.success) {
         throw checkDto.error;
       }
-      const result = await sensorService.assignSensorToVehicle(checkDto.data);
-      res.json(result);
+      const data = await sensorService.assignSensorToVehicle(checkDto.data);
+      res.json({ success: true, data });
     } catch (error) {
-      SensorController.handleError(res, error, "Error loading sensors");
+      SensorController.handleError(res, error, "Error assigning sensor to vehicle");
     }
   }
 
   public static async removeSensorFromVehicle(req: Request, res: Response): Promise<void> {
     try {
       const { sensorId } = req.params;
-      const result = await sensorService.removeSensorFromVehicle(sensorId);
-      res.json(result);
+      const data = await sensorService.removeSensorFromVehicle(sensorId);
+      res.json({ success: true, data });
     } catch (error) {
-      SensorController.handleError(res, error, "Error loading sensors");
+      SensorController.handleError(res, error, "Error removing sensor");
     }
   }
 
@@ -57,10 +57,10 @@ export class SensorController {
 
     if (error instanceof Error) {
       console.error(error.message);
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ success: false, message: error.message });
     }
 
     console.error(error);
-    return res.status(400).json({ error: fallbackMessage });
+    return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }

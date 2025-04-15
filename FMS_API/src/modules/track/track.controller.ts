@@ -5,8 +5,8 @@ export class VehicleTrackingController {
   public static async trackVehicle(req: Request, res: Response): Promise<void> {
     try {
       const { id: vehicleId } = req.params;
-      const result = await vehicleTrackingService.trackVehicle(vehicleId);
-      res.json(result);
+      const data = await vehicleTrackingService.trackVehicle(vehicleId);
+      res.json({ success: true, data });
     } catch (error) {
       VehicleTrackingController.handleError(res, error, "Error loading vehicle location");
     }
@@ -23,10 +23,10 @@ export class VehicleTrackingController {
 
     if (error instanceof Error) {
       console.error(error.message);
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ success: false, message: error.message });
     }
 
     console.error(error);
-    return res.status(400).json({ error: fallbackMessage });
+    return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }
