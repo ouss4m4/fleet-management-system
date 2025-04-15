@@ -1,12 +1,12 @@
 import express, { Request, Response, NextFunction } from "express";
 import { apiv1router } from "./routes/apiv1.router";
-
+import cors from "cors";
 const app = express();
 
 // Middlewarez
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 app.get("/ping", (_, res: Response) => {
   res.status(200).send("pong");
 });
