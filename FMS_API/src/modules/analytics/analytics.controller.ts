@@ -13,6 +13,7 @@ export class AnalyticsController {
     }
   }
 
+  // TODO: this should not be exposed as an endpoint. creation of analytics in done internally (from sensor readings)
   public static async createVehicleAnalytics(req: Request, res: Response): Promise<void> {
     try {
       const { id: vehicleId } = req.params;

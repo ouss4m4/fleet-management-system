@@ -5,7 +5,11 @@ class TelemetryService {
   // Create telemetry record
   async createTelemetry(data: CreateTelemetryDTO) {
     try {
-      return await prisma.telemetry.create({ data });
+      const telemetryData = {
+        ...data,
+        payload: data.payload ?? null,
+      };
+      return await prisma.telemetry.create({ data: telemetryData });
     } catch (error) {
       console.error("Error creating telemetry:", error);
       throw new Error("Could not create telemetry");

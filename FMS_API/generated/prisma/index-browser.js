@@ -151,7 +151,6 @@ exports.Prisma.VehicleAnalyticsScalarFieldEnum = {
   hoursOperated: 'hoursOperated',
   distanceTraveled: 'distanceTraveled',
   location: 'location',
-  speed: 'speed',
   lastUpdated: 'lastUpdated'
 };
 

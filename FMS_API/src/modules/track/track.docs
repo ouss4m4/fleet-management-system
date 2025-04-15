@@ -1,0 +1,51 @@
+/**
+ * @swagger
+ * /vehicles/{id}/track:
+ *   get:
+ *     summary: Get the current location of a vehicle
+ *     description: Fetches the latest tracking data for a specific vehicle by its ID.
+ *     tags:
+ *       - Tracking
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the vehicle to track
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved vehicle location
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 vehicleId:
+ *                   type: string
+ *                 location:
+ *                   type: object
+ *                   properties:
+ *                     lat:
+ *                       type: number
+ *                       example: 25.276987
+ *                     lng:
+ *                       type: number
+ *                       example: 55.296249
+ *                 lastUpdate:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Bad request or validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                 errors:
+ *                   type: object
+ *                   additionalProperties:
+ *                     type: string
+ */

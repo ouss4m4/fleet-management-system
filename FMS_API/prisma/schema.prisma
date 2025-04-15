@@ -70,6 +70,5 @@ model VehicleAnalytics {
   hoursOperated    Int
   distanceTraveled Int
   location         Json
-  speed            Int
   lastUpdated      DateTime @updatedAt
 }

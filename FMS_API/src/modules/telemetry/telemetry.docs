@@ -1,0 +1,68 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Telemetry
+ *   description: Ingest telemetry data from IoT devices
+ */
+
+/**
+ * @swagger
+ * /telemetry:
+ *   post:
+ *     summary: Ingest telemetry data from a sensor
+ *     tags: [Telemetry]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateTelemetryDTO'
+ *     responses:
+ *       201:
+ *         description: Telemetry data accepted
+ *       400:
+ *         description: Invalid telemetry data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Server error while processing telemetry
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CreateTelemetryDTO:
+ *       type: object
+ *       required:
+ *         - sensorId
+ *         - payload
+ *       properties:
+ *         sensorId:
+ *           type: string
+ *           example: "sensor-abc-123"
+ *         payload:
+ *           type: object
+ *           description: Arbitrary sensor data (temperature, gps,  RPM, fuel, etc. l)
+ *           example:
+ *             longitude: 25.2048
+ *             latitude: 55.2708
+ *         timestamp:
+ *           type: string
+ *           format: date-time
+ *           description: ISO timestamp (optional, defaults to now)
+ *           example: "2024-04-14T12:34:56.789Z"
+
+ *     ErrorResponse:
+ *       type: object
+ *       properties:
+ *         error:
+ *           type: string
+ *           example: "Validation failed"
+ *         errors:
+ *           type: object
+ *           additionalProperties:
+ *             type: string
+ */

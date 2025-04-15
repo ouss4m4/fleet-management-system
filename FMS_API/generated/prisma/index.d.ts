@@ -5372,13 +5372,11 @@ export namespace Prisma {
   export type VehicleAnalyticsAvgAggregateOutputType = {
     hoursOperated: number | null
     distanceTraveled: number | null
-    speed: number | null
   }
 
   export type VehicleAnalyticsSumAggregateOutputType = {
     hoursOperated: number | null
     distanceTraveled: number | null
-    speed: number | null
   }
 
   export type VehicleAnalyticsMinAggregateOutputType = {
@@ -5386,7 +5384,6 @@ export namespace Prisma {
     vehicleId: string | null
     hoursOperated: number | null
     distanceTraveled: number | null
-    speed: number | null
     lastUpdated: Date | null
   }
 
@@ -5395,7 +5392,6 @@ export namespace Prisma {
     vehicleId: string | null
     hoursOperated: number | null
     distanceTraveled: number | null
-    speed: number | null
     lastUpdated: Date | null
   }
 
@@ -5405,7 +5401,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: number
-    speed: number
     lastUpdated: number
     _all: number
   }
@@ -5414,13 +5409,11 @@ export namespace Prisma {
   export type VehicleAnalyticsAvgAggregateInputType = {
     hoursOperated?: true
     distanceTraveled?: true
-    speed?: true
   }
 
   export type VehicleAnalyticsSumAggregateInputType = {
     hoursOperated?: true
     distanceTraveled?: true
-    speed?: true
   }
 
   export type VehicleAnalyticsMinAggregateInputType = {
@@ -5428,7 +5421,6 @@ export namespace Prisma {
     vehicleId?: true
     hoursOperated?: true
     distanceTraveled?: true
-    speed?: true
     lastUpdated?: true
   }
 
@@ -5437,7 +5429,6 @@ export namespace Prisma {
     vehicleId?: true
     hoursOperated?: true
     distanceTraveled?: true
-    speed?: true
     lastUpdated?: true
   }
 
@@ -5447,7 +5438,6 @@ export namespace Prisma {
     hoursOperated?: true
     distanceTraveled?: true
     location?: true
-    speed?: true
     lastUpdated?: true
     _all?: true
   }
@@ -5544,7 +5534,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: JsonValue
-    speed: number
     lastUpdated: Date
     _count: VehicleAnalyticsCountAggregateOutputType | null
     _avg: VehicleAnalyticsAvgAggregateOutputType | null
@@ -5573,7 +5562,6 @@ export namespace Prisma {
     hoursOperated?: boolean
     distanceTraveled?: boolean
     location?: boolean
-    speed?: boolean
     lastUpdated?: boolean
     vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicleAnalytics"]>
@@ -5586,11 +5574,10 @@ export namespace Prisma {
     hoursOperated?: boolean
     distanceTraveled?: boolean
     location?: boolean
-    speed?: boolean
     lastUpdated?: boolean
   }
 
-  export type VehicleAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vehicleId" | "hoursOperated" | "distanceTraveled" | "location" | "speed" | "lastUpdated", ExtArgs["result"]["vehicleAnalytics"]>
+  export type VehicleAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vehicleId" | "hoursOperated" | "distanceTraveled" | "location" | "lastUpdated", ExtArgs["result"]["vehicleAnalytics"]>
   export type VehicleAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
@@ -5606,7 +5593,6 @@ export namespace Prisma {
       hoursOperated: number
       distanceTraveled: number
       location: Prisma.JsonValue
-      speed: number
       lastUpdated: Date
     }, ExtArgs["result"]["vehicleAnalytics"]>
     composites: {}
@@ -6006,7 +5992,6 @@ export namespace Prisma {
     readonly hoursOperated: FieldRef<"VehicleAnalytics", 'Int'>
     readonly distanceTraveled: FieldRef<"VehicleAnalytics", 'Int'>
     readonly location: FieldRef<"VehicleAnalytics", 'Json'>
-    readonly speed: FieldRef<"VehicleAnalytics", 'Int'>
     readonly lastUpdated: FieldRef<"VehicleAnalytics", 'DateTime'>
   }
     
@@ -6453,7 +6438,6 @@ export namespace Prisma {
     hoursOperated: 'hoursOperated',
     distanceTraveled: 'distanceTraveled',
     location: 'location',
-    speed: 'speed',
     lastUpdated: 'lastUpdated'
   };
 
@@ -6802,7 +6786,6 @@ export namespace Prisma {
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
     distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
     location?: JsonFilter<"VehicleAnalytics">
-    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
@@ -6813,7 +6796,6 @@ export namespace Prisma {
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
     location?: SortOrder
-    speed?: SortOrder
     lastUpdated?: SortOrder
     vehicle?: VehicleOrderByWithRelationInput
   }
@@ -6827,7 +6809,6 @@ export namespace Prisma {
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
     distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
     location?: JsonFilter<"VehicleAnalytics">
-    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
     vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "id" | "vehicleId">
@@ -6838,7 +6819,6 @@ export namespace Prisma {
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
     location?: SortOrder
-    speed?: SortOrder
     lastUpdated?: SortOrder
     _count?: VehicleAnalyticsCountOrderByAggregateInput
     _avg?: VehicleAnalyticsAvgOrderByAggregateInput
@@ -6856,7 +6836,6 @@ export namespace Prisma {
     hoursOperated?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
     distanceTraveled?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
     location?: JsonWithAggregatesFilter<"VehicleAnalytics">
-    speed?: IntWithAggregatesFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeWithAggregatesFilter<"VehicleAnalytics"> | Date | string
   }
 
@@ -7107,7 +7086,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
     vehicle: VehicleCreateNestedOneWithoutAnalyticsInput
   }
@@ -7118,7 +7096,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
   }
 
@@ -7126,7 +7103,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
     vehicle?: VehicleUpdateOneRequiredWithoutAnalyticsNestedInput
   }
@@ -7136,7 +7112,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7146,7 +7121,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
   }
 
@@ -7154,7 +7128,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7163,7 +7136,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7455,14 +7427,12 @@ export namespace Prisma {
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
     location?: SortOrder
-    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
   export type VehicleAnalyticsAvgOrderByAggregateInput = {
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
-    speed?: SortOrder
   }
 
   export type VehicleAnalyticsMaxOrderByAggregateInput = {
@@ -7470,7 +7440,6 @@ export namespace Prisma {
     vehicleId?: SortOrder
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
-    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
@@ -7479,14 +7448,12 @@ export namespace Prisma {
     vehicleId?: SortOrder
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
-    speed?: SortOrder
     lastUpdated?: SortOrder
   }
 
   export type VehicleAnalyticsSumOrderByAggregateInput = {
     hoursOperated?: SortOrder
     distanceTraveled?: SortOrder
-    speed?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7929,7 +7896,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
   }
 
@@ -7938,7 +7904,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
   }
 
@@ -8031,7 +7996,6 @@ export namespace Prisma {
     hoursOperated?: IntFilter<"VehicleAnalytics"> | number
     distanceTraveled?: IntFilter<"VehicleAnalytics"> | number
     location?: JsonFilter<"VehicleAnalytics">
-    speed?: IntFilter<"VehicleAnalytics"> | number
     lastUpdated?: DateTimeFilter<"VehicleAnalytics"> | Date | string
   }
 
@@ -8350,7 +8314,6 @@ export namespace Prisma {
     hoursOperated: number
     distanceTraveled: number
     location: InputJsonValue
-    speed: number
     lastUpdated?: Date | string
   }
 
@@ -8399,7 +8362,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8407,7 +8369,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8415,7 +8376,6 @@ export namespace Prisma {
     hoursOperated?: IntFieldUpdateOperationsInput | number
     distanceTraveled?: IntFieldUpdateOperationsInput | number
     location?: InputJsonValue | InputJsonValue
-    speed?: IntFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

@@ -1,0 +1,132 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Analytics
+ *   description: API for tracking and retrieving vehicle analytics
+ */
+
+/**
+ * @swagger
+ * /vehicles/{id}/analytics:
+ *   get:
+ *     summary: Get analytics data for a specific vehicle
+ *     tags: [Analytics]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     responses:
+ *       200:
+ *         description: Analytics data retrieved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/VehicleAnalytics'
+ *       404:
+ *         description: Vehicle not found
+ *       500:
+ *         description: Failed to fetch analytics data
+ *
+ *   post:
+ *     summary: Create or update analytics data for a vehicle
+ *     tags: [Analytics]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The vehicle ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateVehicleAnalyticsDTO'
+ *     responses:
+ *       201:
+ *         description: Analytics data created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/VehicleAnalytics'
+ *       400:
+ *         description: Invalid input
+ *       500:
+ *         description: Failed to create analytics data
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CreateVehicleAnalyticsDTO:
+ *       type: object
+ *       required:
+ *         - vehicleId
+ *         - hoursOperated
+ *         - distanceTraveled
+ *         - location
+ *       properties:
+ *         vehicleId:
+ *           type: string
+ *         hoursOperated:
+ *           type: number
+ *         distanceTraveled:
+ *           type: number
+ *         location:
+ *           type: object
+ *           required:
+ *             - latitude
+ *             - longitude
+ *           properties:
+ *             latitude:
+ *               type: number
+ *             longitude:
+ *               type: number
+ *       example:
+ *         vehicleId: "v123"
+ *         hoursOperated: 120.5
+ *         distanceTraveled: 4500.2
+ *         location:
+ *           latitude: 25.2048
+ *           longitude: 55.2708
+
+ *     VehicleAnalytics:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         vehicleId:
+ *           type: string
+ *         hoursOperated:
+ *           type: number
+ *         distanceTraveled:
+ *           type: number
+ *         location:
+ *           type: object
+ *           properties:
+ *             type:
+ *               type: string
+ *               example: "Point"
+ *             coordinates:
+ *               type: array
+ *               items:
+ *                 type: number
+ *               example: [55.2708, 25.2048]
+ *         lastUpdated:
+ *           type: string
+ *           format: date-time
+ *       example:
+ *         id: "a1b2c3"
+ *         vehicleId: "v123"
+ *         hoursOperated: 120.5
+ *         distanceTraveled: 4500.2
+ *         location:
+ *           type: "Point"
+ *           coordinates: [55.2708, 25.2048]
+ *         lastUpdated: "2024-04-14T12:30:00.000Z"
+ */

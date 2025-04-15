@@ -32,7 +32,6 @@ class AnalyticsService {
           distanceTraveled: data.distanceTraveled,
           location: geoPoint, // GeoJSON format
           lastUpdated: new Date(),
-          speed: data.speed,
         },
       });
 

@@ -17,7 +17,14 @@ const options: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: [path.resolve(__dirname, "../modules/**/*.docs")],
+  apis: [
+    path.resolve(__dirname, "../modules/vehicle/**/*.docs"),
+    path.resolve(__dirname, "../modules/maintenance/**/*.docs"),
+    path.resolve(__dirname, "../modules/sensor/**/*.docs"),
+    path.resolve(__dirname, "../modules/track/**/*.docs"),
+    path.resolve(__dirname, "../modules/analytics/**/*.docs"),
+    path.resolve(__dirname, "../modules/telemetry/**/*.docs"),
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
