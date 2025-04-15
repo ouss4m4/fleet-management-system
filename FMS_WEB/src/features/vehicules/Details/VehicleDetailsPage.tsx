@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import VehicleDetails from './VehicleDetails';
 import { useParams } from 'react-router-dom';
 import VehicleMaintenance from './VehicleMaintenance';
+import VehicleSensors from './VehicleSensors';
 
 export default function VehicleDetailsPage() {
   const { id } = useParams<{ id: string }>();
@@ -39,6 +40,9 @@ export default function VehicleDetailsPage() {
         </div>
         <div className="h-full">
           <VehicleMaintenance data={vehicle.maintenanceRecords} />
+        </div>
+        <div className="h-full">
+          <VehicleSensors data={vehicle.sensors} />
         </div>
       </div>
     </>
