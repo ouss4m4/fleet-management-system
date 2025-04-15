@@ -22,8 +22,8 @@ class TrackingService {
 
     const result: IVehicleTrackingResponse = {
       status: vehicle.status,
-      lastUpdate: vehicleAnalytic?.lastUpdated,
       location: JSON.parse(JSON.stringify(vehicleAnalytic.location)),
+      lastUpdate: vehicleAnalytic?.lastUpdated,
     };
 
     return result;
