@@ -24,11 +24,37 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/VehicleAnalytics'
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   $ref: '#/components/schemas/VehicleAnalytics'
  *       404:
  *         description: Vehicle not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
  *       500:
  *         description: Failed to fetch analytics data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
  *
  *   post:
  *     summary: Create or update analytics data for a vehicle
@@ -52,11 +78,41 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/VehicleAnalytics'
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   $ref: '#/components/schemas/VehicleAnalytics'
  *       400:
  *         description: Invalid input
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                 errors:
+ *                   type: object
+ *                   additionalProperties:
+ *                     type: string
  *       500:
  *         description: Failed to create analytics data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
  */
 
 /**

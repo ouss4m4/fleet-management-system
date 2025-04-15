@@ -20,14 +20,46 @@
  *     responses:
  *       201:
  *         description: Telemetry data accepted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Telemetry accepted"
  *       400:
  *         description: Invalid telemetry data
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "Validation failed"
+ *                 errors:
+ *                   type: object
+ *                   additionalProperties:
+ *                     type: string
  *       500:
  *         description: Server error while processing telemetry
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
  */
 
 /**
@@ -45,7 +77,7 @@
  *           example: "sensor-abc-123"
  *         payload:
  *           type: object
- *           description: Arbitrary sensor data (temperature, gps,  RPM, fuel, etc. l)
+ *           description: Arbitrary sensor data (temperature, gps, RPM, fuel, etc.)
  *           example:
  *             longitude: 25.2048
  *             latitude: 55.2708
@@ -54,15 +86,4 @@
  *           format: date-time
  *           description: ISO timestamp (optional, defaults to now)
  *           example: "2024-04-14T12:34:56.789Z"
-
- *     ErrorResponse:
- *       type: object
- *       properties:
- *         error:
- *           type: string
- *           example: "Validation failed"
- *         errors:
- *           type: object
- *           additionalProperties:
- *             type: string
  */
