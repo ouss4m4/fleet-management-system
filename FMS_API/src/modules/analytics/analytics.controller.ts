@@ -6,7 +6,7 @@ export class AnalyticsController {
   public static async getVehicleAnalytics(req: Request, res: Response): Promise<void> {
     try {
       const { id: vehicleId } = req.params;
-      const result = analyticsService.getAnalyticsForVehicle(vehicleId);
+      const result = await analyticsService.getAnalyticsForVehicle(vehicleId);
       res.json(result);
     } catch (error) {
       AnalyticsController.handleError(res, error, "Failed to get vehicle analytics records");
