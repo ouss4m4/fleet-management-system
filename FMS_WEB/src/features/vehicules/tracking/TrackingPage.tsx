@@ -17,7 +17,7 @@ export default function TrackingPage() {
       const data = await api<ITracking>('GET', `/vehicles/${id}/track`);
 
       setData(data);
-      clearInterval(interval);
+      // clearInterval(interval);
     };
     fetchTrackData();
 

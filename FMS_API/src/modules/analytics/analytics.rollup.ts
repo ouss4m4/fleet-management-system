@@ -76,6 +76,6 @@ async function updateVehicleAnalytics(): Promise<void> {
 
 // Loop forever
 (async () => {
-  setInterval(updateVehicleAnalytics, 10_000);
+  setInterval(updateVehicleAnalytics, 6000);
   await new Promise(() => {});
 })();

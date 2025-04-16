@@ -98,7 +98,7 @@ async function simulateSensorData(): Promise<void> {
   console.log("done");
 }
 simulateSensorData();
-setInterval(simulateSensorData, 50000);
+setInterval(simulateSensorData, 3000);
 // read from Sensor. grab all available sensors
 // for every sensor insert a fake payload depending to type
 // this script should run every 5 seconds. and query the db for sensors everytime (covering new sensors)
