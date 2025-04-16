@@ -45,7 +45,7 @@ export default function MaintenanceTable({
           </div>
         </CardHeader>
         <CardContent>
-          <div className="relative max-h-[300px] overflow-y-auto">
+          <div className="relative max-h-[190px] overflow-y-auto">
             <Table>
               <TableHeader>
                 <TableRow className="sticky top-0 z-10 bg-white">

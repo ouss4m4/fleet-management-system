@@ -39,6 +39,7 @@ export default function TrackingPage() {
         clearInterval(interval);
       }
     };
+    fetchTrackData();
 
     const interval = setInterval(() => {
       refCount.current += 1;
