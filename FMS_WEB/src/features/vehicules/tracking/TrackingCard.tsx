@@ -9,6 +9,21 @@ type Props = {
 };
 
 export default function TrackingCard({ data }: Props) {
+  if (!data.location) {
+    return (
+      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+        <CardHeader className="flex justify-between">
+          <h2 className="text-lg font-semibold">Location & Status</h2>
+          <div className="text-sm">
+            Status:<strong> {data.status}</strong>
+          </div>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 gap-4">
+          <p>No location data available.</p>
+        </CardContent>
+      </Card>
+    );
+  }
   const coordinates: LatLngTuple = [
     parseFloat(data.location.coordinates[1]), // lat
     parseFloat(data.location.coordinates[0]), // lng

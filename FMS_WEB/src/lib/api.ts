@@ -35,7 +35,6 @@ function buildQueryString(
   return `?${query.toString()}`;
 }
 
-// Simple API function that fetches data and returns it with a generic type
 export async function api<T>(
   method: HTTPMethod,
   path: string,
@@ -44,7 +43,7 @@ export async function api<T>(
   const { params, headers, body, ...rest } = options;
   const url = `${BASE_URL}${path}${buildQueryString(params)}`;
 
-  // await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
+  await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
   const res = await fetch(url, {
     method,
     headers: {

@@ -7,10 +7,10 @@ import AnalyticsCards from './AnalyticsCard';
 export default function AnalyticsPage() {
   const { id } = useParams<{ id: string }>();
 
-  const { data } = useSuspenseQuery({
+  const { data, refetch } = useSuspenseQuery({
     queryKey: ['vehicle', id, 'analytics'],
     queryFn: () => api<IAnalytics>('GET', `/vehicles/${id}/analytics`),
   });
 
-  return <AnalyticsCards data={data} />;
+  return <AnalyticsCards data={data} reload={refetch} />;
 }

@@ -43,9 +43,9 @@ export interface IAnalytics {
 
 export interface ITracking {
   status: string;
-  location: {
+  location?: {
     type: 'Point';
     coordinates: [string, string];
   };
-  lastUpdate: string;
+  lastUpdate?: string;
 }

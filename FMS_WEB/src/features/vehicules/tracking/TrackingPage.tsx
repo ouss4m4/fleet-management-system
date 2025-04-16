@@ -16,23 +16,29 @@ export default function TrackingPage() {
     const fetchTrackData = async () => {
       const original = await api<ITracking>('GET', `/vehicles/${id}/track`);
 
-      const lat = parseFloat(original.location.coordinates[1]);
-      const lng = parseFloat(original.location.coordinates[0]);
+      if (original.location) {
+        // setError('Failed to fetch tracking data');
 
-      // Only shift after first fetch
-      const offset = refCount.current > 0 ? refCount.current * 0.0004 : 0;
+        const lat = parseFloat(original.location.coordinates[1]);
+        const lng = parseFloat(original.location.coordinates[0]);
 
-      const result: ITracking = {
-        ...original,
-        location: {
-          ...original.location,
-          coordinates: [(lng - offset).toFixed(6), (lat + offset).toFixed(6)],
-        },
-      };
+        // Only shift after first fetch
+        const offset = refCount.current > 0 ? refCount.current * 0.0004 : 0;
 
-      setData(result);
+        const result: ITracking = {
+          ...original,
+          location: {
+            ...original.location,
+            coordinates: [(lng + offset).toFixed(6), (lat - offset).toFixed(6)],
+          },
+        };
+        setData(result);
+        return;
+      } else {
+        setData(original);
+        clearInterval(interval);
+      }
     };
-    fetchTrackData();
 
     const interval = setInterval(() => {
       refCount.current += 1;
@@ -43,7 +49,7 @@ export default function TrackingPage() {
     return () => clearInterval(interval);
   }, [id]);
 
-  if (isLoading || !data)
+  if (isLoading || !data) {
     return (
       <div className="h-full min-h-80 w-full bg-white">
         <div className="flex flex-col space-y-3">
@@ -55,6 +61,7 @@ export default function TrackingPage() {
         </div>
       </div>
     );
+  }
 
   return <TrackingCard data={data} />;
 }

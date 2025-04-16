@@ -8,7 +8,7 @@ export interface IVehicleTrackingResponse {
 }
 
 class TrackingService {
-  public async trackVehicle(vehicleId: string): Promise<IVehicleTrackingResponse> {
+  public async trackVehicle(vehicleId: string): Promise<Partial<IVehicleTrackingResponse>> {
     const vehicle = await vehicleService.findById(vehicleId);
     if (!vehicle) {
       throw new Error("VehicleId not found");
@@ -16,15 +16,13 @@ class TrackingService {
 
     const vehicleAnalytic = await analyticsService.getAnalyticsForVehicle(vehicle.id);
 
-    if (!vehicleAnalytic) {
-      throw new Error("No data for vehicle, try again later");
-    }
-
-    const result: IVehicleTrackingResponse = {
+    const result: Partial<IVehicleTrackingResponse> = {
       status: vehicle.status,
-      location: JSON.parse(JSON.stringify(vehicleAnalytic.location)),
-      lastUpdate: vehicleAnalytic?.lastUpdated,
     };
+    if (vehicleAnalytic) {
+      result.location = JSON.parse(JSON.stringify(vehicleAnalytic.location));
+      result.lastUpdate = vehicleAnalytic?.lastUpdated;
+    }
 
     return result;
   }

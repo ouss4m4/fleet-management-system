@@ -25,13 +25,20 @@ class AnalyticsService {
     };
 
     try {
-      const analytics = await prisma.vehicleAnalytics.create({
-        data: {
+      const analytics = await prisma.vehicleAnalytics.upsert({
+        where: {
+          vehicleId: data.vehicleId, // Single Analytics Row Per Vehicle (for assesment reasons)
+        },
+        create: {
           vehicleId: data.vehicleId,
           hoursOperated: data.hoursOperated,
           distanceTraveled: data.distanceTraveled,
-          location: geoPoint, // GeoJSON format
-          lastUpdated: new Date(),
+          location: geoPoint,
+        },
+        update: {
+          hoursOperated: data.hoursOperated,
+          distanceTraveled: data.distanceTraveled,
+          location: geoPoint,
         },
       });
 
