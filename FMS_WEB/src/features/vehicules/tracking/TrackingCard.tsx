@@ -15,7 +15,7 @@ export default function TrackingCard({ data }: Props) {
         <CardHeader className="flex justify-between">
           <h2 className="text-lg font-semibold">Location & Status</h2>
           <div className="text-sm">
-            Status:<strong> {data.status}</strong>
+            Status:<strong className="capitalize"> {data.status}</strong>
           </div>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4">

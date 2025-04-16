@@ -24,11 +24,11 @@ export default function AnalyticsCards({ data, reload }: Props) {
           </div>
         </CardHeader>
 
-        <CardContent className="grid grid-cols-2 space-y-1">
+        <CardContent>
           {!data ? (
-            <p>No data available right now</p>
+            <p>Add A sensor to start collecting data.</p>
           ) : (
-            <>
+            <div className="grid grid-cols-2 space-y-1">
               <p className="text-muted-foreground text-sm capitalize">
                 Distance Traveled
               </p>
@@ -47,7 +47,7 @@ export default function AnalyticsCards({ data, reload }: Props) {
               <span className="text-primary font-semibold">
                 {data.lastUpdated}
               </span>
-            </>
+            </div>
           )}
         </CardContent>
       </Card>

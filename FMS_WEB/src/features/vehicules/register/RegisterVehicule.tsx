@@ -87,7 +87,7 @@ export default function RegisterVehicleDetails({
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Volvo X01" {...field} />
+                    <Input placeholder="Site A01 - Digger" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -101,7 +101,7 @@ export default function RegisterVehicleDetails({
                 <FormItem>
                   <FormLabel>Model</FormLabel>
                   <FormControl>
-                    <Input placeholder="750Tons" {...field} />
+                    <Input placeholder="Caterpillar 320D" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -115,7 +115,7 @@ export default function RegisterVehicleDetails({
                 <FormItem>
                   <FormLabel>Type</FormLabel>
                   <FormControl>
-                    <Input placeholder="Truck" {...field} />
+                    <Input placeholder="Excavator" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

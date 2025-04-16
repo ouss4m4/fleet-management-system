@@ -30,11 +30,15 @@ export default function DetailsCard({ vehicle, reload }: Props) {
         </CardHeader>
         <CardContent className="grid grid-cols-2 space-y-1">
           <p className="text-muted-foreground text-sm capitalize">Model</p>
-          <span className="text-primary font-semibold">{vehicle.model}</span>
+          <span className="text-primary font-semibold capitalize">
+            {vehicle.model}
+          </span>
           <p className="text-muted-foreground text-sm capitalize">Type</p>
           <span className="text-primary font-semibold">{vehicle.type}</span>
           <p className="text-muted-foreground text-sm capitalize">Status</p>
-          <span className="text-primary font-semibold">{vehicle.status}</span>
+          <span className="text-primary font-semibold capitalize">
+            {vehicle.status}
+          </span>
           <p className="text-muted-foreground text-sm capitalize">Region</p>
           <span className="text-primary font-semibold">{vehicle.region}</span>
         </CardContent>

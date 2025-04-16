@@ -43,26 +43,32 @@ export default function SensorsTable({ sensors, reload, vehicleId }: Props) {
         </CardHeader>
 
         <CardContent>
-          <div className="relative max-h-[190px] overflow-y-auto">
-            <Table>
-              <TableHeader>
-                <TableRow className="sticky top-0 z-10 bg-white">
-                  <TableHead className="w-[200px]">Name</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Unit</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sensors.map((sensor) => (
-                  <TableRow key={sensor.id}>
-                    <TableCell className="font-medium">{sensor.name}</TableCell>
-                    <TableCell>{sensor.type}</TableCell>
-                    <TableCell>{sensor.unit}</TableCell>
+          {sensors.length === 0 ? (
+            <p>No sensors are assigned yet. start by adding one</p>
+          ) : (
+            <div className="relative max-h-[190px] overflow-y-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow className="sticky top-0 z-10 bg-white">
+                    <TableHead className="w-[200px]">Name</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Unit</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                </TableHeader>
+                <TableBody>
+                  {sensors.map((sensor) => (
+                    <TableRow key={sensor.id}>
+                      <TableCell className="font-medium">
+                        {sensor.name}
+                      </TableCell>
+                      <TableCell>{sensor.type}</TableCell>
+                      <TableCell>{sensor.unit}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}{' '}
         </CardContent>
       </Card>
 

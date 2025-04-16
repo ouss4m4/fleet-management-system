@@ -4,7 +4,7 @@ import { api } from '@/lib/api';
 import VehicleList from './VehicleList';
 import { Button } from '@/components/ui/button';
 import { PlusCircleIcon } from 'lucide-react';
-import RegisterVehicleDetails from './register/AddVehicule';
+import RegisterVehicleDetails from './register/RegisterVehicule';
 
 export default function VehicleListPage() {
   const [vehicles, setVehicles] = useState<IVehicle[] | null>(null);
@@ -30,16 +30,20 @@ export default function VehicleListPage() {
 
   if (loading) return <p className="text-center">Loading...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
-  if (!vehicles?.length) {
-    return <p className="text-center">No vehicles found.</p>;
-  }
 
   return (
     <>
       <Button className="mb-2" variant="outline" onClick={() => setOpen(true)}>
         <PlusCircleIcon /> Register Vehicle
       </Button>
-      <VehicleList vehicles={vehicles} />
+      {vehicles && vehicles.length ? (
+        <VehicleList vehicles={vehicles} />
+      ) : (
+        <p className="text-center">
+          No vehicles found. Try registerinng a new one
+        </p>
+      )}
+
       <RegisterVehicleDetails
         onOpenChange={setOpen}
         open={open}
