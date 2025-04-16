@@ -25,8 +25,8 @@ export default function TrackingCard({ data }: Props) {
     );
   }
   const coordinates: LatLngTuple = [
-    parseFloat(data.location.coordinates[1]), // lat
-    parseFloat(data.location.coordinates[0]), // lng
+    parseFloat(data.location.coordinates[0]), // lat
+    parseFloat(data.location.coordinates[1]), // lng
   ];
 
   return (

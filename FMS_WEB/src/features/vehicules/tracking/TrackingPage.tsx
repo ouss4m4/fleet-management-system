@@ -14,30 +14,10 @@ export default function TrackingPage() {
 
   useEffect(() => {
     const fetchTrackData = async () => {
-      const original = await api<ITracking>('GET', `/vehicles/${id}/track`);
+      const data = await api<ITracking>('GET', `/vehicles/${id}/track`);
 
-      if (original.location) {
-        // setError('Failed to fetch tracking data');
-
-        const lat = parseFloat(original.location.coordinates[0]);
-        const lng = parseFloat(original.location.coordinates[1]);
-
-        // Only shift after first fetch
-        const offset = refCount.current > 0 ? refCount.current * 0.0004 : 0;
-
-        const result: ITracking = {
-          ...original,
-          location: {
-            ...original.location,
-            coordinates: [(lng + offset).toFixed(6), (lat - offset).toFixed(6)],
-          },
-        };
-        setData(result);
-        return;
-      } else {
-        setData(original);
-        clearInterval(interval);
-      }
+      setData(data);
+      clearInterval(interval);
     };
     fetchTrackData();
 
