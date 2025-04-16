@@ -9,9 +9,9 @@ type Props = {
 export default function AnalyticsCards({ data, reload }: Props) {
   return (
     <>
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+      <Card className="h-full shadow-none">
         <CardHeader>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold"> Usage & Metrics</h2>
             <Button
               variant={'outline'}
@@ -19,6 +19,7 @@ export default function AnalyticsCards({ data, reload }: Props) {
               onClick={() => reload()}
             >
               <RefreshCcw />
+              <span className="hidden xl:block">Refresh</span>
             </Button>
           </div>
         </CardHeader>

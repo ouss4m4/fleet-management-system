@@ -39,7 +39,7 @@ export default function MaintenanceTable({
               variant="outline"
               onClick={() => setOpen(true)}
             >
-              <PlusCircle className="mr-2 h-4 w-4" />
+              <PlusCircle />
               <span className="hidden xl:block">Add Maintenance</span>
             </Button>
           </div>

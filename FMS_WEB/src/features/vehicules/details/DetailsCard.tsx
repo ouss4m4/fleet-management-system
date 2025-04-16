@@ -1,25 +1,32 @@
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { IVehicle } from '@/typings';
-
+import { Edit } from 'lucide-react';
+import { useState } from 'react';
+import EditVehicleDetails from './EditDetails';
 type Props = {
   vehicle: IVehicle;
+  reload: () => void;
 };
 
-export default function DetailsCard({ vehicle }: Props) {
-  if (!vehicle) {
-    return (
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
-        <CardHeader>
-          <p className="text-lg font-semibold">No vehicle found</p>
-        </CardHeader>
-      </Card>
-    );
-  }
+export default function DetailsCard({ vehicle, reload }: Props) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+      <Card className="h-full shadow-none">
         <CardHeader>
-          <p className="text-lg font-semibold">{vehicle.name}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-lg font-semibold">{vehicle.name}</p>
+            <Button
+              variant="outline"
+              className="cursor-pointer"
+              onClick={() => setOpen(true)}
+            >
+              <Edit />
+              <span className="hidden xl:block">Edit</span>
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="grid grid-cols-2 space-y-1">
           <p className="text-muted-foreground text-sm capitalize">Model</p>
@@ -32,6 +39,12 @@ export default function DetailsCard({ vehicle }: Props) {
           <span className="text-primary font-semibold">{vehicle.region}</span>
         </CardContent>
       </Card>
+      <EditVehicleDetails
+        onOpenChange={setOpen}
+        open={open}
+        reload={reload}
+        vehicle={vehicle}
+      />
     </>
   );
 }

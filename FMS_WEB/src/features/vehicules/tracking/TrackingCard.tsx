@@ -11,7 +11,7 @@ type Props = {
 export default function TrackingCard({ data }: Props) {
   if (!data.location) {
     return (
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+      <Card className="h-full shadow-none">
         <CardHeader className="flex justify-between">
           <h2 className="text-lg font-semibold">Location & Status</h2>
           <div className="text-sm">
@@ -30,7 +30,7 @@ export default function TrackingCard({ data }: Props) {
   ];
 
   return (
-    <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+    <Card className="h-full shadow-none">
       <CardHeader className="flex justify-between">
         <h2 className="text-lg font-semibold">Location & Status</h2>
         <div className="text-sm">

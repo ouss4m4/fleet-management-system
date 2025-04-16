@@ -24,7 +24,7 @@ export default function SensorsTable({ sensors, reload, vehicleId }: Props) {
 
   return (
     <>
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+      <Card className="h-full shadow-none">
         <CardHeader>
           <div className="flex justify-between">
             <div className="flex items-center space-x-1">
@@ -36,7 +36,7 @@ export default function SensorsTable({ sensors, reload, vehicleId }: Props) {
               variant="outline"
               onClick={() => setOpen(true)}
             >
-              <PlusCircle className="mr-2 h-4 w-4" />
+              <PlusCircle />
               <span className="hidden xl:block">Add Sensor</span>
             </Button>
           </div>

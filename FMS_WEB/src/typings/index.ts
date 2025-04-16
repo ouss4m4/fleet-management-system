@@ -8,6 +8,7 @@ export interface IVehicle {
   region: string;
   status: VehicleStatus;
   maintenanceRecords: IVehicleMaintenance[];
+  sensors: ISensor[];
 }
 
 export interface IVehicleMaintenance {
