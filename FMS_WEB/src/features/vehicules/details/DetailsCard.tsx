@@ -5,7 +5,7 @@ type Props = {
   vehicle: IVehicle;
 };
 
-export default function VehicleDetails({ vehicle }: Props) {
+export default function DetailsCard({ vehicle }: Props) {
   return (
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">

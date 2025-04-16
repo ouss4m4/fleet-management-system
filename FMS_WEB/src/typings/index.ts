@@ -1,4 +1,4 @@
-export type VehicleStatus = "active" | "maintenance" | "offline";
+export type VehicleStatus = 'active' | 'maintenance' | 'offline';
 
 export interface IVehicle {
   id: string;
@@ -6,10 +6,7 @@ export interface IVehicle {
   model: string;
   type: string;
   region: string;
-  maintenanceRecords: IVehicleMaintenance[];
   status: VehicleStatus;
-  sensors: ISensor[];
-  analytics: IAnalytics;
 }
 
 export interface IVehicleMaintenance {

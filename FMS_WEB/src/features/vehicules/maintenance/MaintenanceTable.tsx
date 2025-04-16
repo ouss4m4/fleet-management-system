@@ -11,13 +11,12 @@ import { formatDateToHumanReadable } from '@/lib/utils';
 import { IVehicleMaintenance } from '@/typings';
 
 type Props = {
-  data: IVehicleMaintenance[];
+  records: IVehicleMaintenance[];
 };
 
-export default function VehicleMaintenance({ data }: Props) {
+export default function MaintenanceTable({ records }: Props) {
   return (
     <>
-      {/* {JSON.stringify(data)} */}
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
         <CardHeader>
           <h2 className="text-lg font-semibold"> Maintenance Records</h2>
@@ -33,7 +32,7 @@ export default function VehicleMaintenance({ data }: Props) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data.map((record) => (
+                {records.map((record) => (
                   <TableRow key={record.id}>
                     <TableCell className="font-medium">
                       {formatDateToHumanReadable(

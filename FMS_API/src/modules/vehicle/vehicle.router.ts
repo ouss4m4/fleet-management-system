@@ -18,6 +18,7 @@ vehicleRouter.delete("/:id", VehicleController.deleteVehicle);
  * Vehicle Maintenance routes (TODO: If routes start getting bigger. create a /maintenance/maintenance.router.ts
  * and replace with
  * vehicleRouter.use("/:id/maintenance", maintenanceRouter)
+ * maintenance should put vehicle status to maintenance
  */
 
 vehicleRouter.get("/:id/maintenance", MaintenanceController.getVehicleMaintenance);

@@ -10,10 +10,10 @@ import {
 import { ISensor } from '@/typings';
 
 type Props = {
-  data: ISensor[];
+  sensors: ISensor[];
 };
 
-export default function VehicleSensors({ data }: Props) {
+export default function SensorsTable({ sensors }: Props) {
   return (
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
@@ -31,7 +31,7 @@ export default function VehicleSensors({ data }: Props) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data.map((sensor) => (
+                {sensors.map((sensor) => (
                   <TableRow key={sensor.id}>
                     <TableCell className="font-medium">{sensor.name}</TableCell>
                     <TableCell>{sensor.type}</TableCell>
@@ -46,7 +46,3 @@ export default function VehicleSensors({ data }: Props) {
     </>
   );
 }
-
-// name: string;
-//   type: string;
-//   unit: string;

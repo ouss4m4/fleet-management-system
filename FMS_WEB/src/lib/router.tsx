@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import VehicleListPage from '@/features/vehicules/vehicleListPage';
-import VehicleDetailsPage from '@/features/vehicules/Details/VehicleDetailsPage';
+import VehiclePage from '@/features/vehicules/VehiclePage';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/vehicles/:id',
-        element: <VehicleDetailsPage />,
+        element: <VehiclePage />,
       },
       // {
       //   path: '/vehicles/add',

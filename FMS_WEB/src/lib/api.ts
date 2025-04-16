@@ -1,6 +1,6 @@
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-type HTTPMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -23,8 +23,10 @@ export class APIError extends Error {
   }
 }
 
-function buildQueryString(params?: Record<string, string | number | boolean>): string {
-  if (!params) return "";
+function buildQueryString(
+  params?: Record<string, string | number | boolean>
+): string {
+  if (!params) return '';
   const query = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     query.append(key, value.toString());
@@ -33,23 +35,30 @@ function buildQueryString(params?: Record<string, string | number | boolean>): s
 }
 
 // Simple API function that fetches data and returns it with a generic type
-export async function api<T>(method: HTTPMethod, path: string, options: RequestOptions = {}): Promise<T> {
+export async function api<T>(
+  method: HTTPMethod,
+  path: string,
+  options: RequestOptions = {}
+): Promise<T> {
   const { params, headers, body, ...rest } = options;
   const url = `${BASE_URL}${path}${buildQueryString(params)}`;
 
+  await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
   const res = await fetch(url, {
     method,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       ...headers,
     },
     body: body ? JSON.stringify(body) : undefined,
     ...rest,
   });
 
-  const contentType = res.headers.get("Content-Type");
-  const isJson = contentType?.includes("application/json");
-  const json: ApiResponse<T> = isJson ? await res.json() : { success: false, error: await res.text() };
+  const contentType = res.headers.get('Content-Type');
+  const isJson = contentType?.includes('application/json');
+  const json: ApiResponse<T> = isJson
+    ? await res.json()
+    : { success: false, error: await res.text() };
 
   if (!res.ok || !json.success) {
     throw new APIError(res.status, json.errors || json.message || json);
