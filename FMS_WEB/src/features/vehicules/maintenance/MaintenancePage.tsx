@@ -5,13 +5,13 @@ import { api } from '@/lib/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 export default function MaintenancePage() {
-  const { id } = useParams<{ id: string }>();
+  const { id = '' } = useParams<{ id: string }>();
 
-  const { data: records } = useSuspenseQuery({
+  const { data: records, refetch } = useSuspenseQuery({
     queryKey: ['vehicle', id, 'maintenance'],
     queryFn: () =>
       api<IVehicleMaintenance[]>('GET', `/vehicles/${id}/maintenance`),
   });
 
-  return <MaintenanceTable records={records} />;
+  return <MaintenanceTable records={records} reload={refetch} vehicleId={id} />;
 }

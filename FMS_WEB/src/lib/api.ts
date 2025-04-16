@@ -9,8 +9,9 @@ interface ApiResponse<T> {
   data?: T;
 }
 
-interface RequestOptions extends RequestInit {
+interface RequestOptions extends Omit<RequestInit, 'body'> {
   params?: Record<string, string | number | boolean>;
+  body?: unknown; // or `any`, or `{ [key: string]: any }`
 }
 
 export class APIError extends Error {
@@ -43,7 +44,7 @@ export async function api<T>(
   const { params, headers, body, ...rest } = options;
   const url = `${BASE_URL}${path}${buildQueryString(params)}`;
 
-  await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
+  // await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
   const res = await fetch(url, {
     method,
     headers: {

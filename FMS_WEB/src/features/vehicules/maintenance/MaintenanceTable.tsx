@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
   Table,
@@ -9,19 +10,39 @@ import {
 } from '@/components/ui/table';
 import { formatDateToHumanReadable } from '@/lib/utils';
 import { IVehicleMaintenance } from '@/typings';
-
+import { PlusCircle } from 'lucide-react';
+import { useState } from 'react';
+import AddMaintenance from './add/AddMaintenance';
 type Props = {
   records: IVehicleMaintenance[];
+  reload: () => void;
+  vehicleId: string;
 };
 
-export default function MaintenanceTable({ records }: Props) {
+export default function MaintenanceTable({
+  records,
+  reload,
+  vehicleId,
+}: Props) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+      <Card className="h-full shadow-none">
         <CardHeader>
-          <div className="flex items-center space-x-1">
-            <h2 className="text-lg font-semibold"> Maintenance Records </h2>
-            <span className="text-sm">({records.length})</span>
+          <div className="flex justify-between">
+            <div className="flex items-center space-x-1">
+              <h2 className="text-lg font-semibold"> Maintenance Records </h2>
+              <span className="text-sm">({records.length})</span>
+            </div>
+            <Button
+              className="cursor-pointer"
+              variant="outline"
+              onClick={() => setOpen(true)}
+            >
+              <PlusCircle className="mr-2 h-4 w-4" />
+              <span className="hidden xl:block">Add Maintenance</span>
+            </Button>
           </div>
         </CardHeader>
         <CardContent>
@@ -55,6 +76,12 @@ export default function MaintenanceTable({ records }: Props) {
           </div>
         </CardContent>
       </Card>
+      <AddMaintenance
+        open={open}
+        onOpenChange={setOpen}
+        reload={reload}
+        vehicleId={vehicleId}
+      />
     </>
   );
 }
