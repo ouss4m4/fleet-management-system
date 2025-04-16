@@ -20,16 +20,13 @@ export default function TrackingPage() {
       const lng = parseFloat(original.location.coordinates[0]);
 
       // Only shift after first fetch
-      const offset = refCount.current > 0 ? refCount.current * 0.0005 : 0;
+      const offset = refCount.current > 0 ? refCount.current * 0.0004 : 0;
 
       const result: ITracking = {
         ...original,
         location: {
           ...original.location,
-          coordinates: [
-            (lng - offset).toFixed(6), // ✅ keep as number
-            (lat + offset).toFixed(6), // ✅ keep as number
-          ],
+          coordinates: [(lng - offset).toFixed(6), (lat + offset).toFixed(6)],
         },
       };
 
@@ -59,5 +56,5 @@ export default function TrackingPage() {
       </div>
     );
 
-  return <TrackingCard data={data} key={data.location.coordinates[0]} />;
+  return <TrackingCard data={data} />;
 }
