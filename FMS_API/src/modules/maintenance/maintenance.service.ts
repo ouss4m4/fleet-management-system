@@ -1,5 +1,5 @@
 import { MaintenanceRecord } from "../../../generated/prisma";
-import { prisma } from "../lib/prismaClient";
+import { prisma } from "../../lib/prismaClient";
 import { CreateMaintenanceDTO } from "./maintenace.types";
 
 class MaintenanceService {

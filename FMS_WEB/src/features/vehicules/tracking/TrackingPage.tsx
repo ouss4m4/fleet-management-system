@@ -19,8 +19,8 @@ export default function TrackingPage() {
       if (original.location) {
         // setError('Failed to fetch tracking data');
 
-        const lat = parseFloat(original.location.coordinates[1]);
-        const lng = parseFloat(original.location.coordinates[0]);
+        const lat = parseFloat(original.location.coordinates[0]);
+        const lng = parseFloat(original.location.coordinates[1]);
 
         // Only shift after first fetch
         const offset = refCount.current > 0 ? refCount.current * 0.0004 : 0;

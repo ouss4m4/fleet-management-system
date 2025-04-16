@@ -1,6 +1,6 @@
 import { CreateVehicleDTO, UpdateVehicleDTO } from "./vehicle.types";
 import { Vehicle } from "../../../generated/prisma";
-import { prisma } from "../lib/prismaClient";
+import { prisma } from "../../lib/prismaClient";
 
 class VehicleService {
   async create(data: CreateVehicleDTO): Promise<Vehicle> {

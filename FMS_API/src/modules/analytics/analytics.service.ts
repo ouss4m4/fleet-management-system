@@ -1,6 +1,6 @@
 import { CreateVehicleAnalyticsDTO } from "./analytics.types";
 import { VehicleAnalytics } from "../../../generated/prisma";
-import { prisma } from "../lib/prismaClient";
+import { prisma } from "../../lib/prismaClient";
 import { vehicleService } from "../vehicle/vehicle.service";
 
 class AnalyticsService {
