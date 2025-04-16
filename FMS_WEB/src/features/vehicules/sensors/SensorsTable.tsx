@@ -32,7 +32,10 @@ export default function SensorsTable({ sensors }: Props) {
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
         <CardHeader>
-          <h2 className="text-lg font-semibold"> Sensors Available</h2>
+          <div className="flex items-center space-x-1">
+            <h2 className="text-lg font-semibold">Sensors Available</h2>
+            <span className="text-sm">({sensors.length})</span>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="relative max-h-[300px] overflow-y-auto">

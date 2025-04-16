@@ -19,7 +19,10 @@ export default function MaintenanceTable({ records }: Props) {
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
         <CardHeader>
-          <h2 className="text-lg font-semibold"> Maintenance Records</h2>
+          <div className="flex items-center space-x-1">
+            <h2 className="text-lg font-semibold"> Maintenance Records </h2>
+            <span className="text-sm">({records.length})</span>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="relative max-h-[300px] overflow-y-auto">

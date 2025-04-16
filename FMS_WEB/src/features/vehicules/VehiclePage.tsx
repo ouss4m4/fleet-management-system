@@ -55,11 +55,10 @@ export default function VehiclePage() {
           </div>
         </WithSuspenseBoundary>
 
-        <WithSuspenseBoundary fallback={<SkeletonCard />}>
-          <div className="h-full min-h-80 lg:col-span-2">
-            <TrackingPage />
-          </div>
-        </WithSuspenseBoundary>
+        {/* Suspence and useEffect (to update map, do not work togeher) do not wo */}
+        <div className="h-full min-h-80 lg:col-span-2">
+          <TrackingPage />
+        </div>
       </div>
     </>
   );
