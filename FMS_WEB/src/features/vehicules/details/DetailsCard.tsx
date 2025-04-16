@@ -6,6 +6,15 @@ type Props = {
 };
 
 export default function DetailsCard({ vehicle }: Props) {
+  if (!vehicle) {
+    return (
+      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+        <CardHeader>
+          <p className="text-lg font-semibold">No vehicle found</p>
+        </CardHeader>
+      </Card>
+    );
+  }
   return (
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
@@ -13,8 +22,6 @@ export default function DetailsCard({ vehicle }: Props) {
           <p className="text-lg font-semibold">{vehicle.name}</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 space-y-1">
-          {/* <p className="text-muted-foreground text-sm capitalize">Name</p> */}
-          {/* <span className="text-primary font-semibold"></span> */}
           <p className="text-muted-foreground text-sm capitalize">Model</p>
           <span className="text-primary font-semibold">{vehicle.model}</span>
           <p className="text-muted-foreground text-sm capitalize">Type</p>

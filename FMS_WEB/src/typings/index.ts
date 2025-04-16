@@ -7,6 +7,7 @@ export interface IVehicle {
   type: string;
   region: string;
   status: VehicleStatus;
+  maintenanceRecords: IVehicleMaintenance[];
 }
 
 export interface IVehicleMaintenance {

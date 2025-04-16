@@ -46,7 +46,7 @@ export default function VehicleList({ vehicles }: Props) {
               <CardFooter className="space-x-4">
                 <div className="flex flex-col rounded border p-2 hover:shadow">
                   <p className="text-sm">Sensors</p>
-                  <p className="text-center">{vehicle.sensors.length}</p>
+                  <p className="text-center">{vehicle.sensors.length ?? 0}</p>
                 </div>
                 <div className="flex flex-col rounded border p-2">
                   <p className="text-sm">Last Maintenance</p>

@@ -14,6 +14,20 @@ type Props = {
 };
 
 export default function SensorsTable({ sensors }: Props) {
+  if (!sensors || sensors.length === 0) {
+    return (
+      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
+        <CardHeader>
+          <h2 className="text-lg font-semibold"> No Sensors Available</h2>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">
+            No sensors found for this vehicle.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
   return (
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
