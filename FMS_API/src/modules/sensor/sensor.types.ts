@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // TODO: This should be a separate collection SensorTypes and should be a dropdown on frontend (remove enum hardcode)
-export const SensorTypeEnum = z.enum(["gps", "thermal", "mileage", "temperature"]);
+export const SensorTypeEnum = z.enum(["GPS", "Mileage", "Temperature", "Hours"]);
 
 export const createSensorSchema = z.object({
   type: SensorTypeEnum,

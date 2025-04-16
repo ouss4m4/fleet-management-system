@@ -12,7 +12,7 @@ import { formatDateToHumanReadable } from '@/lib/utils';
 import { IVehicleMaintenance } from '@/typings';
 import { PlusCircle } from 'lucide-react';
 import { useState } from 'react';
-import AddMaintenance from './add/AddMaintenance';
+import AddMaintenance from './AddMaintenance';
 type Props = {
   records: IVehicleMaintenance[];
   reload: () => void;
@@ -25,7 +25,6 @@ export default function MaintenanceTable({
   vehicleId,
 }: Props) {
   const [open, setOpen] = useState(false);
-
   return (
     <>
       <Card className="h-full shadow-none">

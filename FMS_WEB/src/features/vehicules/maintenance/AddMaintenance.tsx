@@ -44,7 +44,6 @@ export default function AddMaintenance({
       cost: 0,
       date: new Date().toISOString().split('T')[0],
       description: '',
-      vehicleId,
     },
   });
 

@@ -8,35 +8,40 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { ISensor } from '@/typings';
+import AddSensor from './AddSensor';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { PlusCircle } from 'lucide-react';
 
 type Props = {
   sensors: ISensor[];
+  reload: () => void;
+  vehicleId: string;
 };
 
-export default function SensorsTable({ sensors }: Props) {
-  if (!sensors || sensors.length === 0) {
-    return (
-      <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
-        <CardHeader>
-          <h2 className="text-lg font-semibold"> No Sensors Available</h2>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">
-            No sensors found for this vehicle.
-          </p>
-        </CardContent>
-      </Card>
-    );
-  }
+export default function SensorsTable({ sensors, reload, vehicleId }: Props) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <Card className="h-full cursor-pointer shadow-none transition hover:shadow-md">
         <CardHeader>
-          <div className="flex items-center space-x-1">
-            <h2 className="text-lg font-semibold">Sensors Available</h2>
-            <span className="text-sm">({sensors.length})</span>
+          <div className="flex justify-between">
+            <div className="flex items-center space-x-1">
+              <h2 className="text-lg font-semibold"> Sensors Available </h2>
+              <span className="text-sm">({sensors.length})</span>
+            </div>
+            <Button
+              className="cursor-pointer"
+              variant="outline"
+              onClick={() => setOpen(true)}
+            >
+              <PlusCircle className="mr-2 h-4 w-4" />
+              <span className="hidden xl:block">Add Sensor</span>
+            </Button>
           </div>
         </CardHeader>
+
         <CardContent>
           <div className="relative max-h-[300px] overflow-y-auto">
             <Table>
@@ -52,7 +57,7 @@ export default function SensorsTable({ sensors }: Props) {
                   <TableRow key={sensor.id}>
                     <TableCell className="font-medium">{sensor.name}</TableCell>
                     <TableCell>{sensor.type}</TableCell>
-                    <TableCell>{sensor.type}</TableCell>
+                    <TableCell>{sensor.unit}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -60,6 +65,13 @@ export default function SensorsTable({ sensors }: Props) {
           </div>
         </CardContent>
       </Card>
+
+      <AddSensor
+        open={open}
+        onOpenChange={setOpen}
+        reload={reload}
+        vehicleId={vehicleId}
+      />
     </>
   );
 }
