@@ -40,3 +40,12 @@ export interface IAnalytics {
   lastUpdated: string;
   location: ILocation;
 }
+
+export interface ITracking {
+  status: string;
+  location: {
+    type: 'Point';
+    coordinates: [string, string];
+  };
+  lastUpdate: string;
+}

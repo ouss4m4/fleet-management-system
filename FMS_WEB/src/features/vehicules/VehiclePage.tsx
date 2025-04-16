@@ -9,6 +9,7 @@ import AnalyticsPage from './analytics/AnalyticsPage';
 import { Skeleton } from '@/components/ui/skeleton';
 import WithSuspenseBoundary from '@/components/WithSuspenceBoundary';
 import { useParams } from 'react-router-dom';
+import TrackingPage from './tracking/TrackingPage';
 
 export function SkeletonCard() {
   return (
@@ -29,7 +30,7 @@ export default function VehiclePage() {
   return (
     <>
       <h1 className="mb-6 text-2xl font-semibold">Vehicle Details</h1>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
         <WithSuspenseBoundary fallback={<SkeletonCard />}>
           <div className="h-full min-h-80">
             <DetailsPage />
@@ -49,13 +50,15 @@ export default function VehiclePage() {
         </WithSuspenseBoundary>
 
         <WithSuspenseBoundary fallback={<SkeletonCard />} resetKeys={[id]}>
-          <div className="h-full min-h-80">
+          <div className="h-full min-h-80" key={id}>
             <AnalyticsPage />
           </div>
         </WithSuspenseBoundary>
 
         <WithSuspenseBoundary fallback={<SkeletonCard />}>
-          <div className="h-full min-h-80">{/* <TrackingPage /> */}</div>
+          <div className="h-full min-h-80 lg:col-span-2">
+            <TrackingPage />
+          </div>
         </WithSuspenseBoundary>
       </div>
     </>

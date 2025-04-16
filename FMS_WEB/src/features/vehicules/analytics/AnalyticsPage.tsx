@@ -9,7 +9,7 @@ export default function AnalyticsPage() {
 
   const { data } = useSuspenseQuery({
     queryKey: ['vehicle', id, 'analytics'],
-    queryFn: () => api<IAnalytics>('GET', `/vehicles/${id}/analyticsz`),
+    queryFn: () => api<IAnalytics>('GET', `/vehicles/${id}/analytics`),
   });
 
   return <AnalyticsCards data={data} />;
