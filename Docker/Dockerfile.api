@@ -3,20 +3,21 @@ FROM node:20-slim AS builder
 
 WORKDIR /app
 
-# Install OpenSSL
+# Install OpenSSL (docker connections issue solved)
 RUN apt-get update && apt-get install -y openssl
 
 COPY FMS_API/package.json FMS_API/package-lock.json ./
 RUN npm install
 
-# Copy Prisma schema first
-COPY FMS_API/prisma ./prisma
+# Copy the rest of the application
+COPY FMS_API ./
+
+# Copy frontend from the web build
+COPY --from=fleet-management-system-web:latest /export/dist ./public
+
 
 # Generate Prisma client
 RUN npx prisma generate
-
-# Copy the rest of the application
-COPY FMS_API ./
 
 RUN npm run build
 
@@ -36,8 +37,6 @@ COPY --from=builder /app/generated ./generated
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/prisma ./prisma
 
-# Copy frontend from the web build
-COPY --from=fleet-management-system-web:latest /export/dist ./public
 
 # Entrypoint
 CMD ["node", "dist/index.js"]
