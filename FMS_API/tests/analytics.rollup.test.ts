@@ -1,5 +1,5 @@
 import { updateVehicleAnalytics } from "../src/modules/analytics/analytics.rollup";
-import { Sensor, Telemetry, VehicleAnalytics } from "../generated/prisma";
+import { Sensor, Telemetry, VehicleAnalytics } from "../src/prisma";
 import { prisma } from "../src/lib/prismaClient";
 import logger from "../src/utils/logger";
 

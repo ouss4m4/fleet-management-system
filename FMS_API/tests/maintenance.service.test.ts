@@ -1,4 +1,4 @@
-import { MaintenanceRecord } from "../generated/prisma";
+import { MaintenanceRecord } from "../src/prisma";
 import { maintenanceService } from "../src/modules/maintenance/maintenance.service";
 import { prisma } from "../src/lib/prismaClient";
 

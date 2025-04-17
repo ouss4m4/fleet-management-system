@@ -1,7 +1,7 @@
-import { Vehicle } from "../generated/prisma";
 import { prisma } from "../src/lib/prismaClient";
 import { vehicleService } from "../src/modules/vehicle/vehicle.service";
 import { CreateVehicleDTO, UpdateVehicleDTO } from "../src/modules/vehicle/vehicle.types";
+import { Vehicle } from "../src/prisma";
 
 // Mock Prisma client
 jest.mock("../src/lib/prismaClient", () => ({

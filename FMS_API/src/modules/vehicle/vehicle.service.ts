@@ -1,5 +1,5 @@
 import { CreateVehicleDTO, UpdateVehicleDTO } from "./vehicle.types";
-import { Vehicle } from "../../../generated/prisma";
+import { Vehicle } from "../../prisma";
 import { prisma } from "../../lib/prismaClient";
 
 class VehicleService {

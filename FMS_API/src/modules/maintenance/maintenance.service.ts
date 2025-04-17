@@ -1,4 +1,4 @@
-import { MaintenanceRecord } from "../../../generated/prisma";
+import { MaintenanceRecord } from "../../prisma";
 import { prisma } from "../../lib/prismaClient";
 import { CreateMaintenanceDTO } from "./maintenace.types";
 

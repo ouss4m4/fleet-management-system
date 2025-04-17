@@ -1,4 +1,4 @@
-import { Telemetry } from "../generated/prisma";
+import { Telemetry } from "../src/prisma";
 import { telemetryService } from "../src/modules/telemetry/telemetry.service";
 import { prisma } from "../src/lib/prismaClient";
 import { CreateTelemetryDTO } from "../src/modules/telemetry/telemetry.types";

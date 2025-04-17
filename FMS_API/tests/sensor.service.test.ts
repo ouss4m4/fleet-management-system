@@ -1,4 +1,4 @@
-import { Sensor } from "../generated/prisma";
+import { Sensor } from "../src/prisma";
 import { sensorService } from "../src/modules/sensor/sensor.service";
 import { vehicleService } from "../src/modules/vehicle/vehicle.service";
 import { prisma } from "../src/lib/prismaClient";

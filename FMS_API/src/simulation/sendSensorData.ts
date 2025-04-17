@@ -1,7 +1,8 @@
 import { config } from "dotenv";
 config();
-import { Sensor } from "../../generated/prisma";
+
 import { prisma } from "../lib/prismaClient";
+import { Sensor } from "../prisma";
 
 const insertGpsData = async (sensor: Sensor): Promise<void> => {
   const lat = 25.2 + Math.random() * 0.1;

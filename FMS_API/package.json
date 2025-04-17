@@ -4,7 +4,7 @@
   "description": "Fleet management system sample api",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc &&  cp -r generated dist/generated && cp -r public dist",
+    "build": "tsc && cp -r src/prisma dist/src && cp -r public dist",
     "dev": "ts-node-dev --inspect --respawn --transpile-only ./index.ts",
     "test": "jest",
     "start": "node dist/index.js",

@@ -1,7 +1,8 @@
 import { CreateVehicleAnalyticsDTO } from "./analytics.types";
-import { VehicleAnalytics } from "../../../generated/prisma";
+
 import { prisma } from "../../lib/prismaClient";
 import { vehicleService } from "../vehicle/vehicle.service";
+import { VehicleAnalytics } from "../../prisma";
 
 class AnalyticsService {
   public async getAnalyticsForVehicle(vehicleId: string): Promise<VehicleAnalytics | null> {

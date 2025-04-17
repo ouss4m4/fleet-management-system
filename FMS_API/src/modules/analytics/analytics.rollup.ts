@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 config();
-import { Sensor, Telemetry } from "../../../generated/prisma";
+import { Sensor, Telemetry } from "../../prisma";
 import { prisma } from "../../lib/prismaClient";
 import logger from "../../utils/logger";
 

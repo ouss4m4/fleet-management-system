@@ -1,4 +1,4 @@
-import { VehicleAnalytics } from "../generated/prisma";
+import { VehicleAnalytics } from "../src/prisma";
 import { analyticsService } from "../src/modules/analytics/analytics.service";
 import { vehicleService } from "../src/modules/vehicle/vehicle.service";
 import { prisma } from "../src/lib/prismaClient";
