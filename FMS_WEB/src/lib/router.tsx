@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         path: '/vehicles/:id',
         element: <VehiclePage />,
       },
-      // {
-      //   path: '/vehicles/add',
-      //   element: <
-      // }
+      {
+        path: '*', // This is the catch-all route (SPA after express)
+        element: <Navigate to="/vehicles" replace />, // TODO: replace with a 404 components . and a butotn maybe
+      },
     ],
   },
 ]);

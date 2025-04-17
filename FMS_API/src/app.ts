@@ -19,6 +19,10 @@ app.get("/ping", (_, res: Response) => {
 // Add API Routes
 app.use("/api/v1", apiv1router);
 
+app.get("/*splat", (_, res) => {
+  res.sendFile(join(__dirname, "../public/index.html"));
+});
+
 // Catch all error handler
 interface ErrorWithStatus extends Error {
   status?: number;
