@@ -7,12 +7,12 @@
 create an `.env` file at `/FMS_API` and provide `PORT` for the server and `DATABASE_URL`
 
 ```bash
-# .env.sample
-PORT=
-DATABASE_URL=
+# .env.example
+PORT=3500
+DATABASE_URL=mongodb://localhost:27017/fms?authSource=admin
 ```
 
-> N.B: Prisma require mongodb with a replica instance. if you face problems setting up the db. use MongoDB Atlas
+> N.B: Prisma require mongodb with a replica instance. if you face problems setting up the db. use MongoDB Atlas Cloud
 
 ### Recomended MongoDb Setup (docker)
 
@@ -52,30 +52,35 @@ Swagger docs: http://localhost:3500/api/v1
 
 ### 3) Run the background services (iot simulation)
 
-1. in a separate terminal. run the Analytics Rollup with the command `npm run rollup:start`
+1. in a separate terminal. run the Analytics Rollup with the command `npm run rollup:dev`
    the terminal should print
 
 ```bash
-npm run rollup:start
+npm run rollup:dev
 
-> fms_api@1.0.0 rollup:start
+> fms_api@1.0.0 rollup:dev
 > ts-node-dev src/modules/analytics/analytics.rollup.ts
 
 [INFO] 17:14:19 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.8.3)
 info: updateVehicleAnalytics: Starting {"timestamp":"2025-04-17 17:14:20"}
 ```
 
-2. open another terminal run `npm run iot:feed` to start sending telemetry
+2. open another terminal run `npm run iot:dev` to start sending telemetry
 
 ```bash
-npm run iot:feed
+npm run iot:dev
 
-> fms_api@1.0.0 iot:feed
+> fms_api@1.0.0 iot:dev
 > ts-node-dev src/simulation/sendSensorData.ts
 
 [INFO] 17:16:44 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.8.3)
 working on sensors 4
 ```
+
+Create a vehicle. and start adding sensors to see data (auto refresh)
+
+- GPS sensor will add location
+- Mileage and Hours will show analytics
 
 ## Run In Production
 
@@ -86,4 +91,9 @@ build and run the api
 ```bash
 npm run build
 npm start
+
+and then in 2 separate terminals
+
+npm run rollup:prod
+npm run iot:prod
 ```
