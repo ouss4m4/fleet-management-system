@@ -9,7 +9,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(express.static(join(__dirname, "public")));
+console.log(__dirname);
+console.log();
+app.use(express.static(join(__dirname, "../public")));
+
 app.get("/ping", (_, res: Response) => {
   res.status(200).send("pong");
 });

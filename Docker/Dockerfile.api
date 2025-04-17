@@ -1,4 +1,4 @@
-#  Build backend (and copy prebuilt frontend)
+#  Build backend (FRONTEND SHOULD BE COPIED ALREADY)
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -20,10 +20,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 
 # Copy frontend from the web build
-COPY --from=export-stage /export/dist ./public
+# COPY --from=export-stage /export/dist ./public
 
-# Optional: ENV to tell your app where to find static files
-ENV FRONTEND_PATH=public
 
 # Entrypoint
 CMD ["node", "dist/index.js"]
