@@ -24,10 +24,12 @@ export default function TrackingCard({ data }: Props) {
       </Card>
     );
   }
-  const coordinates: LatLngTuple = [
-    parseFloat(data.location.coordinates[0]), // lat
-    parseFloat(data.location.coordinates[1]), // lng
-  ];
+  const coordinates: LatLngTuple = [0, 0];
+  if (data.location && data.location.coordinates) {
+    coordinates[0] = parseFloat(data.location.coordinates[0]);
+    coordinates[1] = parseFloat(data.location.coordinates[1]);
+  }
+  //  data.location.coordinates;
 
   return (
     <Card className="h-full shadow-none">
