@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { maintenanceService } from "./maintenance.service";
 import { validateCreateMaintenancePayload } from "./maintenace.types";
+import logger from "../../utils/logger";
 
 export class MaintenanceController {
   public static async getVehicleMaintenance(req: Request, res: Response): Promise<void> {
@@ -31,6 +32,8 @@ export class MaintenanceController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
+
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {

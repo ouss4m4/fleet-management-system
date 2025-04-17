@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { sensorService } from "./sensor.service";
 import { validateCreateSensorPayload } from "./sensor.types";
+import logger from "../../utils/logger";
 
 export class SensorController {
   public static async getSensors(_: Request, res: Response): Promise<void> {
@@ -47,6 +48,8 @@ export class SensorController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
+
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {

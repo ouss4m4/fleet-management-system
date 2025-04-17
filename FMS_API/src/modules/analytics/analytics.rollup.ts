@@ -1,5 +1,6 @@
 import { Sensor, Telemetry } from "../../../generated/prisma";
 import { prisma } from "../../lib/prismaClient";
+import logger from "../../utils/logger";
 
 type PartialAnalytics = {
   hoursOperated?: number;
@@ -72,10 +73,12 @@ async function updateVehicleAnalytics(): Promise<void> {
       },
     });
   }
+  logger.info(`updateVehicleAnalytics: finished at ${new Date().toLocaleDateString()}`);
 }
 
 // Loop forever
 (async () => {
+  logger.info(`updateVehicleAnalytics: Starting`);
   setInterval(updateVehicleAnalytics, 6000);
   await new Promise(() => {});
 })();

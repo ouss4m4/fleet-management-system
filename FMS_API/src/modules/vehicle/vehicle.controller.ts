@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { validateCreateVehiclePayload, validateUpdateVehiclePayload } from "./vehicle.types";
 import { vehicleService } from "./vehicle.service";
+import logger from "../../utils/logger";
 
 export class VehicleController {
   public static async getVehicles(req: Request, res: Response) {
@@ -64,6 +65,8 @@ export class VehicleController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
+
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {

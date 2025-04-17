@@ -2,12 +2,15 @@ import express, { Request, Response, NextFunction } from "express";
 import { apiv1router } from "./routes/apiv1.router";
 import cors from "cors";
 import { join } from "path";
+import requestLogger from "./middleware/requestLogger";
+
 const app = express();
 
 // Middlewarez
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(requestLogger);
 
 console.log(__dirname);
 console.log();

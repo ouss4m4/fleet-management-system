@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { telemetryService } from "./telemetry.service";
 import { validateCreateTelemetryPayload } from "./telemetry.types";
+import logger from "../../utils/logger";
 
 export class TelemetryController {
   public static async createTelemetry(req: Request, res: Response): Promise<void> {
@@ -27,6 +28,8 @@ export class TelemetryController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
+
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {

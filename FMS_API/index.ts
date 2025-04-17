@@ -1,5 +1,6 @@
 import { app } from "./src/app";
 import { config } from "dotenv";
+import logger from "./src/utils/logger";
 
 config();
 
@@ -10,10 +11,10 @@ console.log(PORT);
 // start server
 app
   .listen(PORT, async () => {
-    console.log(`Server is running on port ${PORT}`);
+    logger.info(`Server up and running on port ${PORT}`);
   })
   .on("error", (err) => {
-    console.error("Failed to start the server:", err);
+    logger.error("Failed to start the server:", err);
   });
 
 // process.on("SIGTERM", () => {

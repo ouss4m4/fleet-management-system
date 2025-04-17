@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { vehicleTrackingService } from "./track.service";
+import logger from "../../utils/logger";
 
 export class VehicleTrackingController {
   public static async trackVehicle(req: Request, res: Response): Promise<void> {
@@ -13,6 +14,8 @@ export class VehicleTrackingController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
+
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {

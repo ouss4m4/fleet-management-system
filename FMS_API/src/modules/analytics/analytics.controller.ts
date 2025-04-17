@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { analyticsService } from "./analytics.service";
 import { validateCreateVehicleAnalyticsPayload } from "./analytics.types";
+import logger from "../../utils/logger";
 
 export class AnalyticsController {
   public static async getVehicleAnalytics(req: Request, res: Response): Promise<void> {
@@ -29,6 +30,7 @@ export class AnalyticsController {
   }
 
   private static handleError(res: Response, error: unknown, fallbackMessage: string) {
+    logger.error(error);
     if (error && typeof error === "object" && "errors" in error) {
       const formatted: Record<string, string> = {};
       (error as any).errors?.forEach((err: any) => {
@@ -42,7 +44,6 @@ export class AnalyticsController {
       return res.status(400).json({ success: false, message: error.message });
     }
 
-    console.error(error);
     return res.status(400).json({ success: false, message: fallbackMessage });
   }
 }
