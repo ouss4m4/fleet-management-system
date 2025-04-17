@@ -1,27 +1,15 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Docker/Dockerfile.web
-    command: echo "Frontend built" # Only builds and exits
-    volumes:
-      - web-dist:/export
-
   api:
     build:
       context: .
       dockerfile: Docker/Dockerfile.api
     depends_on:
       - mongodb
-      - web
     ports:
       - "3003:3003"
     environment:
       - PORT=3003
       - DATABASE_URL=mongodb://mongodb:27017/fms?authSource=admin
-    volumes:
-      - web-dist:/export
-
   mongodb:
     build:
       context: ./Docker
@@ -39,5 +27,4 @@ services:
       - mongo-data:/data/db
 
 volumes:
-  web-dist:
   mongo-data:
