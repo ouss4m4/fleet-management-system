@@ -156,7 +156,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/ouss/personel/fleet-management-system/FMS_API/generated/prisma",
+      "value": "/Users/ouss/personel/fms/FMS_API/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -170,7 +170,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/ouss/personel/fleet-management-system/FMS_API/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ouss/personel/fms/FMS_API/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -184,7 +184,7 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
