@@ -38,7 +38,7 @@ manage different vehicles used in logistics, construction, or any other fleet-in
 
 The system models real-world telemetry in three distinct layers to maintain flexibility, and performance:
 
-##### Sensor: metadata
+#### Sensor: metadata
 
 Each Sensor represents a sensor (e.g., GPS, engine temperature) mounted on a vehicle. Separating sensors from raw data allows the system to:
 
@@ -63,6 +63,12 @@ The VehicleAnalytics model maintains the latest aggregated data per vehicle, upd
 - Current location, total distance, or hours operated.
 - A single record per vehicle (with a @unique vehicleId constraint).
 - Lightweight updates during ETL runs or live ingestion simulations.
+
+### Live Updates
+
+Adding a sensor to a vehicle will start showing data
+
+![adding_a_sensor](./output.gif)
 
 ## Setup
 
