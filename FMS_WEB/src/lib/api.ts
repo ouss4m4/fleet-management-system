@@ -11,7 +11,7 @@ interface ApiResponse<T> {
 
 interface RequestOptions extends Omit<RequestInit, 'body'> {
   params?: Record<string, string | number | boolean>;
-  body?: unknown; // or `any`, or `{ [key: string]: any }`
+  body?: unknown;
 }
 
 export class APIError extends Error {
@@ -52,6 +52,7 @@ export async function api<T>(
     body: body ? JSON.stringify(body) : undefined,
     ...rest,
   });
+
   // await new Promise((res) => setTimeout(res, 2000)); // Simulate a delay
 
   const contentType = res.headers.get('Content-Type');

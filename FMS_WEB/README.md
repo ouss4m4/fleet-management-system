@@ -1,9 +1,15 @@
 # Fleet Management System - Frontend
 
-## To run in development
+## Run in development
 
-make sure you have `node` with `pnpm` installed run
-setup the api endpoint in `.env` to the api endpoint and run
+Make sure you have `node` and `pnpm` installed.  
+Setup the API url in `FMS_WEB/.env` 
+
+```.env
+# FMS_WEB/.env
+
+VITE_API_URL=http://localhost:3500
+```
 
 ```
 pnpm install
