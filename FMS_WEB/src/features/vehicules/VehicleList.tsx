@@ -33,7 +33,7 @@ export default function VehicleList({ vehicles }: Props) {
                 <p className="text-muted-foreground text-sm capitalize">
                   Status
                 </p>
-                <span className="text-primary font-semibold">
+                <span className="text-primary font-semibold capitalize">
                   {vehicle.status}
                 </span>
                 <p className="text-muted-foreground text-sm capitalize">
