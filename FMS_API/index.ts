@@ -5,6 +5,11 @@ import logger from "./src/utils/logger";
 config();
 
 const PORT = process.env.PORT || 3000;
+console.log("--------------");
+console.log(process.env.DATABASE_URL);
+console.log(process.env.PORT);
+console.log(process.env);
+console.log("--------------");
 
 // start server
 app

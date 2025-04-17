@@ -72,7 +72,16 @@ Adding a sensor to a vehicle will start showing data
 
 ## Setup
 
-checkout [Readme.md](./FMS_API/readme.md) for setup
+- For a docker-compose version. run
+
+```
+docker-compose -f docker-compose.prod.yml build --no-cache
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+and navigate to (localhost:3003)[localhost:3003]
+
+- For local setup checkout [Readme.md](./FMS_API/readme.md) for setup
 
 ## Tech Stack
 
