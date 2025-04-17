@@ -6,13 +6,17 @@ type Props = {
   data: IAnalytics;
   reload: () => void;
 };
+
 export default function AnalyticsCards({ data, reload }: Props) {
   return (
     <>
       <Card className="h-full shadow-none">
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="relative flex items-center justify-between">
             <h2 className="text-lg font-semibold"> Usage & Metrics</h2>
+            <p className="text-muted-foreground absolute top-8 text-xs">
+              refreshes every 5 sec
+            </p>
             <Button
               variant={'outline'}
               className="cursor-pointer"

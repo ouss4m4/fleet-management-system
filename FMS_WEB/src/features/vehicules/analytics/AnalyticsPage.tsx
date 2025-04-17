@@ -10,6 +10,7 @@ export default function AnalyticsPage() {
   const { data, refetch } = useSuspenseQuery({
     queryKey: ['vehicle', id, 'analytics'],
     queryFn: () => api<IAnalytics>('GET', `/vehicles/${id}/analytics`),
+    refetchInterval: 5000,
   });
 
   return <AnalyticsCards data={data} reload={refetch} />;
