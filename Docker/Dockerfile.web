@@ -1,0 +1,16 @@
+# Build frontend (make dist folder ready)
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY FMS_WEB/package.json FMS_WEB/pnpm-lock.yaml ./
+RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN pnpm install
+
+COPY FMS_WEB ./
+RUN pnpm build
+
+# Step 2: Copy dist to a shared folder for API
+FROM alpine AS export-stage
+WORKDIR /export
+COPY --from=builder /app/dist ./dist

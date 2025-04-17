@@ -1,18 +1,29 @@
+#  Build backend (and copy prebuilt frontend)
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY FMS_API/package.json FMS_API/package-lock.json ./
+RUN npm install
+
+COPY FMS_API ./
+RUN npm run build
+
+# Step 2: Production image
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Install deps with npm only
-COPY FMS_API/package.json FMS_API/package-lock.json ./
-RUN npm install
+# Copy compiled backend
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 
-# Copy app source
-COPY FMS_API ./
+# Copy frontend from the web build
+COPY --from=export-stage /export/dist ./public
 
-# Build TypeScript
-RUN npm run build
+# Optional: ENV to tell your app where to find static files
+ENV FRONTEND_PATH=public
 
-EXPOSE 3000
-
-# Run compiled JS
+# Entrypoint
 CMD ["node", "dist/index.js"]

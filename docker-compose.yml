@@ -1,18 +1,27 @@
 services:
+  web:
+    build:
+      context: ./FMS_WEB
+      dockerfile: ../Docker/Dockerfile.web
+    command: echo "Frontend built" # Only builds and exits
+    volumes:
+      - frontend-build:/export
+
   api:
     build:
       context: .
       dockerfile: Docker/Dockerfile.api
-    restart: always
-    ports:
-      - "3000:3000"
+      target: production
     depends_on:
       - mongodb
+      - web
+    ports:
+      - "3000:3000"
     environment:
       - DATABASE_URL=mongodb://mongodb:27017/fms?authSource=admin
+    volumes:
+      - frontend-build:/export:ro
 
-  # This config is for MongoDB v5+
-  # It's a Replica Set (required for Prisma Client) //https://github.com/prisma/prisma/blob/main/docker/docker-compose.yml
   mongodb:
     build:
       context: ./Docker
@@ -31,3 +40,4 @@ services:
 
 volumes:
   mongo-data:
+  frontend-build:
