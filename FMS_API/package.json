@@ -4,10 +4,14 @@
   "description": "Fleet management system sample api",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc &&  cp -r generated dist/generated && cp -r public dist",
+    "build": "tsc &&  cp -r generated dist/generated && cp -r public dist && cp .env dist",
     "dev": "ts-node-dev --inspect --respawn --transpile-only ./index.ts",
     "test": "jest",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "rollup:dev": "ts-node-dev src/modules/analytics/analytics.rollup.ts",
+    "iot:dev": "ts-node-dev src/simulation/sendSensorData.ts",
+    "rollup:prod": "node dist/src/modules/analytics/analytics.rollup.js",
+    "iot:prod": "node dist/src/simulation/sendSensorData.js"
   },
   "author": "bz.oussama@gmail.com",
   "license": "ISC",

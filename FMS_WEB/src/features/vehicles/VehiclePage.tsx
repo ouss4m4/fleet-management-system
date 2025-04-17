@@ -10,6 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import WithSuspenseBoundary from '@/components/WithSuspenceBoundary';
 import { useParams } from 'react-router-dom';
 import TrackingPage from './tracking/TrackingPage';
+import { ErrorBoundary } from 'react-error-boundary';
 
 export function SkeletonCard() {
   return (
@@ -56,9 +57,11 @@ export default function VehiclePage() {
         </WithSuspenseBoundary>
 
         {/* Suspence and useEffect (to update map, do not work togeher) do not wo */}
-        <div className="h-full min-h-80 lg:col-span-2">
-          <TrackingPage />
-        </div>
+        <ErrorBoundary FallbackComponent={() => <p>Error loading map</p>}>
+          <div className="h-full min-h-80 lg:col-span-2">
+            <TrackingPage />
+          </div>
+        </ErrorBoundary>
       </div>
     </>
   );

@@ -153,7 +153,11 @@ export default function RegisterVehicleDetails({
                     </FormControl>
                     <SelectContent>
                       {VehicleStatusEnum.options.map((type) => (
-                        <SelectItem key={type} value={type}>
+                        <SelectItem
+                          key={type}
+                          value={type}
+                          className="capitalize"
+                        >
                           {type}
                         </SelectItem>
                       ))}

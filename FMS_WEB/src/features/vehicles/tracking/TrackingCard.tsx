@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function TrackingCard({ data }: Props) {
-  if (!data.location) {
+  if (!data.location || !data.location.coordinates) {
     return (
       <Card className="h-full shadow-none">
         <CardHeader className="flex justify-between">
@@ -19,13 +19,17 @@ export default function TrackingCard({ data }: Props) {
           </div>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4">
-          <p>No location data available.</p>
+          <p>No location data available. add a GPS Sensor to start tracking</p>
         </CardContent>
       </Card>
     );
   }
   const coordinates: LatLngTuple = [0, 0];
-  if (data.location && data.location.coordinates) {
+  if (
+    data.location &&
+    data.location.coordinates &&
+    data.location.coordinates.length
+  ) {
     coordinates[0] = parseFloat(data.location.coordinates[0]);
     coordinates[1] = parseFloat(data.location.coordinates[1]);
   }

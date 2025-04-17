@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import { Sensor } from "../../generated/prisma";
 import { prisma } from "../lib/prismaClient";
 

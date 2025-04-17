@@ -2,12 +2,11 @@ import { ITracking } from '@/typings';
 import { useParams } from 'react-router-dom';
 import { api } from '@/lib/api';
 import TrackingCard from './TrackingCard';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function TrackingPage() {
   const { id } = useParams<{ id: string }>();
-  const refCount = useRef(0); // Track number of updates
   const [data, setData] = useState<ITracking | null>(null);
   const [isLoading, setLoading] = useState(true);
   // const [error, setError] = useState<string | null>(null);
@@ -17,12 +16,9 @@ export default function TrackingPage() {
       const data = await api<ITracking>('GET', `/vehicles/${id}/track`);
 
       setData(data);
-      // clearInterval(interval);
     };
-    fetchTrackData();
 
     const interval = setInterval(() => {
-      refCount.current += 1;
       fetchTrackData();
     }, 2000);
     setLoading(false);

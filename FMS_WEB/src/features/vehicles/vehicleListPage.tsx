@@ -33,7 +33,11 @@ export default function VehicleListPage() {
 
   return (
     <>
-      <Button className="mb-2" variant="outline" onClick={() => setOpen(true)}>
+      <Button
+        className="mb-2 cursor-pointer"
+        variant="outline"
+        onClick={() => setOpen(true)}
+      >
         <PlusCircleIcon /> Register Vehicle
       </Button>
       {vehicles && vehicles.length ? (

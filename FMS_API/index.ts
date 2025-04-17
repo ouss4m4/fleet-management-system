@@ -5,8 +5,6 @@ import logger from "./src/utils/logger";
 config();
 
 const PORT = process.env.PORT || 3000;
-console.log(PORT);
-//start db client
 
 // start server
 app

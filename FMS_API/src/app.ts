@@ -12,8 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(requestLogger);
 
-console.log(__dirname);
-console.log();
 app.use(express.static(join(__dirname, "../public")));
 
 app.get("/ping", (_, res: Response) => {

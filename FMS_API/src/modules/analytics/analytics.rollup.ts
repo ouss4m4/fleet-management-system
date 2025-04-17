@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import { Sensor, Telemetry } from "../../../generated/prisma";
 import { prisma } from "../../lib/prismaClient";
 import logger from "../../utils/logger";
@@ -68,10 +70,7 @@ export async function updateVehicleAnalytics(): Promise<void> {
           vehicleId,
           hoursOperated: data.hoursOperated ?? 0,
           distanceTraveled: data.distanceTraveled ?? 0,
-          location: data.location ?? {
-            type: "Point",
-            coordinates: [],
-          },
+          location: data.location ?? {},
         },
       });
     }

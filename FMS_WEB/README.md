@@ -30,6 +30,8 @@ visit http://localhost:5173 (or the port showing in terminal)
 
 Run `pnpm build` and then copy the `dist` folder content to `FMS_API/public`
 
+`mv dist ../FMS_API/public`
+
 ## Built with
 
 - React + vite
