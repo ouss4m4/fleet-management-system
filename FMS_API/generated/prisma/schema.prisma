@@ -71,4 +71,6 @@ model VehicleAnalytics {
   distanceTraveled Int
   location         Json
   lastUpdated      DateTime @updatedAt
+
+  @@index([lastUpdated])
 }
