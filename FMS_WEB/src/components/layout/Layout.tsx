@@ -4,14 +4,14 @@ import logo from '../../assets/logo.svg';
 export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
-      <header className="bg-white px-6 py-4 shadow">
+      <header className="bg-white py-4 shadow">
         <div className="relative mx-auto h-6 w-3/4">
           {/* Logo: hidden by default, shown on xl+ */}
           <Link to="/vehicles">
             <img
               src={logo}
               alt="Logo"
-              className="absolute top-1/2 left-0 hidden h-4 w-48 -translate-y-1/2 lg:block"
+              className="absolute top-1/2 left-0 hidden h-4 -translate-y-1/2 lg:block"
             />
           </Link>
           {/* Title: always centered */}
