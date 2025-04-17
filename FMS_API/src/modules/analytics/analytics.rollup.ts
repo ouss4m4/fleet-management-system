@@ -30,21 +30,13 @@ export async function updateVehicleAnalytics(): Promise<void> {
     // 3. Group by vehicle and extract values
     const groupedByVehicle: Record<string, PartialAnalytics> = {};
 
-    // Initialize analytics for all vehicles with sensors (this will remove null checks everytime)
-    sensors.forEach((sensor) => {
-      if (!groupedByVehicle[sensor.vehicleId]) {
-        groupedByVehicle[sensor.vehicleId] = {
-          hoursOperated: 0,
-          distanceTraveled: 0,
-          location: {},
-        };
-      }
-    });
-
     for (const { sensor, telemetry } of Object.values(latestPerSensor)) {
       if (!telemetry) continue;
 
       const vehicleId = sensor.vehicleId;
+      if (!groupedByVehicle[vehicleId]) {
+        groupedByVehicle[vehicleId] = {};
+      }
       const value = telemetry.payload;
 
       switch (sensor.type) {
@@ -70,22 +62,16 @@ export async function updateVehicleAnalytics(): Promise<void> {
       await prisma.vehicleAnalytics.upsert({
         where: { vehicleId },
         update: {
-          // make sure to only pass what what updated (no overrides)
-          ...(data.distanceTraveled !== 0 && {
-            distanceTraveled: data.distanceTraveled,
-          }),
-          ...(data.hoursOperated !== 0 && {
-            hoursOperated: data.hoursOperated,
-          }),
-          ...(Object.keys(data.location).length > 0 && {
-            location: data.location,
-          }),
+          ...data,
         },
         create: {
           vehicleId,
           hoursOperated: data.hoursOperated ?? 0,
           distanceTraveled: data.distanceTraveled ?? 0,
-          location: data.location ?? {},
+          location: data.location ?? {
+            type: "Point",
+            coordinates: [],
+          },
         },
       });
     }
