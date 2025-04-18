@@ -79,7 +79,7 @@ docker-compose -f docker-compose.prod.yml build --no-cache
 docker-compose -f docker-compose.prod.yml up -d
 ```
 
-and navigate to (localhost:3003)[localhost:3003]
+and navigate to [http://localhost:3003](http://localhost:3003)
 
 - For local setup checkout [Readme.md](./FMS_API/readme.md) for setup
 
@@ -87,8 +87,9 @@ and navigate to (localhost:3003)[localhost:3003]
 
 - #### Database
   - MongoDb with Prisma
+  - (MongoDB with replica is needed for prisma transcations)
 - #### API
-  - Node with Express (typescript)
+  - Node/Typescript, with Express Server
   - Zod for validation
   - Winston for logging and daily rotation
   - Jest for testing
