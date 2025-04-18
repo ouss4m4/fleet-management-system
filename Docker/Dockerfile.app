@@ -1,4 +1,4 @@
-# --- Stage 1: Build frontend ---
+# --------- Stage 1: Build frontend ---------
 FROM node:20-slim AS web-builder
 
 WORKDIR /frontend
@@ -12,14 +12,14 @@ ENV VITE_API_URL=
 RUN pnpm build
 
 
-# --- Stage 2: Build API ---
+# --------- Stage 2: Build API ---------
 FROM node:20-slim AS api-builder
 
 WORKDIR /app
 RUN apt-get update && apt-get install -y openssl libssl-dev
 
 
-# Install API dependencies with npm (no pnpm here)
+# Install API dependencies with npm (no pnpm needed here)
 COPY FMS_API/package.json FMS_API/package-lock.json ./
 RUN npm install
 
@@ -36,7 +36,7 @@ RUN npx prisma generate
 # Run build (includes copying public into dist and prisma)
 RUN npm run build
 
-# --- Final Image: Runtime only ---
+# --------- Final Image: Runtime only (copy final output and npm install deps) ---------
 FROM node:20-slim
 
 WORKDIR /app

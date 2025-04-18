@@ -1,0 +1,23 @@
+# Slim image holds only the api. no frontend (use it for simulationo and rollups)
+FROM node:20-slim AS api-builder
+
+WORKDIR /app
+RUN apt-get update && apt-get install -y openssl libssl-dev
+
+COPY FMS_API/package.json FMS_API/package-lock.json ./
+RUN npm install
+
+COPY FMS_API ./
+RUN npx prisma generate
+RUN npm run build
+
+# --- Final runtime image ---
+FROM node:20-slim
+
+WORKDIR /app
+RUN apt-get update && apt-get install -y openssl libssl-dev
+
+COPY FMS_API/package.json FMS_API/package-lock.json ./
+RUN npm install --omit=dev
+
+COPY --from=api-builder /app/dist ./dist

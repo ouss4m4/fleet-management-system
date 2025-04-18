@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Docker/Dockerfile.app
+    command: ["node", "dist/index.js"]
     depends_on:
       - database
     ports:
@@ -10,7 +11,27 @@ services:
     environment:
       - PORT=3003
       - DATABASE_URL=mongodb://database:27017/fms?authSource=admin&directConnection=true
-
+  # analytics process
+  rollups:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile.scripts
+    command: ["node", "dist/src/modules/analytics/analytics.rollup.js"]
+    depends_on:
+      - database
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mongodb://database:27017/fms?authSource=admin&directConnection=true
+  iot:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile.scripts
+    command: ["node", "dist/src/simulation/sendSensorData.js"]
+    depends_on:
+      - database
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mongodb://database:27017/fms?authSource=admin&directConnection=true
   database:
     build:
       context: ./Docker
