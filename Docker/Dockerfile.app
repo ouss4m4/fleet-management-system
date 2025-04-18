@@ -26,11 +26,12 @@ RUN npm install
 # Copy API source
 COPY FMS_API ./
 
-# Generate Prisma Client
-RUN npx prisma generate
 
 # Copy built frontend into public folder of API
 COPY --from=web-builder /frontend/dist ./public
+
+# Generate Prisma Client
+RUN npx prisma generate
 
 # Run build (includes copying public into dist and prisma)
 RUN npm run build
@@ -44,10 +45,6 @@ RUN apt-get update && apt-get install -y openssl libssl-dev
 # Install prod deps
 COPY FMS_API/package.json FMS_API/package-lock.json ./
 RUN npm install --omit=dev
-
-# PRISMA SPECIFIC 
-COPY --from=api-builder /app/node_modules/.prisma /app/node_modules/.prisma
-COPY --from=api-builder /app/node_modules/@prisma /app/node_modules/@prisma
 
 # Copy final backend dist (which includes frontend inside dist/public)
 COPY --from=api-builder /app/dist ./dist

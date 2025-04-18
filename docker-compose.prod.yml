@@ -2,16 +2,14 @@ services:
   api:
     build:
       context: .
-      dockerfile: Docker/Dockerfile.api
+      dockerfile: Docker/Dockerfile.app
     depends_on:
       - database
     ports:
       - "3003:3003"
     environment:
       - PORT=3003
-      - DATABASE_URL=mongodb://database:27017/fms?authSource=admin
-    networks:
-      - fms-net
+      - DATABASE_URL=mongodb://database:27017/fms?authSource=admin&directConnection=true
 
   database:
     build:
@@ -28,12 +26,6 @@ services:
     restart: unless-stopped
     volumes:
       - mongo-data:/data/db
-    networks:
-      - fms-net
 
 volumes:
   mongo-data:
-
-networks:
-  fms-net:
-    driver: bridge
